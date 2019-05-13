@@ -1,0 +1,56 @@
+.header{
+    background-color: lightblue;
+    overflow: hidden;
+    padding: 0.5%;
+}
+
+.header img{
+    width: 13%;
+    float: right;
+    margin-right: 2.2%;
+}
+
+.menuButton {
+    background-color: #147DC4;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    min-width: 160px;
+}
+
+.menu {
+    float: left;
+    overflow: hidden;
+    margin-left: 2.2%;
+    margin-top: 2.2%;
+    margin-bottom: 2.2%;
+}
+
+.menuLinks{
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.menuLinks a{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.menuLinks a:hover{
+    background-color: #ddd;
+}
+
+.menu:hover .menuLinks{
+    display: block;
+}
+
+.menu:hover .menuButton{
+    background-color: #72b1db;
+}
