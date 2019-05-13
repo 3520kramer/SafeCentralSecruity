@@ -20,6 +20,4 @@ public class HomeController{
     public String viewCustomer(){
         return "/customer/viewCustomer";
     }
-
-
 }
