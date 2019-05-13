@@ -18,8 +18,8 @@ public class HomeController{
 
     @GetMapping("/viewCustomer")
     public String viewCustomer(){
-
         return "/customer/viewCustomer";
     }
+
 
 }
