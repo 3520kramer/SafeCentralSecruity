@@ -1,14 +1,25 @@
 package com.example.demo.Controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController{
 
     @GetMapping("/")
-    public String index(Model model){
-        return "home/index";
+    public String index(){
+        return "/index";
     }
+
+    @GetMapping("/home")
+    public String home(){
+        return "/home";
+    }
+
+    @GetMapping("/viewCustomer")
+    public String viewCustomer(){
+
+        return "/customer/viewCustomer";
+    }
+
 }
