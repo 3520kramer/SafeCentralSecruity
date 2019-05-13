@@ -1,5 +1,5 @@
 package com.example.demo.Model;
 
-public class employee extends user{
+public class Employee extends User {
     private String employmentDate;
 }

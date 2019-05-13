@@ -1,6 +1,6 @@
 package com.example.demo.Model;
 
-public abstract class user {
+public abstract class User {
 
     private String firstName;
     private String lastName;
