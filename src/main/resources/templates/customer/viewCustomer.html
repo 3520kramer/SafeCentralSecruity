@@ -16,6 +16,9 @@
         <tbody>
         <tr th:each="customer: ${customers}">
             <td th:text="${customer.id}"/>
+            <td th:text="${customer.firmName}"/>
+            <td th:text="${customer.contactPerson}"/>
+
 
         </tr>
         </tbody>
