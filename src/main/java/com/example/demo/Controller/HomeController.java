@@ -27,6 +27,10 @@ public class HomeController{
         return "/home";
     }
 
+    @GetMapping ("/viewNewsfeed")
+    public String viewNewsfeed(){return "/newsfeed/viewNewsfeed";}
+
+
     @GetMapping("/viewCustomer")
     public String viewCustomer(){
         return "/customer/viewCustomer";
