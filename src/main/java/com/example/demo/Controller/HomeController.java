@@ -27,6 +27,10 @@ public class HomeController{
         return "/home";
     }
 
+    @GetMapping ("/viewNewsfeed")
+    public String viewNewsfeed(){return "/newsfeed/viewNewsfeed";}
+
+
     @GetMapping("/viewCustomer")
     public String viewCustomer(){
         return "/customer/viewCustomer";
@@ -38,6 +42,11 @@ public class HomeController{
         List<Customer> customerList = services.getAll();
         model.addAttribute("customers", customerList);
         return "customer/viewCustomer";
+    }
+
+    @GetMapping("/viewEmployee")
+    public String viewEmployee(){
+        return "/customer/viewEmployee";
     }
 
 }

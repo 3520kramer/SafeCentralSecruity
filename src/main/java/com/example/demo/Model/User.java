@@ -2,43 +2,55 @@ package com.example.demo.Model;
 
 public abstract class User {
 
-    private String firstName;
-    private String lastName;
-    private String cpr;
-    private String address;
+    private int id;
+    private String fornavn;
+    private String efternavn;
+    private String ansættelsesdato;
+    private String telefon;
     private String email;
-    private String phoneNumber;
+    private String cpr;
+    private double løn;
+    private String addresse;
+    private int postnummer;
 
-    public String getFirstName() {
-        return firstName;
+    public int getId() {
+        return id;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getFornavn() {
+        return fornavn;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFornavn(String fornavn) {
+        this.fornavn = fornavn;
     }
 
-    public String getCpr() {
-        return cpr;
+    public String getEfternavn() {
+        return efternavn;
     }
 
-    public void setCpr(String cpr) {
-        this.cpr = cpr;
+    public void setEfternavn(String efternavn) {
+        this.efternavn = efternavn;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAnsættelsesdato() {
+        return ansættelsesdato;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAnsættelsesdato(String ansættelsesdato) {
+        this.ansættelsesdato = ansættelsesdato;
+    }
+
+    public String getTelefon() {
+        return telefon;
+    }
+
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
     }
 
     public String getEmail() {
@@ -49,11 +61,35 @@ public abstract class User {
         this.email = email;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getCpr() {
+        return cpr;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setCpr(String cpr) {
+        this.cpr = cpr;
+    }
+
+    public double getLøn() {
+        return løn;
+    }
+
+    public void setLøn(double løn) {
+        this.løn = løn;
+    }
+
+    public String getAddresse() {
+        return addresse;
+    }
+
+    public void setAddresse(String addresse) {
+        this.addresse = addresse;
+    }
+
+    public int getPostnummer() {
+        return postnummer;
+    }
+
+    public void setPostnummer(int postnummer) {
+        this.postnummer = postnummer;
     }
 }
