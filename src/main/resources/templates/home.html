@@ -1,9 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="css.css">
+    <style>
+        table{
+            font-family: Helvetica;
+            border-collapse: collapse;
+            width: 60em;
+            height: 15em;
+            border: 1px solid black;
+        }
+
+        th{
+            border: 0;
+            border-bottom: 1px solid black;
+            text-align: left;
+            padding: 4px;
+        }
+    </style>
 </head>
 <body>
     <div class="header">
@@ -21,5 +37,16 @@
             <img src="logo.png">
         </div>
     </div>
+        <table>
+            <tr th:each="newsfeed: ${newsfeeds}">
+                <td>
+                    <p th:text="${newsfeed.date}"/>
+                </td>
+                <td>
+                    <p th:text="${newsfeed.time}"/>
+                </td>
+            </tr>
+        </table>
+
 </body>
 </html>

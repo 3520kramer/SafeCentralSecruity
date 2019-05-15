@@ -1,6 +1,12 @@
 package com.example.demo.Model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class NewsFeed {
+
+    @Id
     private String id;
     private String opslag;
     private String dato;
