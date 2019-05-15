@@ -28,7 +28,7 @@ public class HomeController{
     @GetMapping("/home")
     public String home(Model model){
         List<NewsFeed> newsFeedList = services.getAllNewsFeed();
-        model.addAttribute("newsfeeds", newsFeedList);;
+        model.addAttribute("newsfeeds", newsFeedList);
         return "/home";
     }
 
