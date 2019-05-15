@@ -5,14 +5,13 @@ public abstract class User {
     private int id;
     private String fornavn;
     private String efternavn;
-    private String ansettelsesdato;
+    private String ansættelsesdato;
     private String telefon;
     private String email;
     private String cpr;
-    private double lon;
+    private double løn;
     private String addresse;
     private int postnummer;
-
 
     public int getId() {
         return id;
@@ -38,12 +37,12 @@ public abstract class User {
         this.efternavn = efternavn;
     }
 
-    public String getAnsettelsesdato() {
-        return ansettelsesdato;
+    public String getAnsættelsesdato() {
+        return ansættelsesdato;
     }
 
-    public void setAnsettelsesdato(String ansettelsesdato) {
-        this.ansettelsesdato = ansettelsesdato;
+    public void setAnsættelsesdato(String ansættelsesdato) {
+        this.ansættelsesdato = ansættelsesdato;
     }
 
     public String getTelefon() {
@@ -70,12 +69,12 @@ public abstract class User {
         this.cpr = cpr;
     }
 
-    public double getLon() {
-        return lon;
+    public double getLøn() {
+        return løn;
     }
 
-    public void setLon(double lon) {
-        this.lon = lon;
+    public void setLøn(double løn) {
+        this.løn = løn;
     }
 
     public String getAddresse() {
