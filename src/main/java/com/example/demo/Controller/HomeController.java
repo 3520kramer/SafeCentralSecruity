@@ -44,4 +44,9 @@ public class HomeController{
         return "customer/viewCustomer";
     }
 
+    @GetMapping("/viewEmployee")
+    public String viewEmployee(){
+        return "/customer/viewEmployee";
+    }
+
 }

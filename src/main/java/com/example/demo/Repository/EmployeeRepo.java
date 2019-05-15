@@ -1,6 +1,6 @@
 package com.example.demo.Repository;
 
-import com.example.demo.Model.Customer;
+import com.example.demo.Model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -14,10 +14,10 @@ public class EmployeeRepo {
     @Autowired
     JdbcTemplate template;
 
-    public List<Customer> getAll(){
+    public List<Employee> getAllEmployees(){
 
-        String sql = "SELECT * FROM medar";
-        RowMapper<Customer> rowMapper = new BeanPropertyRowMapper<>(Customer.class);
+        String sql = "SELECT * FROM medarbejder";
+        RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
         return template.query(sql, rowMapper);
     }
 
