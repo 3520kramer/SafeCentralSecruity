@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+    <div>
 
+        <a href="/home">
+            <button class="btn">Back</button>
+        </a>
+
+        <table>
+            <tread>
+                <tr>
+                    <th>Id</th>
+                    <th>Fornavn</th>
+                    <th>Efternavn</th>
+                </tr>
+            </tread>
+
+            <tbody>
+            <tr th:each="employee: ${employees}">
+                <td th:text="${employee.id}"/>
+                <td th:text="${employee.fornavn}"/>
+                <td th:text="${employee.efternavn}"/>
+
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
