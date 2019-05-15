@@ -25,9 +25,20 @@ public class HomeController{
         return "/index";
     }
 
+
+
+
+
+
     @GetMapping("/home")
     public String home(){
 
+        return "/home";
+    }
+    @PostMapping("/home")
+    public String homes(Model model){
+        List<NewsFeed> newsFeedList = services.getAllNewsFeed();
+        model.addAttribute("newsfeeds", newsFeedList);
         return "/home";
     }
 
