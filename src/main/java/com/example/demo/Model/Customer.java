@@ -9,13 +9,14 @@ public class Customer {
 
     @Id
     private int id;
-    private String firmName;
-    private String contactPerson;
-    private String phoneNumber;
+    private String firma_navn;
+    private String kontaktperson;
+    private String telefon;
     private String email;
     private int cvr;
-    private String address;
-    private int zipcode;
+    private String addresse;
+    private int postnummer;
+
 
     public int getId() {
         return id;
@@ -25,28 +26,28 @@ public class Customer {
         this.id = id;
     }
 
-    public String getFirmName() {
-        return firmName;
+    public String getFirma_navn() {
+        return firma_navn;
     }
 
-    public void setFirmName(String firmName) {
-        this.firmName = firmName;
+    public void setFirma_navn(String firma_navn) {
+        this.firma_navn = firma_navn;
     }
 
-    public String getContactPerson() {
-        return contactPerson;
+    public String getKontaktperson() {
+        return kontaktperson;
     }
 
-    public void setContactPerson(String contactPerson) {
-        this.contactPerson = contactPerson;
+    public void setKontaktperson(String kontaktperson) {
+        this.kontaktperson = kontaktperson;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getTelefon() {
+        return telefon;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setTelefon(String telefon) {
+        this.telefon = telefon;
     }
 
     public String getEmail() {
@@ -65,22 +66,19 @@ public class Customer {
         this.cvr = cvr;
     }
 
-    public String getAddress() {
-        return address;
+    public String getAddresse() {
+        return addresse;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setAddresse(String addresse) {
+        this.addresse = addresse;
     }
 
-    public int getZipcode() {
-        return zipcode;
+    public int getPostnummer() {
+        return postnummer;
     }
 
-    public void setZipcode(int zipcode) {
-        this.zipcode = zipcode;
+    public void setPostnummer(int postnummer) {
+        this.postnummer = postnummer;
     }
-
-
-
 }

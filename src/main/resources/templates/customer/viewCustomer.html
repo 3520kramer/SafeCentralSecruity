@@ -10,17 +10,18 @@
         <thead>
         <tr>
             <th>id</th>
-            <th></th>
+            <th>Firma navn</th>
+            <th>Kontakt person</th>
         </tr>
         </thead>
+
         <tbody>
-        <tr th:each="customer: ${customers}">
-            <td th:text="${customer.id}"/>
-            <td th:text="${customer.firmName}"/>
-            <td th:text="${customer.contactPerson}"/>
+            <tr th:each="customer: ${customers}">
+                <td th:text="${customer.id}"/>
+                <td th:text="${customer.firma_navn}"/>
+                <td th:text="${customer.contactPerson}"/>
 
-
-        </tr>
+            </tr>
         </tbody>
     </table>
 
