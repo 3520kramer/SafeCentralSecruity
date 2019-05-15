@@ -1,7 +1,11 @@
 package com.example.demo.Model;
 
-public abstract class User {
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
+public abstract class User {
+    @Id
     private int id;
     private String fornavn;
     private String efternavn;

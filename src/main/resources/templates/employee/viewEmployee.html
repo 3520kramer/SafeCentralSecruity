@@ -5,20 +5,19 @@
     <title>Title</title>
 </head>
 <body>
-    <div>
 
         <a href="/home">
             <button class="btn">Back</button>
         </a>
 
         <table>
-            <tread>
+            <thead>
                 <tr>
                     <th>Id</th>
                     <th>Fornavn</th>
                     <th>Efternavn</th>
                 </tr>
-            </tread>
+            </thead>
 
             <tbody>
             <tr th:each="employee: ${employees}">
@@ -26,10 +25,10 @@
                 <td th:text="${employee.fornavn}"/>
                 <td th:text="${employee.efternavn}"/>
 
-
+                </td>
             </tr>
             </tbody>
         </table>
-    </div>
+
 </body>
 </html>
