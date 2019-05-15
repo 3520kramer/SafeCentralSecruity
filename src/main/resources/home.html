@@ -22,6 +22,8 @@
     </style>
 </head>
 <body>
+
+<!--
     <div class="header">
         <div class="menu">
             <button class="menuButton">Menu</button>
@@ -37,16 +39,25 @@
             <img src="logo.png">
         </div>
     </div>
+-->
+
         <table>
-            <tr th:each="newsfeed: ${newsfeeds}">
-                <td>
-                    <p th:text="${newsfeed.date}"/>
-                </td>
-                <td>
-                    <p th:text="${newsfeed.time}"/>
-                </td>
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>opslag</th>
             </tr>
+            </thead>
+            <tbody>
+            <tr th:each="newsfeed: ${newsfeeds}">
+                <td th:text="${newsfeed.id}"/>
+                <td th:text="${newsfeed.opslag}"/>
+            </tr>
+            </tbody>
         </table>
 
 </body>
+
+
+
 </html>

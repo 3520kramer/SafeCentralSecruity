@@ -35,13 +35,5 @@ public class Services {
         return newsFeedRepo.getAllNewsFeed();
     }
 
-
-
-
-
-
-
-
-
 }
 
