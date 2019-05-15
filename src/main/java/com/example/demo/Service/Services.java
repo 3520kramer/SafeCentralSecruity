@@ -31,10 +31,6 @@ public class Services {
     }
 
 
-    public List<NewsFeed> getAllNewsFeed(){
-        return newsFeedRepo.getAllNewsFeed();
-    }
-
 
 
 

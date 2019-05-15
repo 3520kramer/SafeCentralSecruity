@@ -26,14 +26,10 @@ public class HomeController{
     }
 
     @GetMapping("/home")
-    public String home(Model model){
-        List<NewsFeed> newsFeedList = services.getAllNewsFeed();
-        model.addAttribute("newsfeeds", newsFeedList);
+    public String home(){
+
         return "/home";
     }
-
-    @GetMapping ("/viewNewsfeed")
-    public String viewNewsfeed(){return "/newsfeed/viewNewsfeed";}
 
 
     @GetMapping("/viewCustomer")
