@@ -44,6 +44,13 @@ public class HomeController{
         return "customer/viewCustomer";
     }
 
+    @GetMapping("/customer/viewCustomer")
+    public String viewCustomer(Model model){
+        List<Customer> customerList = services.getAll();
+        model.addAttribute("customers", customerList);
+        return "customer/viewCustomer";
+    }
+
     @GetMapping("/viewEmployee")
     public String viewEmployee(){
         return "/customer/viewEmployee";
