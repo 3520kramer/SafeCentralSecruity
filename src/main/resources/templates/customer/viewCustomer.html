@@ -10,15 +10,18 @@
         <thead>
         <tr>
             <th>id</th>
-            <th></th>
+            <th>firmname</th>
+            <th>contactperson</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="customer: ${customers}">
             <td th:text="${customer.id}"/>
-            <td th:text="${customer.firmName}"/>
-            <td th:text="${customer.contactPerson}"/>
+            <td th:text="${customer.firma_navn}"/>
+            <td th:text="${customer.kontaktperson}"/>
 
+
+            </td>
 
         </tr>
         </tbody>
