@@ -5,7 +5,7 @@ import com.example.demo.Model.Customer;
 import com.example.demo.Model.Employee;
 import com.example.demo.Model.NewsFeed;
 import com.example.demo.Repository.CustomerRepo;
-import com.example.demo.Repository.EmployeeRepo;
+import com.example.demo.Repository.OwnerRepo;
 import com.example.demo.Repository.NewsFeedRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class Services {
     @Autowired
     CustomerRepo customerRepo;
     @Autowired
-    EmployeeRepo employeeRepo;
+    OwnerRepo employeeRepo;
     @Autowired
     NewsFeedRepo newsFeedRepo;
 
