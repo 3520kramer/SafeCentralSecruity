@@ -1,8 +1,8 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Model.Customer;
+import com.example.demo.Model.Employee;
 import com.example.demo.Model.NewsFeed;
-import com.example.demo.Model.User;
 import com.example.demo.Service.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,22 +52,19 @@ public class HomeController{
     }
 
 
-
-
-
     @GetMapping("/viewEmployee")
     public String viewEmployee(){
         return "/employee/viewEmployee";
     }
     @PostMapping("/employee/viewEmployee")
     public String viewEmployees(Model model) {
-        List<User> employeeList = services.getAllEmployees();
+        List<Employee> employeeList = services.getAllEmployees();
         model.addAttribute("employees", employeeList);
         return "employee/viewEmployee";
     }
     @GetMapping("/employee/viewEmployee")
     public String viewEmployee(Model model){
-        List<User> employeeList = services.getAllEmployees();
+        List<Employee> employeeList = services.getAllEmployees();
         model.addAttribute("employees", employeeList);
         return "employee/viewEmployee";
     }

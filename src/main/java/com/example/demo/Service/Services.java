@@ -2,10 +2,10 @@ package com.example.demo.Service;
 
 
 import com.example.demo.Model.Customer;
+import com.example.demo.Model.Employee;
 import com.example.demo.Model.NewsFeed;
-import com.example.demo.Model.User;
 import com.example.demo.Repository.CustomerRepo;
-import com.example.demo.Repository.UserRepo;
+import com.example.demo.Repository.EmployeeRepo;
 import com.example.demo.Repository.NewsFeedRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class Services {
     @Autowired
     CustomerRepo customerRepo;
     @Autowired
-    UserRepo userRepo;
+    EmployeeRepo employeeRepo;
     @Autowired
     NewsFeedRepo newsFeedRepo;
 
@@ -25,8 +25,8 @@ public class Services {
         return customerRepo.getAll();
     }
 
-    public List<User> getAllEmployees(){
-        return userRepo.getAllEmployees();
+    public List<Employee> getAllEmployees(){
+        return employeeRepo.getAllEmployees();
     }
 
     public Customer addCustomer (Customer c){
