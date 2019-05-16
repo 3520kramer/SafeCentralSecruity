@@ -35,7 +35,6 @@ public class HomeController {
 
     @GetMapping("/createNewsfeed")
     public String createNewsFeed(){
-
         return "/newsfeed/createNewsfeed";
     }
 
@@ -108,5 +107,11 @@ public class HomeController {
         } else {
             return "redirect:/customer/viewCustomer";
         }
+    }
+
+    @GetMapping("/viewSchedule")
+    public String viewSchedule(){
+
+        return "schedule/viewSchedule";
     }
 }

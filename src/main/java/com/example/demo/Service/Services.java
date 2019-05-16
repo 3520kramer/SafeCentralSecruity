@@ -4,9 +4,11 @@ package com.example.demo.Service;
 import com.example.demo.Model.Customer;
 import com.example.demo.Model.Owner;
 import com.example.demo.Model.NewsFeed;
+import com.example.demo.Model.Schedule;
 import com.example.demo.Repository.CustomerRepo;
 import com.example.demo.Repository.OwnerRepo;
 import com.example.demo.Repository.NewsFeedRepo;
+import com.example.demo.Repository.ScheduleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,8 @@ public class Services {
     OwnerRepo ownerRepo;
     @Autowired
     NewsFeedRepo newsFeedRepo;
+    @Autowired
+    ScheduleRepo scheduleRepo;
 
     public List<Customer> getAll(){
         return customerRepo.getAll();
@@ -50,6 +54,9 @@ public class Services {
         return newsFeedRepo.createNewsFeed(newsFeed);
     }
 
+    public List<Schedule> getAllSchedules(){
+        return ScheduleRepo.getAllSchedules();
+    }
 
 
 
