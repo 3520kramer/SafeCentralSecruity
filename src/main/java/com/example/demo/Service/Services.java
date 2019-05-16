@@ -13,12 +13,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-
 public class Services {
-
     @Autowired
     CustomerRepo customerRepo;
+    @Autowired
     EmployeeRepo employeeRepo;
+    @Autowired
     NewsFeedRepo newsFeedRepo;
 
     public List<Customer> getAll(){
@@ -29,6 +29,11 @@ public class Services {
     public List<Employee> getAllEmployees(){
         return employeeRepo.getAllEmployees();
     }
+
+    public List<NewsFeed> getAllNewsFeed(){
+        return newsFeedRepo.getAllNewsFeed();
+    }
+
 
 
 

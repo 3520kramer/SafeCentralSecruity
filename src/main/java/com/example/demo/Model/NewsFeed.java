@@ -5,9 +5,8 @@ import javax.persistence.Id;
 
 @Entity
 public class NewsFeed {
-
     @Id
-    private String id;
+    private int id;
     private String opslag;
     private String dato;
     private String tid;
@@ -15,11 +14,11 @@ public class NewsFeed {
     public NewsFeed() {
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
