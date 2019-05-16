@@ -103,7 +103,7 @@ public class HomeController {
     @PostMapping("/createCustomer")
     public String create(@ModelAttribute Customer customer) {
         services.addCustomer(customer);
-        return "redirect:/employee/viewEmployee";
+        return "redirect:/customer/viewCustomer";
     }
 
     @GetMapping("/delete/{id}")
