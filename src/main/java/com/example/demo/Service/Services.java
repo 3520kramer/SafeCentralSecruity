@@ -37,6 +37,9 @@ public class Services {
         return newsFeedRepo.getAllNewsFeed();
     }
 
+    public Boolean deleteCustomer(int id) {
+        return customerRepo.deleteCustomer(id);
+    }
 
 
 
