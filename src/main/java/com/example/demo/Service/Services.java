@@ -3,9 +3,11 @@ package com.example.demo.Service;
 
 import com.example.demo.Model.Customer;
 import com.example.demo.Model.Employee;
+import com.example.demo.Model.Login;
 import com.example.demo.Model.NewsFeed;
 import com.example.demo.Repository.CustomerRepo;
 import com.example.demo.Repository.EmployeeRepo;
+import com.example.demo.Repository.LoginRepo;
 import com.example.demo.Repository.NewsFeedRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,8 @@ public class Services {
     EmployeeRepo employeeRepo;
     @Autowired
     NewsFeedRepo newsFeedRepo;
+    @Autowired
+    LoginRepo loginRepo;
 
     public List<Customer> getAll(){
         return customerRepo.getAll();
@@ -46,6 +50,9 @@ public class Services {
         return customerRepo.deleteCustomer(id);
     }
 
+    public Login compareInfo(String username, String password){
+        return loginRepo.compareInfo(username,password);
+    }
 
 
 
