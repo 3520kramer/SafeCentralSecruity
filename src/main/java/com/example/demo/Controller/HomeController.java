@@ -35,7 +35,6 @@ public class HomeController {
 
     @GetMapping("/createNewsfeed")
     public String createNewsFeed(){
-
         return "/newsfeed/createNewsfeed";
     }
 
@@ -103,7 +102,7 @@ public class HomeController {
     @PostMapping("/createCustomer")
     public String create(@ModelAttribute Customer customer) {
         services.addCustomer(customer);
-        return "redirect:/employee/viewEmployee";
+        return "redirect:/customer/viewCustomer";
     }
 
     @GetMapping("/delete/{id}")
@@ -126,10 +125,9 @@ public class HomeController {
         }
     }
 
+    @GetMapping("/viewSchedule")
+    public String viewSchedule(){
 
-
-
-
-
-
+        return "schedule/viewSchedule";
+    }
 }
