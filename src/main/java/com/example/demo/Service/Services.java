@@ -25,6 +25,7 @@ public class Services {
         return customerRepo.getAll();
     }
 
+
     public List<Employee> getAllEmployees(){
         return employeeRepo.getAllEmployees();
     }
@@ -35,6 +36,10 @@ public class Services {
 
     public List<NewsFeed> getAllNewsFeed(){
         return newsFeedRepo.getAllNewsFeed();
+    }
+
+    public Boolean deleteNewsFeed(int id){
+        return newsFeedRepo.deleteNewsFeed(id);
     }
 
     public Boolean deleteCustomer(int id) {

@@ -33,6 +33,17 @@ public class HomeController {
         return "/home";
     }
 
+    @GetMapping("/delete/{id}")
+    public String deleteNewsFeed(@PathVariable("id")int id, Model model){
+        boolean deleted = services.deleteNewsFeed(id);
+        if(deleted){
+            return "redirect:/";
+        }else{
+            return "redirect:/";
+        }
+
+    }
+
     @GetMapping("/viewCustomer")
     public String viewCustomer() {
         return "/customer/viewCustomer";
