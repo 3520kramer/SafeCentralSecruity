@@ -55,3 +55,18 @@
 .menu:hover .menuButton{
     background-color: #72b1db;
 }
+
+.newsfeed table{
+    width: 40%;
+    max-width: 40%;
+    border-collapse: collapse;
+    margin-bottom: 5%;
+}
+.newsfeed tr, th, td{
+    border: 1px solid black;
+    text-align: left;
+    padding-left: 3%;
+}
+.newsfeed #tomcelle{
+    width: 65%;
+}

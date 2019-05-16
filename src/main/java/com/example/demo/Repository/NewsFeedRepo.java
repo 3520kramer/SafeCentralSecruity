@@ -16,10 +16,8 @@ public class NewsFeedRepo {
     JdbcTemplate template;
 
     public List<NewsFeed> getAllNewsFeed(){
-
-        String sql = "SELECT * FROM newsfeed";
+        String sql = "SELECT * FROM newsfeed ORDER BY id DESC";
         RowMapper<NewsFeed> rowMapper = new BeanPropertyRowMapper<>(NewsFeed.class);
         return template.query(sql, rowMapper);
     }
-
 }

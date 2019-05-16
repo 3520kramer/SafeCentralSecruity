@@ -2,7 +2,6 @@ package com.example.demo.Controller;
 
 import com.example.demo.Model.Customer;
 import com.example.demo.Model.Employee;
-import com.example.demo.Model.User;
 import com.example.demo.Model.NewsFeed;
 import com.example.demo.Service.Services;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,23 +25,12 @@ public class HomeController{
         return "/index";
     }
 
-
-
-
-
-
     @GetMapping("/home")
-    public String home(){
-
-        return "/home";
-    }
-    @PostMapping("/home")
-    public String homes(Model model){
+    public String home(Model model){
         List<NewsFeed> newsFeedList = services.getAllNewsFeed();
         model.addAttribute("newsfeeds", newsFeedList);
         return "/home";
     }
-
 
     @GetMapping("/viewCustomer")
     public String viewCustomer(){
