@@ -100,7 +100,6 @@ public class HomeController {
         return "redirect:/customer/viewCustomer";
     }
 
-
     @PostMapping("/createCustomer")
     public String create(@ModelAttribute Customer customer) {
         services.addCustomer(customer);
@@ -116,4 +115,21 @@ public class HomeController {
             return "redirect:/customer/viewCustomer";
         }
     }
+
+    @GetMapping("/deleteEmployee/{id}")
+    public String deleteEmployee(@PathVariable("id") int id) {
+        boolean deleted = services.deleteEmployee(id);
+        if (deleted) {
+            return "redirect:/employee/viewEmployee";
+        } else {
+            return "redirect:/employee/viewEmployee";
+        }
+    }
+
+
+
+
+
+
+
 }

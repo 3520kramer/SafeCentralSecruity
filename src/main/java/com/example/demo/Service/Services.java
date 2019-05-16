@@ -53,8 +53,9 @@ public class Services {
         return userRepo.addEmployee(o);
     }
 
-
-
+    public Boolean deleteEmployee(int id){
+        return userRepo.deleteEmployee(id);
+    }
 
 
 
