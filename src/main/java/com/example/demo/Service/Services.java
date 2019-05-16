@@ -55,7 +55,7 @@ public class Services {
     }
 
     public List<Schedule> getAllSchedules(){
-        return ScheduleRepo.getAllSchedules();
+        return scheduleRepo.getAllSchedules();
     }
     public Owner addEmployee(Owner o){
         return userRepo.addEmployee(o);

@@ -18,7 +18,6 @@ public class ScheduleRepo {
     public List<Schedule> getAllSchedules(){
         String sql = "";
         RowMapper<Schedule> rowMapper = new BeanPropertyRowMapper<>(Schedule.class);
-        template.query(sql, )
-        return ;
+        return template.query(sql, rowMapper);
     }
 }
