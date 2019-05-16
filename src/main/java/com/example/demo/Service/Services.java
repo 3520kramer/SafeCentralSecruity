@@ -2,7 +2,7 @@ package com.example.demo.Service;
 
 
 import com.example.demo.Model.Customer;
-import com.example.demo.Model.Employee;
+import com.example.demo.Model.Owner;
 import com.example.demo.Model.NewsFeed;
 import com.example.demo.Repository.CustomerRepo;
 import com.example.demo.Repository.OwnerRepo;
@@ -17,7 +17,7 @@ public class Services {
     @Autowired
     CustomerRepo customerRepo;
     @Autowired
-    OwnerRepo employeeRepo;
+    OwnerRepo ownerRepo;
     @Autowired
     NewsFeedRepo newsFeedRepo;
 
@@ -26,8 +26,8 @@ public class Services {
     }
 
 
-    public List<Employee> getAllEmployees(){
-        return employeeRepo.getAllEmployees();
+    public List<Owner> getAllEmployees(){
+        return ownerRepo.getAllEmployees();
     }
 
     public Customer addCustomer (Customer c){
