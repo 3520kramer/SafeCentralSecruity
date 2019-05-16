@@ -22,4 +22,10 @@ public class CustomerRepo {
         return template.query(sql, rowMapper);
     }
 
+    public Customer addCustomer(Customer c) {
+        String sql = "INSERT INTO kunder VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?)";
+        template.update(sql, c.getFirma_navn(), c.getKontaktperson(), c.getTelefon(), c.getEmail(), c.getCVR(), c.getAddresse(), c.getPostnummer());
+        return null;
+    }
+
 }

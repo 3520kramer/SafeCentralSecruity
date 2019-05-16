@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -81,5 +82,11 @@ public class HomeController{
         List<Employee> employeeList = services.getAllEmployees();
         model.addAttribute("employees", employeeList);
         return "employee/viewEmployee";
+    }
+
+    @PostMapping("/createCustomer")
+    public String create(@ModelAttribute Customer customer) {
+        services.addCustomer(customer);
+        return "redirect:/customer/viewCustomer";
     }
 }

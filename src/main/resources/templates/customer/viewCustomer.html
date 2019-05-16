@@ -20,6 +20,15 @@
             <td th:text="${customer.firma_navn}"/>
             <td th:text="${customer.kontaktperson}"/>
 
+            <form action="/createCustomer" method="post">
+                <input style="padding: 7px 10px" type="text" name="fuel" placeholder="Fuel"/>
+                <input style="padding: 7px 10px" type="text" name="registration_number" placeholder="Registration number"/>
+                <input style="padding: 7px 10px" type="text" name="KM_distance_traveled" placeholder="KM traveled"/>
+                <input style="padding: 7px 10px" type="text" name="model_id" placeholder="Model id"/>
+                <input style="padding: 7px 10px" type="text" name="car_type" placeholder="Car type"/>
+                <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Add new car"/>
+            </form>
+
 
 
         </tr>

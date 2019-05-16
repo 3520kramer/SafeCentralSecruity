@@ -30,6 +30,10 @@ public class Services {
         return employeeRepo.getAllEmployees();
     }
 
+    public Customer addCustomer (Customer c){
+        return customerRepo.addCustomer(c);
+    }
+
 
 
 
