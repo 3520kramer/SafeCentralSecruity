@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -29,6 +30,17 @@ public class HomeController{
         List<NewsFeed> newsFeedList = services.getAllNewsFeed();
         model.addAttribute("newsfeeds", newsFeedList);
         return "/home";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteNewsFeed(@PathVariable("id")int id, Model model){
+        boolean deleted = services.deleteNewsFeed(id);
+        if(deleted){
+            return "redirect:/";
+        }else{
+            return "redirect:/";
+        }
+
     }
 
     @GetMapping("/viewCustomer")

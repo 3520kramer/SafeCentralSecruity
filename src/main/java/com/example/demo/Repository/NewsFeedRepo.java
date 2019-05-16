@@ -20,4 +20,9 @@ public class NewsFeedRepo {
         RowMapper<NewsFeed> rowMapper = new BeanPropertyRowMapper<>(NewsFeed.class);
         return template.query(sql, rowMapper);
     }
+
+    public Boolean deleteNewsFeed(int id){
+        String sql = "DELETE FROM newsfeed WHERE id = ?";
+        return template.update(sql, id)>0;
+    }
 }

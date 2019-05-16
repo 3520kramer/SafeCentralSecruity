@@ -24,21 +24,23 @@
     <div class="newsfeed" th:each="newsfeed: ${newsfeeds}">
         <table align="center">
             <thead>
-            <tr>
-                <th>
-                    <p th:text="${newsfeed.dato + ' @ '+ newsfeed.tid}"></p>
-                </th>
-                <th id="tomcelle">
-                    <p>tom</p>
-                </th>
-            </tr>
+                <tr>
+                    <th>
+                        <p th:text="${newsfeed.dato + ' @ '+ newsfeed.tid}"></p>
+                    </th>
+                    <th id="tomcelle">
+                        <a th:href="@{'/delete/'+${newsfeed.id}}">
+                            <button type="button" onclick="alert('Opslaget slettet')">Slet Opslag</button>
+                        </a>
+                    </th>
+                </tr>
             </thead>
             <tbody>
-            <tr>
-                <td colspan="2">
-                    <p th:text="${newsfeed.opslag}"></p>
-                </td>
-            </tr>
+                <tr>
+                    <td colspan="2">
+                        <p th:text="${newsfeed.opslag}"></p>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
