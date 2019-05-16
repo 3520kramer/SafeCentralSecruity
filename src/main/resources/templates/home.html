@@ -13,7 +13,7 @@
                 <a href="/home">Hjem</a>
                 <a href="/customer/viewCustomer">Kunder</a>
                 <a href="/employee/viewEmployee">Medarbejdere</a>
-                <a href="/viewNewsfeed">News Feed</a>
+                <a href="/createNewsfeed">News Feed</a>
                 <a href="/viewSchedule">Vagtplan</a>
             </div>
         </div>
@@ -21,15 +21,18 @@
             <img src="logo.png">
         </div>
     </div>
-    <div class="newsfeed" th:each="newsfeed: ${newsfeeds}">
-        <table align="center">
+    <div class="newsfeed">
+        <a href="/createNewsfeed">
+            <button type="button">Opret opslag</button>
+        </a>
+        <table align="center" th:each="newsfeed: ${newsfeeds}">
             <thead>
                 <tr>
                     <th>
                         <p th:text="${newsfeed.dato + ' @ '+ newsfeed.tid}"></p>
                     </th>
                     <th id="tomcelle">
-                        <a th:href="@{'/delete/'+${newsfeed.id}}">
+                        <a th:href="@{'/delete_news/'+${newsfeed.id}}">
                             <button type="button" onclick="alert('Opslaget slettet')">Slet Opslag</button>
                         </a>
                     </th>

@@ -7,21 +7,28 @@
 </head>
 <body>
 
-<div class="header">
-    <div class="menu">
-        <button class="menuButton">Menu</button>
-        <div class="menuLinks">
-            <a href="/home">Hjem</a>
-            <a href="/viewCustomer">Kunder</a>
-            <a href="/viewEmployee">Medarbejdere</a>
-            <a href="/viewNewsfeed">News Feed</a>
-            <a href="/viewSchedule">Vagtplan</a>
+    <div class="header">
+        <div class="menu">
+            <button class="menuButton">Menu</button>
+            <div class="menuLinks">
+                <a href="/home">Hjem</a>
+                <a href="/viewCustomer">Kunder</a>
+                <a href="/viewEmployee">Medarbejdere</a>
+                <a href="/viewNewsfeed">News Feed</a>
+                <a href="/viewSchedule">Vagtplan</a>
+            </div>
+        </div>
+        <div class="logo">
+            <img src="logo.png">
         </div>
     </div>
-    <div class="logo">
-        <img src="logo.png">
-    </div>
-</div>
+    <h1>create</h1>
+
+    <form action="/createNewsfeed" method="post">
+        <input type="text" name="opslag" placeholder="Skriv her">
+        <input type="submit" value="Opret opslag">
+    </form>
+
 
 </body>
 </html>
