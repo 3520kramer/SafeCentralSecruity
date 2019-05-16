@@ -4,16 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public abstract class User {
+public class User {
     @Id
     private int id;
     private String fornavn;
     private String efternavn;
-    private String ansættelsesdato;
+    private String hiring_date;
     private String telefon;
     private String email;
     private String cpr;
-    private double løn;
+    private double pay;
     private String addresse;
     private int postnummer;
 
@@ -41,12 +41,12 @@ public abstract class User {
         this.efternavn = efternavn;
     }
 
-    public String getAnsættelsesdato() {
-        return ansættelsesdato;
+    public String getHiring_date() {
+        return hiring_date;
     }
 
-    public void setAnsættelsesdato(String ansættelsesdato) {
-        this.ansættelsesdato = ansættelsesdato;
+    public void setHiring_date(String hiring_date) {
+        this.hiring_date = hiring_date;
     }
 
     public String getTelefon() {
@@ -73,12 +73,12 @@ public abstract class User {
         this.cpr = cpr;
     }
 
-    public double getLøn() {
-        return løn;
+    public double getPay() {
+        return pay;
     }
 
-    public void setLøn(double løn) {
-        this.løn = løn;
+    public void setPay(double pay) {
+        this.pay = pay;
     }
 
     public String getAddresse() {
