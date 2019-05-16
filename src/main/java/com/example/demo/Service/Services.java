@@ -6,7 +6,7 @@ import com.example.demo.Model.Owner;
 import com.example.demo.Model.NewsFeed;
 import com.example.demo.Model.Schedule;
 import com.example.demo.Repository.CustomerRepo;
-import com.example.demo.Repository.OwnerRepo;
+import com.example.demo.Repository.UserRepo;
 import com.example.demo.Repository.NewsFeedRepo;
 import com.example.demo.Repository.ScheduleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class Services {
     @Autowired
     CustomerRepo customerRepo;
     @Autowired
-    OwnerRepo ownerRepo;
+    UserRepo userRepo;
     @Autowired
     NewsFeedRepo newsFeedRepo;
     @Autowired
@@ -31,15 +31,15 @@ public class Services {
 
 
     public List<Owner> getAllEmployees(){
-        return ownerRepo.getAllEmployees();
-    }
-
-    public Customer addCustomer (Customer c){
-        return customerRepo.addCustomer(c);
+        return userRepo.getAllEmployees();
     }
 
     public List<NewsFeed> getAllNewsFeed(){
         return newsFeedRepo.getAllNewsFeed();
+    }
+
+    public Customer addCustomer (Customer c){
+        return customerRepo.addCustomer(c);
     }
 
     public Boolean deleteNewsFeed(int id){
@@ -57,6 +57,10 @@ public class Services {
     public List<Schedule> getAllSchedules(){
         return ScheduleRepo.getAllSchedules();
     }
+    public Owner addEmployee(Owner o){
+        return userRepo.addEmployee(o);
+    }
+
 
 
 

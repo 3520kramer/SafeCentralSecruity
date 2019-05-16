@@ -13,9 +13,16 @@
         <table>
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
                     <th>Fornavn</th>
                     <th>Efternavn</th>
+                    <th>Ansættelsesdato</th>
+                    <th>Telefon</th>
+                    <th>Email</th>
+                    <th>CPR</th>
+                    <th>løn</th>
+                    <th>Adresse</th>
+                    <th>Postnummer</th>
                 </tr>
             </thead>
 
@@ -36,6 +43,20 @@
             </tr>
             </tbody>
         </table>
+
+        <form action="/createEmployee" method="post">
+            <input style="padding: 7px 10px" type="text" name="fornavn" placeholder="Fornavn"/>
+            <input style="padding: 7px 10px" type="text" name="efternavn" placeholder="Efternavn"/>
+            <input style="padding: 7px 10px" type="text" name="ansettelsesdato" placeholder="Ansættelsesdato"/>
+            <input style="padding: 7px 10px" type="text" name="telefon" placeholder="Telefon"/>
+            <input style="padding: 7px 10px" type="text" name="email" placeholder="Email"/>
+            <input style="padding: 7px 10px" type="text" name="cpr" placeholder="CPR"/>
+            <input style="padding: 7px 10px" type="text" name="lon" placeholder="Løn"/>
+            <input style="padding: 7px 10px" type="text" name="addresse" placeholder="Adresse"/>
+            <input style="padding: 7px 10px" type="text" name="postnummer" placeholder="Postnummer"/>
+            <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Tilføj medarbejder"/>
+        </form>
+
 
 </body>
 </html>

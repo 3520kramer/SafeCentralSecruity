@@ -93,10 +93,17 @@ public class HomeController {
         return "employee/viewEmployee";
     }
 
+    @PostMapping("/createEmployee")
+    public String createEmployee(@ModelAttribute Owner owner) {
+        services.addEmployee(owner);
+        return "redirect:/customer/viewCustomer";
+    }
+
+
     @PostMapping("/createCustomer")
     public String create(@ModelAttribute Customer customer) {
         services.addCustomer(customer);
-        return "redirect:/customer/viewCustomer";
+        return "redirect:/employee/viewEmployee";
     }
 
     @GetMapping("/delete/{id}")
