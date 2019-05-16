@@ -9,11 +9,11 @@ public abstract class User {
     private int id;
     private String fornavn;
     private String efternavn;
-    private String ansættelsesdato;
+    private String ansettelsesdato;
     private String telefon;
     private String email;
     private String cpr;
-    private double løn;
+    private double lon;
     private String addresse;
     private int postnummer;
 
@@ -41,12 +41,12 @@ public abstract class User {
         this.efternavn = efternavn;
     }
 
-    public String getAnsættelsesdato() {
-        return ansættelsesdato;
+    public String getAnsettelsesdato() {
+        return ansettelsesdato;
     }
 
-    public void setAnsættelsesdato(String ansættelsesdato) {
-        this.ansættelsesdato = ansættelsesdato;
+    public void setAnsettelsesdato(String ansettelsesdato) {
+        this.ansettelsesdato = ansettelsesdato;
     }
 
     public String getTelefon() {
@@ -73,12 +73,12 @@ public abstract class User {
         this.cpr = cpr;
     }
 
-    public double getLøn() {
-        return løn;
+    public double getLon() {
+        return lon;
     }
 
-    public void setLøn(double løn) {
-        this.løn = løn;
+    public void setLon(double lon) {
+        this.lon = lon;
     }
 
     public String getAddresse() {
@@ -97,3 +97,4 @@ public abstract class User {
         this.postnummer = postnummer;
     }
 }
+

@@ -59,11 +59,11 @@ CREATE TABLE medarbejder
 id				INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 fornavn			VARCHAR(15) NOT NULL,
 efternavn		VARCHAR(15) NOT NULL,
-ansættelsesdato	DATE NOT NULL,
+ansettelsesdato	DATE NOT NULL,
 telefon			VARCHAR(10) NOT NULL,
 email			VARCHAR(30),
 cpr				VARCHAR(15) NOT NULL,
-løn				DECIMAL(10.2) NOT NULL DEFAULT '20000.00',
+lon				DECIMAL(10.2) NOT NULL DEFAULT '20000.00',
 addresse 		VARCHAR(30) NOT NULL,
 postnummer 		INT	NOT NULL,
 
