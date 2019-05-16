@@ -7,6 +7,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -24,5 +27,19 @@ public class NewsFeedRepo {
     public Boolean deleteNewsFeed(int id){
         String sql = "DELETE FROM newsfeed WHERE id = ?";
         return template.update(sql, id)>0;
+    }
+
+    public NewsFeed createNewsFeed(NewsFeed newsFeed){
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+
+        Date date = new Date();
+
+        String dato = dateFormat.format(date);
+        String tid = timeFormat.format(date);
+
+        String sql = "INSERT INTO newsfeed VALUES (null, ?, ?, ?)";
+        template.update(sql, newsFeed.getOpslag(), dato, tid);
+        return null;
     }
 }

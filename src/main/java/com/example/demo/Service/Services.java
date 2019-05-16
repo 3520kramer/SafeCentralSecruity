@@ -2,11 +2,10 @@ package com.example.demo.Service;
 
 
 import com.example.demo.Model.Customer;
-import com.example.demo.Model.Employee;
-import com.example.demo.Model.Login;
+import com.example.demo.Model.Owner;
 import com.example.demo.Model.NewsFeed;
 import com.example.demo.Repository.CustomerRepo;
-import com.example.demo.Repository.EmployeeRepo;
+import com.example.demo.Repository.UserRepo;
 import com.example.demo.Repository.LoginRepo;
 import com.example.demo.Repository.NewsFeedRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class Services {
     @Autowired
     CustomerRepo customerRepo;
     @Autowired
-    EmployeeRepo employeeRepo;
+    UserRepo userRepo;
     @Autowired
     NewsFeedRepo newsFeedRepo;
     @Autowired
@@ -29,17 +28,16 @@ public class Services {
         return customerRepo.getAll();
     }
 
-
-    public List<Employee> getAllEmployees(){
-        return employeeRepo.getAllEmployees();
-    }
-
-    public Customer addCustomer (Customer c){
-        return customerRepo.addCustomer(c);
+    public List<Owner> getAllEmployees(){
+        return userRepo.getAllEmployees();
     }
 
     public List<NewsFeed> getAllNewsFeed(){
         return newsFeedRepo.getAllNewsFeed();
+    }
+
+    public Customer addCustomer (Customer c){
+        return customerRepo.addCustomer(c);
     }
 
     public Boolean deleteNewsFeed(int id){
@@ -50,6 +48,13 @@ public class Services {
         return customerRepo.deleteCustomer(id);
     }
 
+    public NewsFeed createNewsFeed(NewsFeed newsFeed){
+        return newsFeedRepo.createNewsFeed(newsFeed);
+    }
+
+    public Owner addEmployee(Owner o){
+        return userRepo.addEmployee(o);
+    }
     public Login compareInfo(String username, String password){
         return loginRepo.compareInfo(username,password);
     }
