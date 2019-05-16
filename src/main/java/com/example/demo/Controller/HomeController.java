@@ -33,15 +33,26 @@ public class HomeController {
         return "/home";
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/createNewsfeed")
+    public String createNewsFeed(){
+
+        return "/newsfeed/createNewsfeed";
+    }
+
+    @PostMapping("/createNewsfeed")
+    public String createNewsFeed(@ModelAttribute NewsFeed newsFeed){
+        services.createNewsFeed(newsFeed);
+        return "redirect:/home";
+    }
+
+    @GetMapping("/delete_news/{id}")
     public String deleteNewsFeed(@PathVariable("id")int id, Model model){
         boolean deleted = services.deleteNewsFeed(id);
         if(deleted){
-            return "redirect:/";
+            return "redirect:/home";
         }else{
-            return "redirect:/";
+            return "redirect:/home";
         }
-
     }
 
     @GetMapping("/viewCustomer")

@@ -46,6 +46,9 @@ public class Services {
         return customerRepo.deleteCustomer(id);
     }
 
+    public NewsFeed createNewsFeed(NewsFeed newsFeed){
+        return newsFeedRepo.createNewsFeed(newsFeed);
+    }
 
 
 

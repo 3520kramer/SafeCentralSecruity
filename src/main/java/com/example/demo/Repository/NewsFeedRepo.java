@@ -25,4 +25,10 @@ public class NewsFeedRepo {
         String sql = "DELETE FROM newsfeed WHERE id = ?";
         return template.update(sql, id)>0;
     }
+
+    public NewsFeed createNewsFeed(NewsFeed newsFeed){
+        String sql = "INSERT INTO newsfeed VALUES (null, ?, ?, ?)";
+        template.update(sql, newsFeed.getOpslag(), "2019-08-10", "10:00:00");
+        return null;
+    }
 }
