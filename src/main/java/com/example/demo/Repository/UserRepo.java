@@ -10,20 +10,20 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class OwnerRepo {
+public class UserRepo {
     @Autowired
     JdbcTemplate template;
 
 
     public Owner addEmployee(Owner o) {
-        String sql = "INSERT INTO medarbejder VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO medarbejder VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         template.update(sql, o.getFornavn(),o.getEfternavn(),o.getAnsettelsesdato(),o.getTelefon(),o.getEmail(), o.getCpr(),o.getLon(),o.getAddresse(),o.getPostnummer());
         return null;
     }
 
     public List<Owner> getAllEmployees(){
 
-        String sql = "SELECT * FROM medarbejder";
+        String sql = "SELECT * FROM medarbejder ORDER BY fornavn";
         RowMapper<Owner> rowMapper = new BeanPropertyRowMapper<>(Owner.class);
         return template.query(sql, rowMapper);
     }
