@@ -8,7 +8,7 @@
 
 <form action="/customer/updateCustomer" method="post">
 
-    <input style=" height: 1px; length: 1px; position: absolute; bottom: 0; visibility: hidden" type="text" name="id" th:value="${customer.kunde_id}"/>
+    <input style=" height: 1px; length: 1px; position: absolute; bottom: 0; visibility: hidden" type="text" name="kunde_id" th:value="${customer.kunde_id}"/>
 
     <input style="padding: 7px 10px" type="text" name="firma_navn" th:value="${customer.firma_navn}"/>
 
@@ -16,7 +16,7 @@
     <input style="padding: 7px 10px" type="text" name="telefon"  th:value="${customer.telefon}"/>
     <input style="padding: 7px 10px" type="text" name="email"  th:value="${customer.email}"/>
     <input style="padding: 7px 10px" type="text" name="CVR" th:value="${customer.CVR}"/>
-    <input style="padding: 7px 10px" type="text" name="addresse" th:value="${customer.addresse}"/>
+    <input style="padding: 7px 10px" type="text" name="adresse" th:value="${customer.adresse}"/>
     <input style="padding: 7px 10px" type="text" name="postnummer"  th:value="${customer.postnummer}"/>
 
 

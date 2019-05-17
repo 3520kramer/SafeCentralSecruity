@@ -161,7 +161,7 @@ public class HomeController {
     }
     @PostMapping("/customer/updateCustomer")
     public String update(@ModelAttribute Customer customer){
-        services.updateCustomer(customer.getId(), customer);
+        services.updateCustomer(customer.getKunde_id(), customer);
 
         return "redirect:/customer/viewCustomer";
     }

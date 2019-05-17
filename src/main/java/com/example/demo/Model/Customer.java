@@ -7,6 +7,7 @@ import javax.persistence.Id;
 @Entity
 public class Customer {
 
+
     @Id
     private int kunde_id;
     private String firma_navn;
@@ -14,17 +15,17 @@ public class Customer {
     private String telefon;
     private String email;
     private int CVR;
-    private String addresse;
+    private String adresse;
     private int postnummer;
 
-
-    public int getId() {
+    public int getKunde_id() {
         return kunde_id;
     }
 
-    public void setId(int kunde_id) {
+    public void setKunde_id(int kunde_id) {
         this.kunde_id = kunde_id;
     }
+
 
     public String getFirma_navn() {
         return firma_navn;
@@ -66,12 +67,12 @@ public class Customer {
         this.CVR = CVR;
     }
 
-    public String getAddresse() {
-        return addresse;
+    public String getAdresse() {
+        return adresse;
     }
 
-    public void setAddresse(String addresse) {
-        this.addresse = addresse;
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
     public int getPostnummer() {
