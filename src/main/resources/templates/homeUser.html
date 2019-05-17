@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css.css">
+    <title>Title</title>
+</head>
+<body>
+<body>
+<div class="header">
+    <div class="menu">
+        <button class="menuButton">Menu</button>
+        <div class="menuLinks">
+            <a href="/homeUser">Hjem</a>
+            <a href="/viewSchedule">Vagtplan</a>
+        </div>
+    </div>
+    <div class="logo">
+        <img src="logo.png">
+    </div>
+</div>
+
+<div class="newsfeed">
+    <table align="center" th:each="newsfeed: ${newsfeeds}">
+        <thead>
+        <tr>
+            <th>
+                <p th:text="${newsfeed.dato + ' @ '+ newsfeed.tid}"></p>
+            </th>
+        </thead>
+        <tbody>
+        <tr>
+            <td colspan="2">
+                <p th:text="${newsfeed.opslag}"></p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
