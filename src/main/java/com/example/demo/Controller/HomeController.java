@@ -130,4 +130,17 @@ public class HomeController {
 
         return "schedule/viewSchedule";
     }
+
+    @GetMapping("/updateCustomer/{id}")
+    public String update(@PathVariable("id") int id, Model model){
+        model.addAttribute("customer", services.findCustomerById(id));
+        return "customer/updateCustomer";
+
+    }
+    @PostMapping("/customer/updateCustomer")
+    public String update(@ModelAttribute Customer customer){
+        services.updateCustomer(customer.getId(), customer);
+
+        return "redirect:/customer/viewCustomer";
+    }
 }
