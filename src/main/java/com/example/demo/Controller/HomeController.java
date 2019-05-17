@@ -1,8 +1,10 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Model.Customer;
+import com.example.demo.Model.Login;
 import com.example.demo.Model.NewsFeed;
 import com.example.demo.Model.Owner;
+import com.example.demo.Repository.LoginRepo;
 import com.example.demo.Service.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,12 +37,12 @@ public class HomeController {
 
     @GetMapping("/delete/{id}")
     public String deleteNewsFeed(@PathVariable("id")int id, Model model){
-        boolean deleted = services.deleteNewsFeed(id);
-        if(deleted){
-            return "redirect:/";
-        }else{
-            return "redirect:/";
-        }
+      boolean deleted = services.deleteNewsFeed(id);
+    if(deleted){
+    return "redirect:/";
+    }else{
+    return "redirect:/";
+     }
 
     }
 
@@ -71,14 +73,14 @@ public class HomeController {
 
     @PostMapping("/employee/viewEmployee")
     public String viewEmployees(Model model) {
-        List<Employee> employeeList = services.getAllEmployees();
+        List<Owner> employeeList = services.getAllEmployees();
         model.addAttribute("employees", employeeList);
         return "employee/viewEmployee";
     }
 
     @GetMapping("/employee/viewEmployee")
     public String viewEmployee(Model model) {
-        List<Employee> employeeList = services.getAllEmployees();
+        List<Owner> employeeList = services.getAllEmployees();
         model.addAttribute("employees", employeeList);
         return "employee/viewEmployee";
     }
@@ -86,7 +88,7 @@ public class HomeController {
     @PostMapping("/createCustomer")
     public String create(@ModelAttribute Customer customer) {
         services.addCustomer(customer);
-        return "redirect:/customer/viewCustomer";
+        return "redirect:/employee/viewEmployee";
     }
 
     @GetMapping("/delete/{id}")
@@ -97,5 +99,21 @@ public class HomeController {
         } else {
             return "redirect:/customer/viewCustomer";
         }
+    }
+
+
+    @PostMapping("/home")
+    public String login(@ModelAttribute Login l, Model model) {
+        model.addAttribute("Test", l);
+        services.getLogin();
+        for (Login login : services.getLogin()) {
+           if (l.getUsername().equals(login.getUsername())) {
+
+               return "/customer/viewCustomer";
+            }
+
+        }
+
+    return "/home";
     }
 }

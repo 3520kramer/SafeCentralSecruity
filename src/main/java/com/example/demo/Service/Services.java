@@ -2,6 +2,7 @@ package com.example.demo.Service;
 
 
 import com.example.demo.Model.Customer;
+import com.example.demo.Model.Login;
 import com.example.demo.Model.Owner;
 import com.example.demo.Model.NewsFeed;
 import com.example.demo.Repository.CustomerRepo;
@@ -55,8 +56,9 @@ public class Services {
     public Owner addEmployee(Owner o){
         return userRepo.addEmployee(o);
     }
-    public Login compareInfo(String username, String password){
-        return loginRepo.compareInfo(username,password);
+
+    public List<Login> getLogin(){
+        return loginRepo.getLogin();
     }
 
 
