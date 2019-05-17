@@ -10,6 +10,7 @@ public class Schedule {
     private String efternavn;
     private String starttid;
     private String sluttid;
+    private double timetal;
     private String dato;
     private String firma_navn;
     private String adresse;
@@ -52,6 +53,14 @@ public class Schedule {
 
     public void setSluttid(String sluttid) {
         this.sluttid = sluttid;
+    }
+
+    public double getTimetal() {
+        return timetal;
+    }
+
+    public void setTimetal(double timetal) {
+        this.timetal = timetal;
     }
 
     public String getDato() {
