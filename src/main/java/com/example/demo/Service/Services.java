@@ -70,6 +70,15 @@ public class Services {
 
     }
 
+    public Owner updateEmployee(int id, Owner o){
+        return userRepo.updateEmployee(id, o);
+    }
+
+    public Owner findEmployeeById(int id) {
+        return userRepo.findEmployeeById(id);
+    }
+
+
     public Boolean deleteEmployee(int id){
         return userRepo.deleteEmployee(id);
     }

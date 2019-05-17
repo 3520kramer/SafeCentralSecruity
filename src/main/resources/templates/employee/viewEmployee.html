@@ -2,13 +2,9 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Employee</title>
 </head>
 <body>
-
-        <a href="/home">
-            <button class="btn">Back</button>
-        </a>
 
         <table>
             <thead>
@@ -39,10 +35,13 @@
                 <td th:text="${employee.addresse}"/>
                 <td th:text="${employee.postnummer}"/>
 
-                <td><a th:href="@{'/deleteEmployee/'+${employee.id}}">
-                    <button class="btn-delete">Delete</button>
-                </a>
-
+                <td>
+                    <a th:href="@{'/deleteEmployee/'+${employee.id}}">
+                    <button>Delete</button>
+                    </a>
+                    <a th:href="@{'/updateEmployee/'+${employee.id}}">
+                        <button>Update</button>
+                    </a>
                 </td>
 
             </tr>
@@ -61,7 +60,6 @@
             <input style="padding: 7px 10px" type="text" name="postnummer" placeholder="Postnummer"/>
             <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Tilføj medarbejder"/>
         </form>
-
 
 </body>
 </html>

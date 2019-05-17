@@ -1,6 +1,7 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Model.Customer;
+import com.example.demo.Model.Employee;
 import com.example.demo.Model.NewsFeed;
 import com.example.demo.Model.Owner;
 import com.example.demo.Service.Services;
@@ -96,7 +97,7 @@ public class HomeController {
     @PostMapping("/createEmployee")
     public String createEmployee(@ModelAttribute Owner owner) {
         services.addEmployee(owner);
-        return "redirect:/customer/viewCustomer";
+        return "redirect:/employee/viewEmployee";
     }
 
     @PostMapping("/createCustomer")
@@ -143,4 +144,19 @@ public class HomeController {
 
         return "redirect:/customer/viewCustomer";
     }
+
+    @GetMapping("/updateEmployee/{id}")
+    public String updateEmployee(@PathVariable("id") int id, Model model){
+        model.addAttribute("employee", services.findEmployeeById(id));
+        return "employee/updateEmployee";
+
+    }
+    @PostMapping("/employee/updateEmployee")
+    public String updateEmployee(@ModelAttribute Owner o){
+        services.updateEmployee(o.getId(), o);
+
+        return "redirect:/employee/viewEmployee";
+    }
+
+
 }

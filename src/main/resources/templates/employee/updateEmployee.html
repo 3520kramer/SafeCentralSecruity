@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+
+    <form action="/employee/updateEmployee" method="post">
+
+        <input style=" height: 1px; length: 1px; position: absolute; bottom: 0; visibility: hidden" type="text" name="id" th:value="${employee.id}"/>
+
+        <input style="padding: 7px 10px" type="text" name="fornavn" placeholder="Fornavn" th:value="${employee.fornavn}"/>
+        <input style="padding: 7px 10px" type="text" name="efternavn" placeholder="Efternavn" th:value="${employee.efternavn}"/>
+        <input style="padding: 7px 10px" type="text" name="ansettelsesdato" placeholder="Ansættelsesdato" th:value="${employee.ansettelsesdato}"/>
+        <input style="padding: 7px 10px" type="text" name="telefon" placeholder="Telefon" th:value="${employee.telefon}"/>
+        <input style="padding: 7px 10px" type="text" name="email" placeholder="Email" th:value="${employee.email}"/>
+        <input style="padding: 7px 10px" type="text" name="cpr" placeholder="CPR" th:value="${employee.cpr}"/>
+        <input style="padding: 7px 10px" type="text" name="lon" placeholder="Timeløn" th:value="${employee.lon}"/>
+        <input style="padding: 7px 10px" type="text" name="addresse" placeholder="Adresse" th:value="${employee.addresse}"/>
+        <input style="padding: 7px 10px" type="text" name="postnummer" placeholder="Postnummer" th:value="${employee.postnummer}"/>
+
+        <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Opdater medarbejder"/>
+    </form>
+
 
 </body>
 </html>
