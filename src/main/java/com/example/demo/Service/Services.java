@@ -1,11 +1,7 @@
 package com.example.demo.Service;
 
 
-import com.example.demo.Model.Customer;
-import com.example.demo.Model.Login;
-import com.example.demo.Model.Owner;
-import com.example.demo.Model.NewsFeed;
-import com.example.demo.Model.Schedule;
+import com.example.demo.Model.*;
 import com.example.demo.Repository.CustomerRepo;
 import com.example.demo.Repository.UserRepo;
 import com.example.demo.Repository.LoginRepo;
@@ -65,6 +61,13 @@ public class Services {
     }
     public Login compareInfo(String username, String password){
         return loginRepo.compareInfo(username,password);
+    }
+    public Customer updateCustomer(int id, Customer c){
+        return customerRepo.updateCustomer(id, c);
+    }
+    public Customer findCustomerById(int id) {
+        return customerRepo.findCustomerById(id);
+
     }
 
 
