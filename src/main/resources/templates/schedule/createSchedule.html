@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
+    <form action="/createSchedule" method="post">
+        <select>
+            <option th:each="employee: ${employees}" + th:text="${employee.fornavn}" name="fornavn"></option>
+        </select>
+        <select>
+            <option th:each="employee: ${employees}" + th:text="${employee.efternavn}" name="efternavn"></option>        </select>
+        <input type="time" name="starttid" min="00:00" max="23:59">
+        <input type="time" name="sluttid" min="00:00" max="23:59">
+        <input type="date" name="dato">
+        <select>
+            <option th:each="customer: ${customers}" + th:text="${customer.firma_navn}" name="firma_navn"></option>
+        </select>
 
+    </form>
+
+
+        <input type="text" name="fornavn" placeholder="Fornavn">
+        <input type="text" name="efternavn" placeholder="Efternavn">
+        <input type="text" name="starttid" placeholder="Starttid">
+        <input type="text" name="sluttid" placeholder="Sluttid">
+        <input type="text" name="dato" placeholder="dato">
+        <input type="text" name="firma_navn" placeholder="Firma">
+        <input type="text" name="adresse" placeholder="adresse">
+        <input type="text" name="bydel" placeholder="By">
+        <input type="text" name="postnummer" placeholder="Postnummer">
+        <input type="text" name="" placeholder="">
+        <input type="text" name="" placeholder="">
+
+        <input type="submit" value="Opret vagt">
+
+    </form>
 </body>
 </html>

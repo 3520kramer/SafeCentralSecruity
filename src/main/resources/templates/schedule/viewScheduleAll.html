@@ -20,17 +20,18 @@
 </head>
 <body>
     <form action="/viewScheduleDate" method="post">
-        Se vagtplan for: <input type="date" name="date">
+        Se vagtplan for: <input type="date" name="date" placeholder="Dato">
+
         <input type="submit" value="Se vagter for dato">
     </form>
     <a href="/viewScheduleAll">
         <button type="button">Se alle vagter</button>
     </a>
-    <a href="/createSchedule">
-        <button type="button">Opret vagt</button>
-    </a>
 
-    <button></button>
+    <select>
+        <option th:each="schedule: ${schedules}" + th:text="${schedule.fornavn}"></option>
+    </select>
+
     <table>
         <thead>
         <tr>

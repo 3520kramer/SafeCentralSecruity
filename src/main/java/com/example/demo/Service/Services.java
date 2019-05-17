@@ -10,6 +10,9 @@ import com.example.demo.Repository.ScheduleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -56,6 +59,51 @@ public class Services {
     public List<Schedule> getAllSchedules(){
         return scheduleRepo.getAllSchedules();
     }
+
+    public List<Schedule> getFirstSchedule(){
+        return scheduleRepo.getFirstSchedule();
+    }
+
+    public List<Schedule> getOneSchedule(String date){
+        return scheduleRepo.getOneSchedule(date);
+    }
+
+    public Schedule createSchedule(Schedule s){
+        return scheduleRepo.createSchedule(s);
+    }
+
+    public List<Schedule> getInfoToSchedule(String select, String from, String where, String firstCondition){
+        return scheduleRepo.getInfoToSchedule(select, from, where, firstCondition);
+    }
+
+    public List<Schedule> getInfoToSchedule(String select, String from, String where, String firstCondition, String and, String secondCondition){
+        return scheduleRepo.getInfoToSchedule(select, from, where, firstCondition, and, secondCondition);
+    }
+
+    public double getHoursWorked() {
+        //TODO
+        int hour1 = 7;
+        int min1 = 30;
+        int hour2 = 15;
+        int min2 = 0;
+        double total = 0;
+
+        if(hour2 > hour1){
+            total = hour2 - hour1;
+        }
+        else if(hour2 < hour1) {
+            hour2 += 24;
+            total = hour2 - hour1;
+        }
+        if(min1 == 30 && min2 == 30){
+            total = total;
+        }
+        else if(min1 == 30 || min2 == 30) {
+            total -= 0.5;
+        }
+        return 2.0;
+    }
+
     public Owner addEmployee(Owner o){
         return userRepo.addEmployee(o);
     }

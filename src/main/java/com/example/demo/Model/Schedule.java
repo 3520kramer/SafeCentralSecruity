@@ -2,6 +2,10 @@ package com.example.demo.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 public class Schedule {
@@ -16,7 +20,6 @@ public class Schedule {
     private String adresse;
     private String bydel;
     private int postnummer;
-    private int vagtplan_id;
     private int medarbejder_id;
     private int kunde_id;
 
@@ -101,14 +104,6 @@ public class Schedule {
 
     public void setPostnummer(int postnummer) {
         this.postnummer = postnummer;
-    }
-
-    public int getVagtplan_id() {
-        return vagtplan_id;
-    }
-
-    public void setVagtplan_id(int vagtplan_id) {
-        this.vagtplan_id = vagtplan_id;
     }
 
     public int getMedarbejder_id() {

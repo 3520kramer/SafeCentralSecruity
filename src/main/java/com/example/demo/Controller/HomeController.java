@@ -1,11 +1,6 @@
 package com.example.demo.Controller;
 
-import com.example.demo.Model.Customer;
-import com.example.demo.Model.Login;
-import com.example.demo.Model.Employee;
-import com.example.demo.Model.NewsFeed;
-import com.example.demo.Model.Owner;
-import com.example.demo.Model.Schedule;
+import com.example.demo.Model.*;
 import com.example.demo.Repository.LoginRepo;
 import com.example.demo.Service.Services;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -148,9 +143,50 @@ public class HomeController {
 
     @GetMapping("/viewSchedule")
     public String viewSchedule(Model model){
-        List<Schedule> scheduleList = services.getAllSchedules();
+        List<Schedule> scheduleList = services.getFirstSchedule();
         model.addAttribute("schedules", scheduleList);
         return "schedule/viewSchedule";
+    }
+
+    @PostMapping("/viewScheduleDate")
+    public String viewScheduleDate(@ModelAttribute ScheduleDate scheduleDate, Model model){
+        model.addAttribute("dato", scheduleDate);
+        List<Schedule> scheduleList = services.getOneSchedule(scheduleDate.getDate());
+        model.addAttribute("schedules", scheduleList);
+        return "schedule/viewScheduleDate";
+    }
+
+    @GetMapping("/viewScheduleAll")
+    public String viewScheduleAll(Model model){
+        List<Schedule> scheduleList = services.getAllSchedules();
+        model.addAttribute("schedules", scheduleList);
+        return "schedule/viewScheduleAll";
+    }
+
+    @GetMapping("/createSchedule")
+    public String createSchedule(@ModelAttribute Schedule schedule, Model model){
+        List<Owner> employeeList = services.getAllEmployees();
+        model.addAttribute("employees", employeeList);
+
+        List<Customer> customerList = services.getAll();
+        model.addAttribute("customers", customerList);
+
+        return "schedule/createSchedule";
+    }
+
+    @PostMapping("/createSchedule")
+    public String createSchedulePost(@ModelAttribute Schedule schedule, Model model){
+        model.addAttribute("efternavn", services.getInfoToSchedule("efternavn", "medarbejdere", "fornavn", schedule.getFornavn()));
+        //TODO model.addAttribute("timetal", );
+        model.addAttribute("adresse", services.getInfoToSchedule("adresse", "kunder", "firma_navn", schedule.getFirma_navn()));
+        model.addAttribute("postnummer", services.getInfoToSchedule("postnummer", "kunder", "firma_navn", schedule.getFirma_navn()));
+
+        String postnummer = String.valueOf(schedule.getPostnummer());
+        model.addAttribute("bydel", services.getInfoToSchedule("bydel", "byer", "postnummer", postnummer));
+        model.addAttribute("medarbejder_id", services.getInfoToSchedule("medarbejder_id", "medarbejder", "fornavn", schedule.getFornavn(), "efternavn", schedule.getEfternavn()));
+        model.addAttribute("kunde_id", services.getInfoToSchedule("kunde_id", "kunder","firma_navn", schedule.getFirma_navn()));
+        services.createSchedule(schedule);
+        return "";
     }
 
     @GetMapping("/updateCustomer/{id}")

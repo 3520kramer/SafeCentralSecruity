@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            width: 75%;
+            max-width: 75%;
+            border-collapse: collapse;
+            margin-bottom: 5%;
+            text-align: left;
+        }
+        tr, th, td{
+            border: 1px solid black;
+            padding-left: 1%;
+        }
+
+    </style>
+</head>
+<body>
+<form action="/viewSchedule" method="post">
+    Enter a date (1980-01-01):
+    <input type="date" name="dato" max="1979-12-31">
+    <input type="submit" value="Se vagter for dato">
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th>
+            <p>Fornavn</p>
+        </th>
+        <th>
+            <p>Efternavn</p>
+        </th>
+        <th>
+            <p>Starttid</p>
+        </th>
+        <th>
+            <p>Sluttid</p>
+        </th>
+        <th>
+            <p>Timetal</p>
+        </th>
+        <th>
+            <p>Dato</p>
+        </th>
+        <th>
+            <p>Firma</p>
+        </th>
+        <th>
+            <p>Adresse</p>
+        </th>
+
+        <th>
+            <p>By</p>
+        </th>
+
+        <th>
+            <p>Postnummer</p>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="schedule: ${schedules}">
+        <td>
+            <p th:text="${schedule.fornavn}"></p>
+        </td>
+        <td>
+            <p th:text="${schedule.efternavn}"></p>
+        </td>
+        <td>
+            <p th:text="${schedule.starttid}"></p>
+        </td>
+        <td>
+            <p th:text="${schedule.sluttid}"></p>
+        </td>
+        <td>
+            <p th:text="${schedule.timetal}"></p>
+        </td>
+        <td>
+            <p th:text="${schedule.dato}"></p>
+        </td>
+        <td>
+            <p th:text="${schedule.firma_navn}"></p>
+        </td>
+        <td>
+            <p th:text="${schedule.adresse}"></p>
+        </td>
+
+        <td>
+            <p th:text="${schedule.bydel}"></p>
+        </td>
+
+        <td>
+            <p th:text="${schedule.postnummer}"></p>
+        </td>
+    </tr>
+
+    </tbody>
+</table>
+
+<p th:text="${dato.date}"></p>
+
+</body>
+</html>
