@@ -12,10 +12,18 @@ import javax.persistence.Id;
         private String password;
         private String status;
 
-    public Login(){
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public Login(){
 
     }
-        public String getUsername() {
+    public String getUsername() {
         return username;
     }
 

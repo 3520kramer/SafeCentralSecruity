@@ -122,18 +122,18 @@ public class HomeController {
 
 
     @PostMapping("/home")
-    public String login(@ModelAttribute Login l, Model model) {
-        model.addAttribute("Test", l);
+    public String login(@ModelAttribute Login la, Model model) {
+        model.addAttribute("logins", la);
         services.getLogin();
         for (Login login : services.getLogin()) {
-           if (l.getUsername().equals(login.getUsername())) {
+           if (login.getUsername().equals(la.getUsername())&& login.getPassword().equals(la.getPassword())){
 
-               return "/customer/viewCustomer";
-            }
+               return "redirect:/home";
+          }
 
         }
 
-    return "/home";
+    return "/index";
     }
 
     @GetMapping("/deleteEmployee/{id}")
