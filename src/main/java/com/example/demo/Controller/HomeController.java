@@ -1,9 +1,12 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Model.Customer;
+import com.example.demo.Model.Login;
 import com.example.demo.Model.Employee;
 import com.example.demo.Model.NewsFeed;
 import com.example.demo.Model.Owner;
+import com.example.demo.Model.Schedule;
+import com.example.demo.Repository.LoginRepo;
 import com.example.demo.Service.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -100,6 +103,7 @@ public class HomeController {
         return "redirect:/employee/viewEmployee";
     }
 
+
     @PostMapping("/createCustomer")
     public String create(@ModelAttribute Customer customer) {
         services.addCustomer(customer);
@@ -116,6 +120,22 @@ public class HomeController {
         }
     }
 
+
+    @PostMapping("/home")
+    public String login(@ModelAttribute Login l, Model model) {
+        model.addAttribute("Test", l);
+        services.getLogin();
+        for (Login login : services.getLogin()) {
+           if (l.getUsername().equals(login.getUsername())) {
+
+               return "/customer/viewCustomer";
+            }
+
+        }
+
+    return "/home";
+    }
+
     @GetMapping("/deleteEmployee/{id}")
     public String deleteEmployee(@PathVariable("id") int id) {
         boolean deleted = services.deleteEmployee(id);
@@ -127,8 +147,9 @@ public class HomeController {
     }
 
     @GetMapping("/viewSchedule")
-    public String viewSchedule(){
-
+    public String viewSchedule(Model model){
+        List<Schedule> scheduleList = services.getAllSchedules();
+        model.addAttribute("schedules", scheduleList);
         return "schedule/viewSchedule";
     }
 

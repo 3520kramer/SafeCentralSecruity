@@ -1,6 +1,3 @@
--- Lav vagtplan table med kunder og medarbejder i som foreign keys
--- Vagtplan skal have id, tid og dato
-
 CREATE DATABASE IF NOT EXISTS SCS_db;
 USE SCS_db;
 
@@ -18,7 +15,7 @@ INSERT INTO byer VALUES
 
 CREATE TABLE brugere
 (
-id  INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+bruger_id  INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 username 	VARCHAR(30) NOT NULL,
 password 	VARCHAR(30) NOT NULL,
 status 		VARCHAR(10) NOT NULL DEFAULT 'user'
@@ -35,13 +32,13 @@ INSERT INTO brugere VALUES
 
 CREATE TABLE kunder
 (
-id 				INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+kunde_id 		INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 firma_navn 		VARCHAR(30) NOT NULL,
 kontaktperson 	VARCHAR(30) NOT NULL,
 telefon 		VARCHAR(12) NOT NULL,
 email 			VARCHAR(50) NOT NULL,
 CVR 			VARCHAR(10),
-addresse		VARCHAR(30) NOT NULL,
+adresse			VARCHAR(30) NOT NULL,
 postnummer		INT			NOT NULL,
 
 FOREIGN KEY(postnummer) REFERENCES byer(postnummer)
@@ -54,9 +51,9 @@ INSERT INTO kunder VALUES
 (DEFAULT, 'WeAr', 'Jens Andersen', '43153919', 'JA@wear.dk', '84235121', 'Magrevej 50', '2670'),
 (DEFAULT, 'qtOutfit', 'Hildur Jensen', '25151239', 'HJ@qt.dk', '63412321', 'Kagevej 125', '2300');
 
-CREATE TABLE medarbejder
+CREATE TABLE medarbejdere
 (
-id				INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+medarbejder_id	INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 fornavn			VARCHAR(15) NOT NULL,
 efternavn		VARCHAR(15) NOT NULL,
 ansettelsesdato	DATE NOT NULL,
@@ -64,13 +61,13 @@ telefon			VARCHAR(10) NOT NULL,
 email			VARCHAR(30),
 cpr				VARCHAR(15) NOT NULL,
 lon				DECIMAL(10.2) NOT NULL DEFAULT '20000.00',
-addresse 		VARCHAR(30) NOT NULL,
+adresse 		VARCHAR(30) NOT NULL,
 postnummer 		INT	NOT NULL,
 
 FOREIGN KEY(postnummer)references byer(postnummer)
 );
 
-INSERT INTO medarbejder VALUES
+INSERT INTO medarbejdere VALUES
 (DEFAULT, 'Svend', 'Petersen', '2015-05-05', '50502929', 'Svend@hotmail.dk', '200590-9597', DEFAULT, 'Vejensvej 50', '2300'),
 (DEFAULT, 'Jens', 'Ibsen', '2018-10-10', '45402929', 'Jeib@hotmail.dk', '100791-9595', DEFAULT, 'Bakerstreet 122', '2620'),
 (DEFAULT, 'Mads', 'Direksen', '2017-07-03', '65342929', 'Direk@gmail.dk', '200590-9597', DEFAULT, 'Nalerstreet 697', '2670'),
@@ -80,7 +77,7 @@ INSERT INTO medarbejder VALUES
 
 CREATE TABLE vagtplan
 (
-id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+vagtplan_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
 starttid TIME,
 sluttid TIME,
 timetal DECIMAL(3.2),
@@ -88,9 +85,24 @@ dato DATE,
 medarbejder_id_fk INT,
 kunder_id_fk INT,
 
-FOREIGN KEY (medarbejder_id_fk)				REFERENCES medarbejder(id),
-FOREIGN KEY (kunder_id_fk)						REFERENCES kunder(id)
+FOREIGN KEY (medarbejder_id_fk)				REFERENCES medarbejdere(medarbejder_id),
+FOREIGN KEY (kunder_id_fk)						REFERENCES kunder(kunde_id)
 );
 
 INSERT INTO vagtplan VALUES
-(DEFAULT, '23:00:00', '05:00:00', '6.0', '2015-05-05', '1', '1');
+(DEFAULT, '23:00:00', '05:00:00', '6.0', '2015-05-05', '1', '2'),
+(DEFAULT, '11:00:00', '19:00:00', '8.0', '2015-06-06', '2', '3'),
+(DEFAULT, '12:00:00', '12:00:00', '12.0', '2016-05-05', '3', '4');
+
+CREATE TABLE newsfeed
+(
+newsfeed_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+opslag VARCHAR(1000),
+dato DATE,
+tid TIME
+);
+
+INSERT INTO newsfeed VALUES
+(DEFAULT, 'Dette er det første opslag', '2019-05-10', '10:00:00'),
+(DEFAULT, 'Dette er det andet opslag', '2019-06-10', '10:00:00'),
+(DEFAULT, 'Dette er det tredje opslag, Dette er det tredje opslag, Dette er det tredje opslag, Dette er det tredje opslag, Dette er det tredje opslag, Dette er det tredje opslag, Dette er det tredje opslag, Dette er det tredje opslag, Dette er det tredje opslag', '2019-07-10', '10:00:00');
