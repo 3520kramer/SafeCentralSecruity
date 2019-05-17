@@ -6,7 +6,7 @@ import javax.persistence.Id;
 @Entity
 public class Schedule {
     @Id
-    private int id;
+    private int vagtplan_id;
     private String starttid;
     private String sluttid;
     private String timetal;
@@ -16,11 +16,11 @@ public class Schedule {
     }
 
     public int getId() {
-        return id;
+        return vagtplan_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int vagtplan_id) {
+        this.vagtplan_id = vagtplan_id;
     }
 
     public String getStarttid() {

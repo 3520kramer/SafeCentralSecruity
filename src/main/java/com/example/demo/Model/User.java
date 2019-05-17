@@ -6,7 +6,7 @@ import javax.persistence.Id;
 @Entity
 public abstract class User {
     @Id
-    private int id;
+    private int bruger_id;
     private String fornavn;
     private String efternavn;
     private String ansettelsesdato;
@@ -18,11 +18,11 @@ public abstract class User {
     private int postnummer;
 
     public int getId() {
-        return id;
+        return bruger_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int bruger_id) {
+        this.bruger_id = bruger_id;
     }
 
     public String getFornavn() {

@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class Customer {
 
     @Id
-    private int id;
+    private int kunde_id;
     private String firma_navn;
     private String kontaktperson;
     private String telefon;
@@ -19,11 +19,11 @@ public class Customer {
 
 
     public int getId() {
-        return id;
+        return kunde_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int kunde_id) {
+        this.kunde_id = kunde_id;
     }
 
     public String getFirma_navn() {

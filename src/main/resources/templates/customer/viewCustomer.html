@@ -16,15 +16,15 @@
         </thead>
         <tbody>
         <tr th:each="customer: ${customers}">
-            <td th:text="${customer.id}"/>
+            <td th:text="${customer.kunde_id}"/>
             <td th:text="${customer.firma_navn}"/>
             <td th:text="${customer.kontaktperson}"/>
 
-            <td><a th:href="@{'/delete/'+${customer.id}}">
+            <td><a th:href="@{'/delete/'+${customer.kunde_id}}">
                 <button>Delete</button>
             </a>
 
-                <a th:href="@{'/updateCustomer/'+${customer.id}}">
+                <a th:href="@{'/updateCustomer/'+${customer.kunde_id}}">
                     <button>Update</button>
 
                 </a>

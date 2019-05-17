@@ -24,7 +24,7 @@
 
             <tbody>
             <tr th:each="employee: ${employees}">
-                <td th:text="${employee.id}"/>
+                <td th:text="${employee.medarbejder_id}"/>
                 <td th:text="${employee.fornavn}"/>
                 <td th:text="${employee.efternavn}"/>
                 <td th:text="${employee.ansettelsesdato}"/>
@@ -36,10 +36,10 @@
                 <td th:text="${employee.postnummer}"/>
 
                 <td>
-                    <a th:href="@{'/deleteEmployee/'+${employee.id}}">
+                    <a th:href="@{'/deleteEmployee/'+${employee.medarbejder_id}}">
                     <button>Delete</button>
                     </a>
-                    <a th:href="@{'/updateEmployee/'+${employee.id}}">
+                    <a th:href="@{'/updateEmployee/'+${employee.medarbejder_id}}">
                         <button>Update</button>
                     </a>
                 </td>

@@ -7,7 +7,7 @@ import javax.persistence.Id;
     public class Login {
 
         @Id
-        private int id;
+        private int bruger_id;
         private String username;
         private String password;
         private String status;
