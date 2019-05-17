@@ -3,6 +3,7 @@ package com.example.demo.Controller;
 import com.example.demo.Model.Customer;
 import com.example.demo.Model.NewsFeed;
 import com.example.demo.Model.Owner;
+import com.example.demo.Model.Schedule;
 import com.example.demo.Service.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -117,8 +118,9 @@ public class HomeController {
     }
 
     @GetMapping("/viewSchedule")
-    public String viewSchedule(){
-
+    public String viewSchedule(Model model){
+        List<Schedule> scheduleList = services.getAllSchedules();
+        model.addAttribute("schedules", scheduleList);
         return "schedule/viewSchedule";
     }
 
