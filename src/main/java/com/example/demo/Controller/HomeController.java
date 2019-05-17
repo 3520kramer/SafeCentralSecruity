@@ -37,6 +37,13 @@ public class HomeController {
         return "/newsfeed/createNewsfeed";
     }
 
+    @GetMapping("/homeUser")
+    public String homeUser(Model model){
+        List<NewsFeed> newsFeedLists = services.getAllNewsFeed();
+        model.addAttribute("newsfeeds",newsFeedLists);
+        return "/homeUser";
+    }
+
     @PostMapping("/createNewsfeed")
     public String createNewsFeed(@ModelAttribute NewsFeed newsFeed){
         services.createNewsFeed(newsFeed);
@@ -121,13 +128,13 @@ public class HomeController {
         model.addAttribute("logins", la);
         services.getLogin();
         for (Login login : services.getLogin()) {
-           if (login.getUsername().equals(la.getUsername())&& login.getPassword().equals(la.getPassword())){
+           if (login.getUsername().equals(la.getUsername())&& login.getPassword().equals(la.getPassword())&& login.getStatus().equals("Admin")){
+            return "redirect:/home";
 
-               return "redirect:/home";
-          }
-
+          } if (login.getUsername().equals(la.getUsername())&&login.getPassword().equals(la.getPassword())&&login.getStatus().equals("user")){
+             return "redirect:/homeUser";
+            }
         }
-
     return "/index";
     }
 
