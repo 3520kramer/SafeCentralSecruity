@@ -174,7 +174,7 @@ public class HomeController {
     }
     @PostMapping("/employee/updateEmployee")
     public String updateEmployee(@ModelAttribute Owner o){
-        services.updateEmployee(o.getId(), o);
+        services.updateEmployee(o.getMedarbejder_id(), o);
 
         return "redirect:/employee/viewEmployee";
     }
