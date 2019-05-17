@@ -59,8 +59,9 @@ public class Services {
     public Owner addEmployee(Owner o){
         return userRepo.addEmployee(o);
     }
-    public Login compareInfo(String username, String password){
-        return loginRepo.compareInfo(username,password);
+
+    public List<Login> getLogin(){
+        return loginRepo.getLogin();
     }
     public Customer updateCustomer(int id, Customer c){
         return customerRepo.updateCustomer(id, c);
@@ -70,8 +71,18 @@ public class Services {
 
     }
 
+    public Owner updateEmployee(int id, Owner o){
+        return userRepo.updateEmployee(id, o);
+    }
+
+    public Owner findEmployeeById(int id) {
+        return userRepo.findEmployeeById(id);
+    }
 
 
+    public Boolean deleteEmployee(int id){
+        return userRepo.deleteEmployee(id);
+    }
 
 
 

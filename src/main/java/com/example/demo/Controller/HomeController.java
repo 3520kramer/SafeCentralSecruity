@@ -1,9 +1,12 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Model.Customer;
+import com.example.demo.Model.Login;
+import com.example.demo.Model.Employee;
 import com.example.demo.Model.NewsFeed;
 import com.example.demo.Model.Owner;
 import com.example.demo.Model.Schedule;
+import com.example.demo.Repository.LoginRepo;
 import com.example.demo.Service.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -97,7 +100,7 @@ public class HomeController {
     @PostMapping("/createEmployee")
     public String createEmployee(@ModelAttribute Owner owner) {
         services.addEmployee(owner);
-        return "redirect:/customer/viewCustomer";
+        return "redirect:/employee/viewEmployee";
     }
 
 
@@ -114,6 +117,32 @@ public class HomeController {
             return "redirect:/customer/viewCustomer";
         } else {
             return "redirect:/customer/viewCustomer";
+        }
+    }
+
+
+    @PostMapping("/home")
+    public String login(@ModelAttribute Login l, Model model) {
+        model.addAttribute("Test", l);
+        services.getLogin();
+        for (Login login : services.getLogin()) {
+           if (l.getUsername().equals(login.getUsername())) {
+
+               return "/customer/viewCustomer";
+            }
+
+        }
+
+    return "/home";
+    }
+
+    @GetMapping("/deleteEmployee/{id}")
+    public String deleteEmployee(@PathVariable("id") int id) {
+        boolean deleted = services.deleteEmployee(id);
+        if (deleted) {
+            return "redirect:/employee/viewEmployee";
+        } else {
+            return "redirect:/employee/viewEmployee";
         }
     }
 
@@ -136,4 +165,19 @@ public class HomeController {
 
         return "redirect:/customer/viewCustomer";
     }
+
+    @GetMapping("/updateEmployee/{id}")
+    public String updateEmployee(@PathVariable("id") int id, Model model){
+        model.addAttribute("employee", services.findEmployeeById(id));
+        return "employee/updateEmployee";
+
+    }
+    @PostMapping("/employee/updateEmployee")
+    public String updateEmployee(@ModelAttribute Owner o){
+        services.updateEmployee(o.getId(), o);
+
+        return "redirect:/employee/viewEmployee";
+    }
+
+
 }
