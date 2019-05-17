@@ -2,6 +2,7 @@ package com.example.demo.Controller;
 
 import com.example.demo.Model.Customer;
 import com.example.demo.Model.Login;
+import com.example.demo.Model.Employee;
 import com.example.demo.Model.NewsFeed;
 import com.example.demo.Model.Owner;
 import com.example.demo.Repository.LoginRepo;
@@ -35,15 +36,25 @@ public class HomeController {
         return "/home";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteNewsFeed(@PathVariable("id")int id, Model model){
-      boolean deleted = services.deleteNewsFeed(id);
-    if(deleted){
-    return "redirect:/";
-    }else{
-    return "redirect:/";
-     }
+    @GetMapping("/createNewsfeed")
+    public String createNewsFeed(){
+        return "/newsfeed/createNewsfeed";
+    }
 
+    @PostMapping("/createNewsfeed")
+    public String createNewsFeed(@ModelAttribute NewsFeed newsFeed){
+        services.createNewsFeed(newsFeed);
+        return "redirect:/home";
+    }
+
+    @GetMapping("/delete_news/{id}")
+    public String deleteNewsFeed(@PathVariable("id")int id, Model model){
+        boolean deleted = services.deleteNewsFeed(id);
+        if(deleted){
+            return "redirect:/home";
+        }else{
+            return "redirect:/home";
+        }
     }
 
     @GetMapping("/viewCustomer")
@@ -85,10 +96,16 @@ public class HomeController {
         return "employee/viewEmployee";
     }
 
+    @PostMapping("/createEmployee")
+    public String createEmployee(@ModelAttribute Owner owner) {
+        services.addEmployee(owner);
+        return "redirect:/employee/viewEmployee";
+    }
+
     @PostMapping("/createCustomer")
     public String create(@ModelAttribute Customer customer) {
         services.addCustomer(customer);
-        return "redirect:/employee/viewEmployee";
+        return "redirect:/customer/viewCustomer";
     }
 
     @GetMapping("/delete/{id}")
@@ -116,4 +133,48 @@ public class HomeController {
 
     return "/home";
     }
+
+    @GetMapping("/deleteEmployee/{id}")
+    public String deleteEmployee(@PathVariable("id") int id) {
+        boolean deleted = services.deleteEmployee(id);
+        if (deleted) {
+            return "redirect:/employee/viewEmployee";
+        } else {
+            return "redirect:/employee/viewEmployee";
+        }
+    }
+
+    @GetMapping("/viewSchedule")
+    public String viewSchedule(){
+
+        return "schedule/viewSchedule";
+    }
+
+    @GetMapping("/updateCustomer/{id}")
+    public String update(@PathVariable("id") int id, Model model){
+        model.addAttribute("customer", services.findCustomerById(id));
+        return "customer/updateCustomer";
+
+    }
+    @PostMapping("/customer/updateCustomer")
+    public String update(@ModelAttribute Customer customer){
+        services.updateCustomer(customer.getId(), customer);
+
+        return "redirect:/customer/viewCustomer";
+    }
+
+    @GetMapping("/updateEmployee/{id}")
+    public String updateEmployee(@PathVariable("id") int id, Model model){
+        model.addAttribute("employee", services.findEmployeeById(id));
+        return "employee/updateEmployee";
+
+    }
+    @PostMapping("/employee/updateEmployee")
+    public String updateEmployee(@ModelAttribute Owner o){
+        services.updateEmployee(o.getId(), o);
+
+        return "redirect:/employee/viewEmployee";
+    }
+
+
 }

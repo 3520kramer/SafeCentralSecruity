@@ -28,10 +28,18 @@ public class UserRepo {
         return template.query(sql, rowMapper);
     }
 
-    public Owner updateEmployee(Owner o) {
-        String sql = "UPDATE medarbejder SET (id = DEFAULT, fornavn = ?, efternavn = ?, ansettelsesdato = ?, telefon = ?, email = ?, cpr = ?, lon = ?, addresse = ?, postnummer = ?";
-        template.update(sql, o.getFornavn(),o.getEfternavn(),o.getAnsettelsesdato(),o.getTelefon(),o.getEmail(), o.getCpr(),o.getLon(),o.getAddresse(),o.getPostnummer());
+    public Owner updateEmployee(int id, Owner o) {
+        String sql = "UPDATE medarbejder SET fornavn = ?, efternavn = ?, ansettelsesdato = ?, telefon = ?, email = ?, cpr = ?, lon = ?, addresse = ?, postnummer = ? WHERE id = ?";
+        template.update(sql, o.getFornavn(),o.getEfternavn(),o.getAnsettelsesdato(),o.getTelefon(),o.getEmail(), o.getCpr(),o.getLon(),o.getAddresse(),o.getPostnummer(), o.getId());
         return null;
+    }
+
+    public Owner findEmployeeById(int id){
+        String sql = "SELECT * FROM kunder WHERE id = ?";
+        RowMapper<Owner> rowMapper = new BeanPropertyRowMapper<>(Owner.class);
+        Owner o = template.queryForObject(sql, rowMapper, id);
+        return o;
+
     }
 
     public Boolean deleteEmployee(int id) {
