@@ -2,11 +2,7 @@ package com.example.demo.Service;
 
 
 import com.example.demo.Model.*;
-import com.example.demo.Repository.CustomerRepo;
-import com.example.demo.Repository.UserRepo;
-import com.example.demo.Repository.LoginRepo;
-import com.example.demo.Repository.NewsFeedRepo;
-import com.example.demo.Repository.ScheduleRepo;
+import com.example.demo.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +16,7 @@ public class Services {
     @Autowired
     CustomerRepo customerRepo;
     @Autowired
-    UserRepo userRepo;
+    EmployeeRepo employeeRepo;
     @Autowired
     NewsFeedRepo newsFeedRepo;
     @Autowired
@@ -30,10 +26,6 @@ public class Services {
 
     public List<Customer> getAll(){
         return customerRepo.getAll();
-    }
-
-    public List<Owner> getAllEmployees(){
-        return userRepo.getAllEmployees();
     }
 
     public List<NewsFeed> getAllNewsFeed(){
@@ -90,10 +82,6 @@ public class Services {
         return timetal;
     }
 
-    public Owner addEmployee(Owner o){
-        return userRepo.addEmployee(o);
-    }
-
     public List<Login> getLogin(){
         return loginRepo.getLogin();
     }
@@ -108,19 +96,27 @@ public class Services {
         return customerRepo.findCustomerByName(firmaNavn);
     }
 
-    public Owner updateEmployee(int id, Owner o){
-        return userRepo.updateEmployee(id, o);
+    public Employee addEmployee(Employee e){
+        return employeeRepo.addEmployee(e);
     }
 
-    public Owner findEmployeeById(int id) {
-        return userRepo.findEmployeeById(id);
+    public List<Employee> getAllEmployees(){
+        return employeeRepo.getAllEmployees();
+    }
+
+    public Employee updateEmployee(int id, Employee e){
+        return employeeRepo.updateEmployee(id, e);
     }
 
     public Owner findEmployeeByName(String firstName, String lastName) {
-        return userRepo.findEmployeeByName(firstName, lastName);
+        return employeeRepo.findEmployeeByName(firstName, lastName);
     }
+    public Employee findEmployeeById(int id) {
+        return employeeRepo.findEmployeeById(id);
+    }
+
     public Boolean deleteEmployee(int id){
-        return userRepo.deleteEmployee(id);
+        return employeeRepo.deleteEmployee(id);
     }
 
 
