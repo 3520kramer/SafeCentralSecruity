@@ -180,14 +180,14 @@ public class HomeController {
     }
 
     @PostMapping("/createSchedule")
-    public String createSchedulePost(@ModelAttribute Schedule schedule){
+    public String createSchedule(@ModelAttribute Schedule schedule){
         schedule.setTimetal(services.getHoursWorked(schedule.getStarttid(), schedule.getSluttid()));
 
         Customer c = services.findCustomerByName(schedule.getFirma_navn());
         schedule.setKunde_id(c.getKunde_id());
 
-        Owner o = services.findEmployeeByName(schedule.getFornavn(), schedule.getEfternavn());
-        schedule.setMedarbejder_id(o.getMedarbejder_id());
+        Employee e = services.findEmployeeByName(schedule.getFornavn(), schedule.getEfternavn());
+        schedule.setMedarbejder_id(e.getMedarbejder_id());
 
         services.createSchedule(schedule);
         return "redirect:/viewSchedule";
