@@ -108,7 +108,7 @@ public class Services {
         return employeeRepo.updateEmployee(id, e);
     }
 
-    public Owner findEmployeeByName(String firstName, String lastName) {
+    public Employee findEmployeeByName(String firstName, String lastName) {
         return employeeRepo.findEmployeeByName(firstName, lastName);
     }
     public Employee findEmployeeById(int id) {
