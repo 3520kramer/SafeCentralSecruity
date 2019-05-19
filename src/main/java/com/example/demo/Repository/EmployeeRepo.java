@@ -1,6 +1,6 @@
 package com.example.demo.Repository;
 
-import com.example.demo.Model.Owner;
+import com.example.demo.Model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -10,35 +10,35 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class UserRepo {
+public class EmployeeRepo {
     @Autowired
     JdbcTemplate template;
 
 
-    public Owner addEmployee(Owner o) {
+    public Employee addEmployee(Employee e) {
         String sql = "INSERT INTO medarbejdere VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        template.update(sql, o.getFornavn(),o.getEfternavn(),o.getAnsettelsesdato(),o.getTelefon(),o.getEmail(), o.getCpr(),o.getLon(),o.getAdresse(),o.getPostnummer());
+        template.update(sql, e.getFornavn(),e.getEfternavn(),e.getAnsettelsesdato(),e.getTelefon(),e.getEmail(), e.getCpr(),e.getLon(),e.getAdresse(),e.getPostnummer());
         return null;
     }
 
-    public List<Owner> getAllEmployees(){
+    public List<Employee> getAllEmployees(){
 
         String sql = "SELECT * FROM medarbejdere ORDER BY fornavn";
-        RowMapper<Owner> rowMapper = new BeanPropertyRowMapper<>(Owner.class);
+        RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
         return template.query(sql, rowMapper);
     }
 
-    public Owner updateEmployee(int id, Owner o) {
+    public Employee updateEmployee(int id, Employee e) {
         String sql = "UPDATE medarbejdere SET fornavn = ?, efternavn = ?, ansettelsesdato = ?, telefon = ?, email = ?, cpr = ?, lon = ?, adresse = ?, postnummer = ? WHERE medarbejder_id = ?";
-        template.update(sql, o.getFornavn(),o.getEfternavn(),o.getAnsettelsesdato(),o.getTelefon(),o.getEmail(), o.getCpr(),o.getLon(),o.getAdresse(),o.getPostnummer(), o.getMedarbejder_id());
+        template.update(sql, e.getFornavn(),e.getEfternavn(),e.getAnsettelsesdato(),e.getTelefon(),e.getEmail(), e.getCpr(),e.getLon(),e.getAdresse(),e.getPostnummer(), e.getMedarbejder_id());
         return null;
     }
 
-    public Owner findEmployeeById(int id){
+    public Employee findEmployeeById(int id){
         String sql = "SELECT * FROM medarbejdere WHERE medarbejder_id = ?";
-        RowMapper<Owner> rowMapper = new BeanPropertyRowMapper<>(Owner.class);
-        Owner o = template.queryForObject(sql, rowMapper, id);
-        return o;
+        RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
+        Employee e = template.queryForObject(sql, rowMapper, id);
+        return e;
 
     }
 

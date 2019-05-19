@@ -1,7 +1,6 @@
 package com.example.demo.Controller;
 
 import com.example.demo.Model.*;
-import com.example.demo.Repository.LoginRepo;
 import com.example.demo.Service.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -87,21 +86,21 @@ public class HomeController {
 
     @PostMapping("/employee/viewEmployee")
     public String viewEmployees(Model model) {
-        List<Owner> employeeList = services.getAllEmployees();
+        List<Employee> employeeList = services.getAllEmployees();
         model.addAttribute("employees", employeeList);
         return "employee/viewEmployee";
     }
 
     @GetMapping("/employee/viewEmployee")
     public String viewEmployee(Model model) {
-        List<Owner> employeeList = services.getAllEmployees();
+        List<Employee> employeeList = services.getAllEmployees();
         model.addAttribute("employees", employeeList);
         return "employee/viewEmployee";
     }
 
     @PostMapping("/createEmployee")
-    public String createEmployee(@ModelAttribute Owner owner) {
-        services.addEmployee(owner);
+    public String createEmployee(@ModelAttribute Employee e) {
+        services.addEmployee(e);
         return "redirect:/employee/viewEmployee";
     }
 
@@ -172,7 +171,7 @@ public class HomeController {
 
     @GetMapping("/createSchedule")
     public String createSchedule(@ModelAttribute Schedule schedule, Model model){
-        List<Owner> employeeList = services.getAllEmployees();
+        List<Employee> employeeList = services.getAllEmployees();
         model.addAttribute("employees", employeeList);
 
         List<Customer> customerList = services.getAll();
@@ -216,8 +215,8 @@ public class HomeController {
 
     }
     @PostMapping("/employee/updateEmployee")
-    public String updateEmployee(@ModelAttribute Owner o){
-        services.updateEmployee(o.getMedarbejder_id(), o);
+    public String updateEmployee(@ModelAttribute Employee e){
+        services.updateEmployee(e.getMedarbejder_id(), e);
 
         return "redirect:/employee/viewEmployee";
     }
