@@ -42,6 +42,14 @@ public class UserRepo {
 
     }
 
+    public Owner findEmployeeByName(String firstName, String lastName){
+        String sql = "SELECT medarbejder_id FROM medarbejdere WHERE fornavn = ? AND efternavn = ?";
+        RowMapper<Owner> rowMapper = new BeanPropertyRowMapper<>(Owner.class);
+        Owner o = template.queryForObject(sql, rowMapper, firstName, lastName);
+        return o;
+
+    }
+
     public Boolean deleteEmployee(int id) {
         String sql = "DELETE FROM medarbejdere WHERE medarbejder_id = ?";
         return template.update(sql, id) > 0;

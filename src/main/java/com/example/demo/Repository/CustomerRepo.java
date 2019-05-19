@@ -45,7 +45,12 @@ public class CustomerRepo {
         RowMapper<Customer> rowMapper = new BeanPropertyRowMapper<>(Customer.class);
         Customer c = template.queryForObject(sql, rowMapper, id);
         return c;
-
+    }
+    public Customer findCustomerByName(String firmaNavn){
+        String sql = "SELECT kunde_id FROM kunder WHERE firma_navn = ?";
+        RowMapper<Customer> rowMapper = new BeanPropertyRowMapper<>(Customer.class);
+        Customer c = template.queryForObject(sql, rowMapper, firmaNavn);
+        return c;
     }
 
 

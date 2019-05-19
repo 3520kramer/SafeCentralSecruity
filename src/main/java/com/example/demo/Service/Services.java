@@ -72,36 +72,22 @@ public class Services {
         return scheduleRepo.createSchedule(s);
     }
 
-    public List<Schedule> getInfoToSchedule(String select, String from, String where, String firstCondition){
-        return scheduleRepo.getInfoToSchedule(select, from, where, firstCondition);
-    }
-
-    public List<Schedule> getInfoToSchedule(String select, String from, String where, String firstCondition, String and, String secondCondition){
-        return scheduleRepo.getInfoToSchedule(select, from, where, firstCondition, and, secondCondition);
-    }
-
-    public double getHoursWorked() {
+    public double getHoursWorked(String startTidString, String slutTidString) {
         //TODO
-        int hour1 = 7;
-        int min1 = 30;
-        int hour2 = 15;
-        int min2 = 0;
-        double total = 0;
+        double timetal;
+        startTidString = startTidString.substring(0,2) + "." + startTidString.substring(3,5);
+        double starttid = Double.parseDouble(startTidString);
 
-        if(hour2 > hour1){
-            total = hour2 - hour1;
+        slutTidString = slutTidString.substring(0,2) + "." + slutTidString.substring(3,5);
+        double sluttid = Double.parseDouble(slutTidString);
+
+        if(sluttid < starttid){
+            sluttid += 24;
         }
-        else if(hour2 < hour1) {
-            hour2 += 24;
-            total = hour2 - hour1;
-        }
-        if(min1 == 30 && min2 == 30){
-            total = total;
-        }
-        else if(min1 == 30 || min2 == 30) {
-            total -= 0.5;
-        }
-        return 2.0;
+
+        timetal = sluttid - starttid;
+
+        return timetal;
     }
 
     public Owner addEmployee(Owner o){
@@ -118,6 +104,9 @@ public class Services {
         return customerRepo.findCustomerById(id);
 
     }
+    public Customer findCustomerByName(String firmaNavn) {
+        return customerRepo.findCustomerByName(firmaNavn);
+    }
 
     public Owner updateEmployee(int id, Owner o){
         return userRepo.updateEmployee(id, o);
@@ -127,7 +116,9 @@ public class Services {
         return userRepo.findEmployeeById(id);
     }
 
-
+    public Owner findEmployeeByName(String firstName, String lastName) {
+        return userRepo.findEmployeeByName(firstName, lastName);
+    }
     public Boolean deleteEmployee(int id){
         return userRepo.deleteEmployee(id);
     }
