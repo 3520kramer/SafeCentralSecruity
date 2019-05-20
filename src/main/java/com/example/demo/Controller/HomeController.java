@@ -15,6 +15,8 @@ import java.util.List;
 @Controller
 public class HomeController {
 
+    private boolean status=false;
+
 
     @Autowired
     Services services;
@@ -25,28 +27,55 @@ public class HomeController {
     }
 
     @GetMapping("/home")
-    public String home(Model model) {
+    public String home(@ModelAttribute Login lo,Model model, Model mo) {
         List<NewsFeed> newsFeedList = services.getAllNewsFeed();
         model.addAttribute("newsfeeds", newsFeedList);
-        return "/home";
+        mo.addAttribute("logins", lo);
+        services.getLogin();
+        for (Login login : services.getLogin()) {
+            if (login.getUsername().equals(lo.getUsername()) && login.getPassword().equals(lo.getPassword()) && login.getStatus().equals("Admin")) {
+                status=true;
+                return "/home";
+            }
+        }
+        return "/index";
     }
 
     @GetMapping("/createNewsfeed")
-    public String createNewsFeed(){
-        return "/newsfeed/createNewsfeed";
+    public String createNewsFeed(Login lo,Model model){
+      if(status=true) {
+          return "newsfeed/createNewsfeed";
+      } else {
+          return "/index";
+      }
+
     }
 
     @GetMapping("/homeUser")
-    public String homeUser(Model model){
-        List<NewsFeed> newsFeedLists = services.getAllNewsFeed();
-        model.addAttribute("newsfeeds",newsFeedLists);
-        return "/homeUser";
+    public String homeUser(@ModelAttribute Login lo,Model model,Model mo){
+        List<NewsFeed> newsFeedList = services.getAllNewsFeed();
+        model.addAttribute("newsfeeds", newsFeedList);
+        mo.addAttribute("logins", lo);
+        services.getLogin();
+        for (Login login : services.getLogin()) {
+            if (login.getUsername().equals(lo.getUsername()) && login.getPassword().equals(lo.getPassword()) && login.getStatus().equals("user")) {
+
+                status=false;
+                return "/homeUser";
+            }
+        }
+        return "/index";
     }
 
     @PostMapping("/createNewsfeed")
-    public String createNewsFeed(@ModelAttribute NewsFeed newsFeed){
-        services.createNewsFeed(newsFeed);
-        return "redirect:/home";
+    public String createNewsFeed(@ModelAttribute NewsFeed newsFeed,Login lo,Model model) {
+        model.addAttribute("logins",lo);
+        for (Login login : services.getLogin()) {
+            if( status = true){
+                return "redirect:/home";
+            }
+        }
+       return "/index";
     }
 
     @GetMapping("/delete_news/{id}")
@@ -124,14 +153,33 @@ public class HomeController {
     }
 
     @PostMapping("/home")
-    public String login(@ModelAttribute Login la, Model model) {
-        model.addAttribute("logins", la);
+    public String login(@ModelAttribute Login la, Model model,Model mo) {
+        mo.addAttribute("logins", la);
         services.getLogin();
         for (Login login : services.getLogin()) {
-            if (login.getUsername().equals(la.getUsername())&& login.getPassword().equals(la.getPassword())&& login.getStatus().equals("Admin")){
-                return "redirect:/home";
+           if (login.getUsername().equals(la.getUsername())&& login.getPassword().equals(la.getPassword())&& login.getStatus().equals("Admin")){
+               List<NewsFeed> newsFeedList = services.getAllNewsFeed();
+               model.addAttribute("newsfeeds", newsFeedList);
+               status=true;
+               return "/home";
 
-            } if (login.getUsername().equals(la.getUsername())&&login.getPassword().equals(la.getPassword())&&login.getStatus().equals("user")){
+          } if (login.getUsername().equals(la.getUsername())&&login.getPassword().equals(la.getPassword())&&login.getStatus().equals("user")){
+                List<NewsFeed> newsFeedList = services.getAllNewsFeed();
+                model.addAttribute("newsfeeds", newsFeedList);
+               status=false;
+               return "/homeUser";
+            }
+        }
+    return "/index";
+    }
+
+    @PostMapping ("/homeUser")
+    public String login2(@ModelAttribute Login la,Model model, Model mo){
+        mo.addAttribute("logins",la);
+        services.getLogin();
+        for(Login login: services.getLogin()){
+            if(login.getUsername().equals(la.getUsername())&&login.getPassword().equals(la.getPassword())&&login.getStatus().equals("user")){
+                status=false;
                 return "redirect:/homeUser";
             }
         }
