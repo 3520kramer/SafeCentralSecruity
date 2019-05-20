@@ -41,7 +41,6 @@ public class HomeController {
         return "/index";
     }
 
-
     @GetMapping("/createNewsfeed")
     public String createNewsFeed(Login lo,Model model){
       if(status=true) {
@@ -78,7 +77,6 @@ public class HomeController {
         }
        return "/index";
     }
-
 
     @GetMapping("/delete_news/{id}")
     public String deleteNewsFeed(@PathVariable("id")int id, Model model){

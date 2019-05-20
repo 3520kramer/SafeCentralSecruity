@@ -3,22 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css">
     <style>
-        table{
-            width: 75%;
-            max-width: 75%;
-            border-collapse: collapse;
-            margin-bottom: 5%;
-            text-align: left;
-        }
-        tr, th, td{
-            border: 1px solid black;
-            padding-left: 1%;
-        }
 
     </style>
 </head>
 <body>
+<div class="header">
+    <div class="menu">
+        <button class="menuButton">Menu</button>
+        <div class="menuLinks">
+            <a href="/home">Hjem</a>
+            <a href="/customer/viewCustomer">Kunder</a>
+            <a href="/employee/viewEmployee">Medarbejdere</a>
+            <a href="/createNewsfeed">Opret nyhedsopslag</a>
+            <a href="/viewSchedule">Vagtplan</a>
+        </div>
+    </div>
+    <div class="logo">
+        <img src="logo.png">
+    </div>
+</div>
     <form action="/viewScheduleDate" method="post">
         Se vagtplan for: <input type="date" name="date">
         <input type="submit" value="Se vagter for dato">
