@@ -108,6 +108,7 @@ public class HomeController {
         return "index";
     }
 
+    /*
     @GetMapping("/viewCustomer")
     public String viewCustomer() {
         if(status=="Admin") {
@@ -115,8 +116,9 @@ public class HomeController {
         }else
         return "/index";
     }
+    */
 
-    @PostMapping("/customer/viewCustomer")
+    @PostMapping("/viewCustomer")
     public String viewCustomers(Model model) {
         if(status=="Admin") {
             List<Customer> customerList = services.getAll();
@@ -127,7 +129,7 @@ public class HomeController {
 
     }
 
-    @GetMapping("/customer/viewCustomer")
+    @GetMapping("/viewCustomer")
     public String viewCustomer(Model model) {
         if(status=="Admin") {
             List<Customer> customerList = services.getAll();
@@ -137,20 +139,20 @@ public class HomeController {
         return "/index";
     }
 
-
+/*
     @GetMapping("/viewEmployee")
     public String viewEmployee() {
         return "/employee/viewEmployee";
     }
-
-    @PostMapping("/employee/viewEmployee")
+*/
+    @PostMapping("/viewEmployee")
     public String viewEmployees(Model model) {
         List<Employee> employeeList = services.getAllEmployees();
         model.addAttribute("employees", employeeList);
         return "employee/viewEmployee";
     }
 
-    @GetMapping("/employee/viewEmployee")
+    @GetMapping("/viewEmployee")
     public String viewEmployee(Model model) {
         List<Employee> employeeList = services.getAllEmployees();
         model.addAttribute("employees", employeeList);
@@ -167,16 +169,16 @@ public class HomeController {
     @PostMapping("/createCustomer")
     public String create(@ModelAttribute Customer customer) {
         services.addCustomer(customer);
-        return "redirect:/customer/viewCustomer";
+        return "redirect:/viewCustomer";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id) {
         boolean deleted = services.deleteCustomer(id);
         if (deleted) {
-            return "redirect:/customer/viewCustomer";
+            return "redirect:/viewCustomer";
         } else {
-            return "redirect:/customer/viewCustomer";
+            return "redirect:/viewCustomer";
         }
     }
 
@@ -281,11 +283,11 @@ public class HomeController {
         return "customer/updateCustomer";
 
     }
-    @PostMapping("/customer/updateCustomer")
+    @PostMapping("/updateCustomer")
     public String update(@ModelAttribute Customer customer){
         services.updateCustomer(customer.getKunde_id(), customer);
 
-        return "redirect:/customer/viewCustomer";
+        return "redirect:/viewCustomer";
     }
 
     @GetMapping("/updateEmployee/{id}")
@@ -294,7 +296,7 @@ public class HomeController {
         return "employee/updateEmployee";
 
     }
-    @PostMapping("/employee/updateEmployee")
+    @PostMapping("/updateEmployee")
     public String updateEmployee(@ModelAttribute Employee e){
         services.updateEmployee(e.getMedarbejder_id(), e);
 

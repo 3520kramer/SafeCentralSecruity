@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class CustomerRepo {
+public class CustomerRepo implements RepoInterface {
     @Autowired
     JdbcTemplate template;
 
@@ -28,7 +28,7 @@ public class CustomerRepo {
         return null;
     }
 
-    public Boolean deleteCustomer(int id) {
+    public Boolean delete(int id) {
 
         String sql = "DELETE FROM kunder WHERE kunde_id = ?";
 
@@ -52,8 +52,6 @@ public class CustomerRepo {
         Customer c = template.queryForObject(sql, rowMapper, firmaNavn);
         return c;
     }
-
-
 
 
 }

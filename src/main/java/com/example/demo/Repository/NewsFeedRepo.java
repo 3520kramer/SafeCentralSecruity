@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public class NewsFeedRepo {
+public class NewsFeedRepo implements RepoInterface {
 
     @Autowired
     JdbcTemplate template;
@@ -24,7 +24,7 @@ public class NewsFeedRepo {
         return template.query(sql, rowMapper);
     }
 
-    public Boolean deleteNewsFeed(int id){
+    public Boolean delete(int id){
         String sql = "DELETE FROM newsfeed WHERE id = ?";
         return template.update(sql, id)>0;
     }

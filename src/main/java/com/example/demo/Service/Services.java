@@ -37,11 +37,11 @@ public class Services {
     }
 
     public Boolean deleteNewsFeed(int id){
-        return newsFeedRepo.deleteNewsFeed(id);
+        return newsFeedRepo.delete(id);
     }
 
     public Boolean deleteCustomer(int id) {
-        return customerRepo.deleteCustomer(id);
+        return customerRepo.delete(id);
     }
 
     public NewsFeed createNewsFeed(NewsFeed newsFeed){
@@ -116,7 +116,7 @@ public class Services {
     }
 
     public Boolean deleteEmployee(int id){
-        return employeeRepo.deleteEmployee(id);
+        return employeeRepo.delete(id);
     }
 
 
