@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class EmployeeRepo {
+public class EmployeeRepo implements RepoInterface{
     @Autowired
     JdbcTemplate template;
 
@@ -50,7 +50,7 @@ public class EmployeeRepo {
 
     }
 
-    public Boolean deleteEmployee(int id) {
+    public Boolean delete(int id) {
         String sql = "DELETE FROM medarbejdere WHERE medarbejder_id = ?";
         return template.update(sql, id) > 0;
     }

@@ -139,16 +139,16 @@ public class HomeController {
     @PostMapping("/createCustomer")
     public String create(@ModelAttribute Customer customer) {
         services.addCustomer(customer);
-        return "redirect:/customer/viewCustomer";
+        return "redirect:/viewCustomer";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id) {
         boolean deleted = services.deleteCustomer(id);
         if (deleted) {
-            return "redirect:/customer/viewCustomer";
+            return "redirect:/viewCustomer";
         } else {
-            return "redirect:/customer/viewCustomer";
+            return "redirect:/viewCustomer";
         }
     }
 
@@ -253,7 +253,7 @@ public class HomeController {
     public String update(@ModelAttribute Customer customer){
         services.updateCustomer(customer.getKunde_id(), customer);
 
-        return "redirect:/customer/viewCustomer";
+        return "redirect:/viewCustomer";
     }
 
     @GetMapping("/updateEmployee/{id}")

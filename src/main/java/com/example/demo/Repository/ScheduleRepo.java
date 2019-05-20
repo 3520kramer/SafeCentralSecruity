@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public class ScheduleRepo {
+public class ScheduleRepo implements RepoInterface{
 
     @Autowired
     JdbcTemplate template;
@@ -66,4 +66,10 @@ public class ScheduleRepo {
         return null;
     }
 
+
+    //Skal laves
+    @Override
+    public Boolean delete(int id) {
+        return null;
+    }
 }
