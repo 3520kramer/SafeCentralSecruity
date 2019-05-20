@@ -126,14 +126,14 @@ public class HomeController {
         model.addAttribute("logins", la);
         services.getLogin();
         for (Login login : services.getLogin()) {
-           if (login.getUsername().equals(la.getUsername())&& login.getPassword().equals(la.getPassword())&& login.getStatus().equals("Admin")){
-            return "redirect:/home";
+            if (login.getUsername().equals(la.getUsername())&& login.getPassword().equals(la.getPassword())&& login.getStatus().equals("Admin")){
+                return "redirect:/home";
 
-          } if (login.getUsername().equals(la.getUsername())&&login.getPassword().equals(la.getPassword())&&login.getStatus().equals("user")){
-             return "redirect:/homeUser";
+            } if (login.getUsername().equals(la.getUsername())&&login.getPassword().equals(la.getPassword())&&login.getStatus().equals("user")){
+                return "redirect:/homeUser";
             }
         }
-    return "/index";
+        return "/index";
     }
 
     @GetMapping("/deleteEmployee/{id}")
