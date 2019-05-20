@@ -59,39 +59,41 @@ public class HomeController {
         }
     }
 
+    /*
     @GetMapping("/viewCustomer")
     public String viewCustomer() {
         return "/customer/viewCustomer";
     }
+    */
 
-    @PostMapping("/customer/viewCustomer")
+    @PostMapping("/viewCustomer")
     public String viewCustomers(Model model) {
         List<Customer> customerList = services.getAll();
         model.addAttribute("customers", customerList);
         return "customer/viewCustomer";
     }
 
-    @GetMapping("/customer/viewCustomer")
+    @GetMapping("/viewCustomer")
     public String viewCustomer(Model model) {
         List<Customer> customerList = services.getAll();
         model.addAttribute("customers", customerList);
         return "customer/viewCustomer";
     }
 
-
+/*
     @GetMapping("/viewEmployee")
     public String viewEmployee() {
         return "/employee/viewEmployee";
     }
-
-    @PostMapping("/employee/viewEmployee")
+*/
+    @PostMapping("/viewEmployee")
     public String viewEmployees(Model model) {
         List<Employee> employeeList = services.getAllEmployees();
         model.addAttribute("employees", employeeList);
         return "employee/viewEmployee";
     }
 
-    @GetMapping("/employee/viewEmployee")
+    @GetMapping("/viewEmployee")
     public String viewEmployee(Model model) {
         List<Employee> employeeList = services.getAllEmployees();
         model.addAttribute("employees", employeeList);
@@ -199,7 +201,7 @@ public class HomeController {
         return "customer/updateCustomer";
 
     }
-    @PostMapping("/customer/updateCustomer")
+    @PostMapping("/updateCustomer")
     public String update(@ModelAttribute Customer customer){
         services.updateCustomer(customer.getKunde_id(), customer);
 
@@ -212,7 +214,7 @@ public class HomeController {
         return "employee/updateEmployee";
 
     }
-    @PostMapping("/employee/updateEmployee")
+    @PostMapping("/updateEmployee")
     public String updateEmployee(@ModelAttribute Employee e){
         services.updateEmployee(e.getMedarbejder_id(), e);
 
