@@ -42,6 +42,14 @@ public class EmployeeRepo {
 
     }
 
+    public Employee findEmployeeByName(String firstName, String lastName){
+        String sql = "SELECT medarbejder_id FROM medarbejdere WHERE fornavn = ? AND efternavn = ?";
+        RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
+        Employee e = template.queryForObject(sql, rowMapper, firstName, lastName);
+        return e;
+
+    }
+
     public Boolean deleteEmployee(int id) {
         String sql = "DELETE FROM medarbejdere WHERE medarbejder_id = ?";
         return template.update(sql, id) > 0;

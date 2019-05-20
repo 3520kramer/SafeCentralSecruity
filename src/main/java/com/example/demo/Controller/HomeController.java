@@ -121,7 +121,6 @@ public class HomeController {
         }
     }
 
-
     @PostMapping("/home")
     public String login(@ModelAttribute Login la, Model model) {
         model.addAttribute("logins", la);
@@ -181,18 +180,17 @@ public class HomeController {
     }
 
     @PostMapping("/createSchedule")
-    public String createSchedulePost(@ModelAttribute Schedule schedule, Model model){
-        model.addAttribute("efternavn", services.getInfoToSchedule("efternavn", "medarbejdere", "fornavn", schedule.getFornavn()));
-        //TODO model.addAttribute("timetal", );
-        model.addAttribute("adresse", services.getInfoToSchedule("adresse", "kunder", "firma_navn", schedule.getFirma_navn()));
-        model.addAttribute("postnummer", services.getInfoToSchedule("postnummer", "kunder", "firma_navn", schedule.getFirma_navn()));
+    public String createSchedule(@ModelAttribute Schedule schedule){
+        schedule.setTimetal(services.getHoursWorked(schedule.getStarttid(), schedule.getSluttid()));
 
-        String postnummer = String.valueOf(schedule.getPostnummer());
-        model.addAttribute("bydel", services.getInfoToSchedule("bydel", "byer", "postnummer", postnummer));
-        model.addAttribute("medarbejder_id", services.getInfoToSchedule("medarbejder_id", "medarbejder", "fornavn", schedule.getFornavn(), "efternavn", schedule.getEfternavn()));
-        model.addAttribute("kunde_id", services.getInfoToSchedule("kunde_id", "kunder","firma_navn", schedule.getFirma_navn()));
+        Customer c = services.findCustomerByName(schedule.getFirma_navn());
+        schedule.setKunde_id(c.getKunde_id());
+
+        Employee e = services.findEmployeeByName(schedule.getFornavn(), schedule.getEfternavn());
+        schedule.setMedarbejder_id(e.getMedarbejder_id());
+
         services.createSchedule(schedule);
-        return "";
+        return "redirect:/viewSchedule";
     }
 
     @GetMapping("/updateCustomer/{id}")

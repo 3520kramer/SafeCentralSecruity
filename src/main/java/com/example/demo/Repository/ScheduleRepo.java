@@ -61,22 +61,9 @@ public class ScheduleRepo {
     }
 
     public Schedule createSchedule(Schedule s){
-        String sql = "INSERT INTO schedule VALUES(null, ?, ?, ?, ?, fk, fk)";
-        template.update(sql, s.getStarttid(), s.getSluttid(), s.getTimetal(), s.getDato());
+        String sql = "INSERT INTO vagtplan VALUES(null, ?, ?, ?, ?, ?, ?)";
+        template.update(sql, s.getStarttid(), s.getSluttid(), s.getTimetal(), s.getDato(), s.getMedarbejder_id(), s.getKunde_id());
         return null;
     }
-
-    public List<Schedule> getInfoToSchedule(String select, String from, String where, String equals){
-        String sql = "SELECT ? FROM ? WHERE ? = ?)";
-        RowMapper<Schedule> rowMapper = new BeanPropertyRowMapper<>(Schedule.class);
-        return template.query(sql, rowMapper, select, from, where, equals);
-    }
-
-    public List<Schedule> getInfoToSchedule(String select, String from, String where, String firstCondition, String and, String secondCondition){
-        String sql = "SELECT ? FROM ? WHERE ? = ? AND ? = ?)";
-        RowMapper<Schedule> rowMapper = new BeanPropertyRowMapper<>(Schedule.class);
-        return template.query(sql, rowMapper, select, from, where, firstCondition, and, secondCondition);
-    }
-
 
 }
