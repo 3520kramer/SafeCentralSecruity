@@ -28,44 +28,29 @@
     <button type="submit">Log out</button>
 </form>
     <form action="/createSchedule" method="post" id="scheduleForm">
-        <input type="text" name="fornavn">
-        <input type="text" name="efternavn">
+        <select list="fornavne" name="fornavn">
+            <datalist id="fornavn" th:each="employee : ${employees}">
+                <option th:value="${employee.fornavn}" th:text="${employee.fornavn}"></option>
+            </datalist>
+        </select>
+        <select list="efternavne" name="efternavn">
+            <datalist id="efternavne" th:each="employee : ${employees}">
+                <option th:value="${employee.efternavn}" th:text="${employee.efternavn}"></option>
+            </datalist>
+        </select>
         <input type="time" name="starttid" min="00:00" max="23:59">
         <input type="time" name="sluttid" min="00:00" max="23:59">
         <input type="date" name="dato">
-        <input type="text" name="firma_navn">
-
-
-        <!--<select form="scheduleForm">
-            <option th:each="employee: ${employees}" th:value="${employee.fornavn}" th:text="${employee.fornavn}" name="fornavn"></option>
-        </select>
-        <select>
-            <option th:each="employee: ${employees}" th:text="${employee.efternavn}" name="efternavn"></option>
+        <select list="firmanavne" name="firma_navn">
+            <datalist id="firmanavne" th:each="customer : ${customers}">
+                <option th:value="${customer.firma_navn}" th:text="${customer.firma_navn}"></option>
+            </datalist>
         </select>
 
-        <select>
-            <option th:each="customer: ${customers}" th:text="${customer.firma_navn}" th:value="${customer.firma_navn}" name="firma_navn"></option>
 
-        </select>
+        <!--<input type="text" name="firma_navn">
+        <input type="disabled" list="firmanavne" name="firma_navn">
         -->
         <input type="submit" value="Opret vagt">
-    </form>
-
-
-        <input type="text" name="fornavn" placeholder="Fornavn">
-        <input type="text" name="efternavn" placeholder="Efternavn">
-        <input type="text" name="starttid" placeholder="Starttid">
-        <input type="text" name="sluttid" placeholder="Sluttid">
-        <input type="text" name="dato" placeholder="dato">
-        <input type="text" name="firma_navn" placeholder="Firma">
-        <input type="text" name="adresse" placeholder="adresse">
-        <input type="text" name="bydel" placeholder="By">
-        <input type="text" name="postnummer" placeholder="Postnummer">
-        <input type="text" name="" placeholder="">
-        <input type="text" name="" placeholder="">
-
-        <input type="submit" value="Opret vagt">
-
-    </form>
 </body>
 </html>

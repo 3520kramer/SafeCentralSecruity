@@ -87,9 +87,8 @@ public class ScheduleRepo implements RepoInterface{
         return null;
     }
 
-    //Skal laves
-    @Override
     public Boolean delete(int id) {
-        return null;
+        String sql = "DELETE from vagtplan WHERE vagtplan_id = ?";
+        return template.update(sql, id) > 0;
     }
 }

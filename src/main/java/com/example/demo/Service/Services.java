@@ -6,9 +6,6 @@ import com.example.demo.Repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -86,6 +83,10 @@ public class Services {
 
     public Schedule findScheduleById(int schedule_id){
         return scheduleRepo.findScheduleById(schedule_id);
+    }
+
+    public Boolean deleteSchedule(int id){
+        return scheduleRepo.delete(id);
     }
 
     public List<Login> getLogin(){
