@@ -15,7 +15,7 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    private String status;
+    private String status="none";
 
     @Autowired
     Services services;
@@ -222,8 +222,8 @@ public class HomeController {
         return "/index";
     }
     @GetMapping("/viewSchedule")
-    public String viewSchedule(Model model){
-            List<Schedule> scheduleList = services.getFirstSchedule();
+    public String viewTodaysSchedule(Model model){
+            List<Schedule> scheduleList = services.getTodaysSchedule();
             model.addAttribute("schedules", scheduleList);
             return "schedule/viewSchedule";
 
