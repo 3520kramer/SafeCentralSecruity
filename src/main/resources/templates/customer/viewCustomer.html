@@ -14,6 +14,7 @@
             <a href="/home">Hjem</a>
             <a href="/viewCustomer">Kunder</a>
             <a href="/viewEmployee">Medarbejdere</a>
+            <a href="/viewLogin">Logins</a>
             <a href="/createNewsfeed">Opret nyhedsopslag</a>
             <a href="/viewSchedule">Vagtplan</a>
         </div>
@@ -29,22 +30,33 @@
     <table>
         <thead>
         <tr>
-            <th>id</th>
-            <th>firmname</th>
-            <th>contactperson</th>
+            <th>Firma navn</th>
+            <th>Kontaktperson</th>
+            <th>Telefon nummer</th>
+            <th>Email</th>
+            <th>CVR</th>
+            <th>Adresse</th>
+            <th>Postnummer</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="customer: ${customers}">
-            <td th:text="${customer.kunde_id}"/>
+
             <td th:text="${customer.firma_navn}"/>
             <td th:text="${customer.kontaktperson}"/>
+            <td th:text="${customer.telefon}"/>
+            <td th:text="${customer.email}"/>
+            <td th:text="${customer.CVR}"/>
+            <td th:text="${customer.adresse}"/>
+            <td th:text="${customer.postnummer}"/>
 
             <td><a th:href="@{'/delete/'+${customer.kunde_id}}">
                 <button>Delete</button>
             </a>
 
                 <a th:href="@{'/updateCustomer/'+${customer.kunde_id}}">
+
+
                     <button>Update</button>
 
                 </a>
@@ -66,6 +78,8 @@
         <input style="padding: 7px 10px" type="text" name="postnummer" placeholder="Postnummer"/>
         <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Tilføj kunde"/>
     </form>
+
+
 
 
 </body>

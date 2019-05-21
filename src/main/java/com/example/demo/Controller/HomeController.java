@@ -15,7 +15,7 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    private String status="none";
+    private String status=null;
 
     @Autowired
     Services services;
@@ -113,6 +113,15 @@ public class HomeController {
         return "index";
     }
 
+    /*
+    @GetMapping("/viewCustomer")
+    public String viewCustomer() {
+        if(status=="Admin") {
+            return "/customer/viewCustomer";
+        }else
+        return "/index";
+    }
+    */
 
     @PostMapping("/viewCustomer")
     public String viewCustomers(Model model) {
@@ -135,6 +144,21 @@ public class HomeController {
         return "/index";
     }
 
+    @GetMapping("/viewLogin")
+    public String viewLogin(Model model) {
+        if(status=="Admin") {
+            List<Login> loginList = services.getAllLogins();
+            model.addAttribute("logins", loginList);
+            return "login/viewLogin";
+        }
+        return "/index";
+    }
+/*
+    @GetMapping("/viewEmployee")
+    public String viewEmployee() {
+        return "/employee/viewEmployee";
+    }
+*/
     @PostMapping("/viewEmployee")
     public String viewEmployees(Model model) {
         if (status=="Admin") {
