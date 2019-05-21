@@ -32,8 +32,8 @@
                         <p th:text="${newsfeed.dato + ' @ '+ newsfeed.tid}"></p>
                     </th>
                     <th id="tomcelle">
-                        <a th:href="@{'/delete_news/'+${newsfeed.id}}">
-                            <button type="button" onclick="alert('Opslag slettet')">Slet Opslag</button>
+                        <a th:href="@{'/delete_news/'+${newsfeed.newsfeed_id}}">
+                            <button type="button">Slet Opslag</button>
                         </a>
                     </th>
                 </tr>

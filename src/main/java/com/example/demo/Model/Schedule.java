@@ -10,6 +10,7 @@ import java.util.Date;
 @Entity
 public class Schedule {
     @Id
+    private int vagtplan_id;
     private String fornavn;
     private String efternavn;
     private String starttid;
@@ -24,6 +25,14 @@ public class Schedule {
     private int kunde_id;
 
     public Schedule() {
+    }
+
+    public int getVagtplan_id() {
+        return vagtplan_id;
+    }
+
+    public void setVagtplan_id(int vagtplan_id) {
+        this.vagtplan_id = vagtplan_id;
     }
 
     public String getFornavn() {

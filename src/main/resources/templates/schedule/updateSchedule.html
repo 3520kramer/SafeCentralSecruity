@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+    <form action="/update_schedule/" method="post">
+        <input type="hidden" name="vagtplan_id" th:value="${schedule.vagtplan_id}">
+        <input type="text" name="fornavn" th:value="${schedule.fornavn}">
+        <input type="text" name="efternavn" th:value="${schedule.efternavn}">
+        <input type="time" name="starttid" min="00:00" max="23:59" th:value="${schedule.starttid}">
+        <input type="time" name="sluttid" min="00:00" max="23:59" th:value="${schedule.sluttid}">
+        <input type="date" name="dato" th:value="${schedule.dato}">
+        <input type="text" name="firma_navn" th:value="${schedule.firma_navn}">
+        <input type="submit" value="Opdater vagt">
+    </form>
 </body>
 </html>

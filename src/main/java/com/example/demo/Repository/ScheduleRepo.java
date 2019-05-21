@@ -19,7 +19,7 @@ public class ScheduleRepo {
     JdbcTemplate template;
 
     public List<Schedule> getAllSchedules(){
-        String sql = "SELECT fornavn, efternavn, starttid, sluttid, timetal, dato, firma_navn, k.adresse, bydel, k.postnummer,\n" +
+        String sql = "SELECT vagtplan_id, fornavn, efternavn, starttid, sluttid, timetal, dato, firma_navn, k.adresse, bydel, k.postnummer,\n" +
                 "medarbejder_id, kunde_id FROM vagtplan v\n" +
                 "JOIN medarbejdere m ON v.medarbejder_id_fk = m.medarbejder_id\n" +
                 "JOIN kunder k ON v.kunder_id_fk = k.kunde_id\n" +
@@ -30,12 +30,12 @@ public class ScheduleRepo {
         return template.query(sql, rowMapper);
     }
 
-    public List<Schedule> getFirstSchedule(){
+    public List<Schedule> getTodaysSchedule(){
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date dateObj = new Date();
         String date = dateFormat.format(dateObj);
 
-        String sql = "SELECT fornavn, efternavn, starttid, sluttid, timetal, dato, firma_navn, k.adresse, bydel, k.postnummer,\n" +
+        String sql = "SELECT vagtplan_id, fornavn, efternavn, starttid, sluttid, timetal, dato, firma_navn, k.adresse, bydel, k.postnummer,\n" +
                 "medarbejder_id, kunde_id FROM vagtplan v\n" +
                 "JOIN medarbejdere m ON v.medarbejder_id_fk = m.medarbejder_id\n" +
                 "JOIN kunder k ON v.kunder_id_fk = k.kunde_id\n" +
@@ -48,7 +48,7 @@ public class ScheduleRepo {
     }
 
     public List<Schedule> getOneSchedule(String date){
-        String sql = "SELECT fornavn, efternavn, starttid, sluttid, timetal, dato, firma_navn, k.adresse, bydel, k.postnummer,\n" +
+        String sql = "SELECT vagtplan_id, fornavn, efternavn, starttid, sluttid, timetal, dato, firma_navn, k.adresse, bydel, k.postnummer,\n" +
                 "medarbejder_id, kunde_id FROM vagtplan v\n" +
                 "JOIN medarbejdere m ON v.medarbejder_id_fk = m.medarbejder_id\n" +
                 "JOIN kunder k ON v.kunder_id_fk = k.kunde_id\n" +
@@ -66,4 +66,24 @@ public class ScheduleRepo {
         return null;
     }
 
+    public Schedule findScheduleById(int schedule_id){
+        String sql = "SELECT vagtplan_id, fornavn, efternavn, starttid, sluttid, timetal, dato, firma_navn, k.adresse, bydel, k.postnummer,\n" +
+        "medarbejder_id, kunde_id FROM vagtplan v\n" +
+                "JOIN medarbejdere m ON v.medarbejder_id_fk = m.medarbejder_id\n" +
+                "JOIN kunder k ON v.kunder_id_fk = k.kunde_id\n" +
+                "JOIN byer b ON k.postnummer = b.postnummer\n" +
+                "WHERE vagtplan_id = ?\n" +
+                "GROUP BY vagtplan_id\n" +
+                "ORDER BY starttid;";
+        RowMapper<Schedule> rowMapper = new BeanPropertyRowMapper<>(Schedule.class);
+        Schedule s = template.queryForObject(sql, rowMapper, schedule_id);
+        return s;
+    }
+
+    public Schedule updateSchedule(Schedule schedule){
+        String sql = "UPDATE vagtplan SET starttid = ?, sluttid = ?, timetal = ?, dato = ?, medarbejder_id_fk = ?, kunder_id_fk = ? WHERE vagtplan_id = ?";
+        template.update(sql, schedule.getStarttid(), schedule.getSluttid(), schedule.getTimetal(), schedule.getDato(),
+                schedule.getMedarbejder_id(), schedule.getKunde_id(), schedule.getVagtplan_id());
+        return null;
+    }
 }

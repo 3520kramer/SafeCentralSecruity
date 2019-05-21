@@ -52,11 +52,9 @@
         <th>
             <p>Adresse</p>
         </th>
-
         <th>
             <p>By</p>
         </th>
-
         <th>
             <p>Postnummer</p>
         </th>
@@ -88,13 +86,16 @@
         <td>
             <p th:text="${schedule.adresse}"></p>
         </td>
-
         <td>
             <p th:text="${schedule.bydel}"></p>
         </td>
-
         <td>
             <p th:text="${schedule.postnummer}"></p>
+        </td>
+        <td>
+            <a th:href="@{'/update_schedule/'+${schedule.vagtplan_id}}">
+                <button type="button">Update</button>
+            </a>
         </td>
     </tr>
 
