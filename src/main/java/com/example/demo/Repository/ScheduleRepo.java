@@ -60,6 +60,19 @@ public class ScheduleRepo implements RepoInterface{
         return template.query(sql, rowMapper, date);
     }
 
+    public List<Schedule> getScheduleDateFromTo(String date, String dateTo){
+        String sql = "SELECT vagtplan_id, fornavn, efternavn, starttid, sluttid, timetal, dato, firma_navn, k.adresse, bydel, k.postnummer,\n" +
+                "medarbejder_id, kunde_id FROM vagtplan v\n" +
+                "JOIN medarbejdere m ON v.medarbejder_id_fk = m.medarbejder_id\n" +
+                "JOIN kunder k ON v.kunder_id_fk = k.kunde_id\n" +
+                "JOIN byer b ON k.postnummer = b.postnummer\n" +
+                "WHERE dato <= ? AND >= ?\n" +
+                "GROUP BY vagtplan_id\n" +
+                "ORDER BY starttid;";
+        RowMapper<Schedule> rowMapper = new BeanPropertyRowMapper<>(Schedule.class);
+        return template.query(sql, rowMapper, date, dateTo);
+    }
+
     public Schedule createSchedule(Schedule s){
         String sql = "INSERT INTO vagtplan VALUES(null, ?, ?, ?, ?, ?, ?)";
         template.update(sql, s.getStarttid(), s.getSluttid(), s.getTimetal(), s.getDato(), s.getMedarbejder_id(), s.getKunde_id());

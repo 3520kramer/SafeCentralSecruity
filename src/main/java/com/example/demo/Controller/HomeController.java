@@ -252,28 +252,28 @@ public class HomeController {
     public String viewTodaysSchedule(Model model){
         List<Schedule> scheduleList = services.getTodaysSchedule();
         model.addAttribute("schedules", scheduleList);
-        return "schedule/viewTodaysSchedule";
+        return "schedule/viewSchedule";
     }
 
     @PostMapping("/viewScheduleDate")
     public String viewScheduleDate(@ModelAttribute ScheduleDate scheduleDate, Model model){
-        model.addAttribute("dato", scheduleDate);
         List<Schedule> scheduleList = services.getOneSchedule(scheduleDate.getDate());
         model.addAttribute("schedules", scheduleList);
-        return "schedule/viewScheduleDate";
+        return "schedule/viewSchedule";
     }
 
     @PostMapping("/viewScheduleDateFromTo")
-    public String viewScheduleDateFromTo(){
-
-        return "";
+    public String viewScheduleDateFromTo(@ModelAttribute ScheduleDate scheduleDate, Model model){
+        List<Schedule> scheduleList = services.getScheduleDateFromTo(scheduleDate.getDate(), scheduleDate.getDateTo());
+        model.addAttribute("schedules", scheduleList);
+        return "schedule/viewSchedule";
     }
 
     @GetMapping("/viewScheduleAll")
     public String viewScheduleAll(Model model){
         List<Schedule> scheduleList = services.getAllSchedules();
         model.addAttribute("schedules", scheduleList);
-        return "schedule/viewScheduleAll";
+        return "schedule/viewSchedule";
     }
 
     @GetMapping("/createSchedule")

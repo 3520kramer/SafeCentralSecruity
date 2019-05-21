@@ -57,6 +57,10 @@ public class Services {
         return scheduleRepo.getOneSchedule(date);
     }
 
+    public List<Schedule> getScheduleDateFromTo(String date, String dateTo){
+        return scheduleRepo.getScheduleDateFromTo(date, dateTo);
+    }
+
     public Schedule createSchedule(Schedule schedule){
         return scheduleRepo.createSchedule(schedule);
     }
