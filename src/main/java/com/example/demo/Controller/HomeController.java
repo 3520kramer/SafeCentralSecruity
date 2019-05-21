@@ -231,10 +231,10 @@ public class HomeController {
     }
 
     @GetMapping("/viewSchedule")
-    public String viewSchedule(Model model){
+    public String viewTodaysSchedule(Model model){
         List<Schedule> scheduleList = services.getTodaysSchedule();
         model.addAttribute("schedules", scheduleList);
-        return "schedule/viewSchedule";
+        return "schedule/viewTodaysSchedule";
     }
 
     @PostMapping("/viewScheduleDate")
@@ -284,6 +284,14 @@ public class HomeController {
 
         return "/schedule/updateSchedule";
     }
+
+    @GetMapping("/delete_schedule/{schedule_id}")
+    public String deleteSchedule(@PathVariable("schedule_id") int schedule_id){
+        boolean deleted = services.deleteSchedule(schedule_id);
+
+        return "/schedule/updateSchedule";
+    }
+
 
     @PostMapping("/update_schedule")
     public String updateSchedule(@ModelAttribute Schedule schedule){
