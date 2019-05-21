@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="logo">
-        <img src="logo.png">
+        <img src="logo.png" alt="Logo">
     </div>
 
 </div>
@@ -32,6 +32,7 @@
         <th>Brugernavn</th>
         <th>Kodeord</th>
         <th>Status</th>
+        <th></th>
 
     </tr>
     </thead>
@@ -45,14 +46,14 @@
 
     </tr>
 
-   <!-- <td><a th:href="@{'/delete/'+${customer.kunde_id}}">
+   <td><a th:href="@{'/delete/'+${login.bruger_id}}">
         <button>Delete</button>
     </a>
 
-        <a th:href="@{'/updateCustomer/'+${customer.kunde_id}}">
+        <a th:href="@{'/updateCustomer/'+${login.bruger_id}}">
             <button>Update</button>
 
-        </a> -->
+        </a>
 
     </td>
     </tbody>
