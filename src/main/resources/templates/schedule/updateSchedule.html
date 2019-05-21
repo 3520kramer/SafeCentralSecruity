@@ -21,7 +21,9 @@
     </div>
 
 </div>
-
+<form action="/logout" method="get">
+    <button type="submit">Log out</button>
+</form>
     <form action="/update_schedule/" method="post">
         <input type="hidden" name="vagtplan_id" th:value="${schedule.vagtplan_id}">
         <input type="text" name="fornavn" th:value="${schedule.fornavn}">

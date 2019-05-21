@@ -29,9 +29,9 @@ public class HomeController {
     @GetMapping ("/logout")
     public String logout(){
 
-        System.out.println("Works!");
+        System.out.println("Logged out");
         status = null;
-        return "/index";
+        return "redirect:/";
     }
 
     @GetMapping("/home")
