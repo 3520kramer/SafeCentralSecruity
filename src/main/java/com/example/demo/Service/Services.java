@@ -67,17 +67,28 @@ public class Services {
 
     public double getHoursWorked(String startTidString, String slutTidString) {
         double timetal;
-        startTidString = startTidString.substring(0,2) + "." + startTidString.substring(3,5);
-        double starttid = Double.parseDouble(startTidString);
+        String startTidTimeString = startTidString.substring(0,2);
+        String slutTidTimeString = slutTidString.substring(0,2);
 
-        slutTidString = slutTidString.substring(0,2) + "." + slutTidString.substring(3,5);
-        double sluttid = Double.parseDouble(slutTidString);
+        double startTidTime = Double.parseDouble(startTidTimeString);
+        double slutTidTime = Double.parseDouble(slutTidTimeString);
 
-        if(sluttid < starttid){
-            sluttid += 24;
+        if(slutTidTime < startTidTime){
+            slutTidTime += 24;
         }
-        timetal = sluttid - starttid;
 
+        timetal = slutTidTime - startTidTime;
+
+        String startTidMinutString = startTidString.substring(3,5);
+        String slutTidMinutString = slutTidString.substring(3,5);
+
+        double startTidMinut = Double.parseDouble(startTidMinutString);
+        double slutTidMinut = Double.parseDouble(slutTidMinutString);
+
+        startTidMinut /= 60;
+        slutTidMinut /= 60;
+
+        timetal += slutTidMinut - startTidMinut;
         return timetal;
     }
 

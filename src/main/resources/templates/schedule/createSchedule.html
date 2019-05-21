@@ -37,8 +37,8 @@
                 <option th:value="${employee.efternavn}" th:text="${employee.efternavn}"></option>
             </datalist>
         </select>
-        <input type="time" name="starttid" min="00:00" max="23:59">
-        <input type="time" name="sluttid" min="00:00" max="23:59">
+        <input type="time" name="starttid" min="00:00" max="23:59" step="1800">
+        <input type="time" name="sluttid" min="00:00" max="23:59" step="1800">
         <input type="date" name="dato">
         <select list="firmanavne" name="firma_navn">
             <datalist id="firmanavne" th:each="customer : ${customers}">
