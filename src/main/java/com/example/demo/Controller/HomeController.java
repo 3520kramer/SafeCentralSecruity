@@ -240,7 +240,7 @@ public class HomeController {
 
     @GetMapping("/viewSchedule")
     public String viewSchedule(Model model){
-        List<Schedule> scheduleList = services.getFirstSchedule();
+        List<Schedule> scheduleList = services.getTodaysSchedule();
         model.addAttribute("schedules", scheduleList);
         return "schedule/viewSchedule";
     }
@@ -284,6 +284,30 @@ public class HomeController {
         services.createSchedule(schedule);
         return "redirect:/viewSchedule";
     }
+
+    @GetMapping("/update_schedule/{schedule_id}")
+    public String updateSchedule(@PathVariable("schedule_id") int schedule_id, Model model){
+        Schedule s = services.findScheduleById(schedule_id);
+        model.addAttribute("schedule", s);
+
+        return "/schedule/updateSchedule";
+    }
+
+    @PostMapping("/update_schedule")
+    public String updateSchedule(@ModelAttribute Schedule schedule){
+        Customer c = services.findCustomerByName(schedule.getFirma_navn());
+        schedule.setKunde_id(c.getKunde_id());
+
+        Employee e = services.findEmployeeByName(schedule.getFornavn(), schedule.getEfternavn());
+        schedule.setMedarbejder_id(e.getMedarbejder_id());
+
+        schedule.setTimetal(services.getHoursWorked(schedule.getStarttid(), schedule.getSluttid()));
+
+        services.updateSchedule(schedule);
+
+        return "redirect:/viewSchedule";
+    }
+
 
     @GetMapping("/updateCustomer/{id}")
     public String update(@PathVariable("id") int id, Model model){

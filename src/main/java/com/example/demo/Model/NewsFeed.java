@@ -14,11 +14,11 @@ public class NewsFeed {
     public NewsFeed() {
     }
 
-    public int getId() {
+    public int getNewsfeed_id() {
         return newsfeed_id;
     }
 
-    public void setId(int newsfeed_id) {
+    public void setNewsfeed_id(int newsfeed_id) {
         this.newsfeed_id = newsfeed_id;
     }
 

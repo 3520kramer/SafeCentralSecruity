@@ -24,9 +24,9 @@ public class NewsFeedRepo implements RepoInterface {
         return template.query(sql, rowMapper);
     }
 
-    public Boolean delete(int id){
-        String sql = "DELETE FROM newsfeed WHERE id = ?";
-        return template.update(sql, id)>0;
+    public Boolean deleteNewsFeed(int id){
+        String sql = "DELETE FROM newsfeed WHERE newsfeed_id = ?";
+        return template.update(sql, id) > 0;
     }
 
     public NewsFeed createNewsFeed(NewsFeed newsFeed){

@@ -52,20 +52,23 @@ public class Services {
         return scheduleRepo.getAllSchedules();
     }
 
-    public List<Schedule> getFirstSchedule(){
-        return scheduleRepo.getFirstSchedule();
+    public List<Schedule> getTodaysSchedule(){
+        return scheduleRepo.getTodaysSchedule();
     }
 
     public List<Schedule> getOneSchedule(String date){
         return scheduleRepo.getOneSchedule(date);
     }
 
-    public Schedule createSchedule(Schedule s){
-        return scheduleRepo.createSchedule(s);
+    public Schedule createSchedule(Schedule schedule){
+        return scheduleRepo.createSchedule(schedule);
+    }
+
+    public Schedule updateSchedule(Schedule schedule){
+        return scheduleRepo.updateSchedule(schedule);
     }
 
     public double getHoursWorked(String startTidString, String slutTidString) {
-        //TODO
         double timetal;
         startTidString = startTidString.substring(0,2) + "." + startTidString.substring(3,5);
         double starttid = Double.parseDouble(startTidString);
@@ -76,10 +79,13 @@ public class Services {
         if(sluttid < starttid){
             sluttid += 24;
         }
-
         timetal = sluttid - starttid;
 
         return timetal;
+    }
+
+    public Schedule findScheduleById(int schedule_id){
+        return scheduleRepo.findScheduleById(schedule_id);
     }
 
     public List<Login> getLogin(){
