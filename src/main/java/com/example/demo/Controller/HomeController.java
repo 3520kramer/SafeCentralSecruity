@@ -15,10 +15,19 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    private String status=null;
+    private String status="Admin";
 
     @Autowired
     Services services;
+
+
+    /**************************
+     **************************
+     *-Index, home og logout -*
+     **************************
+     **************************
+     ___________________________________________________________________________*/
+
 
     @GetMapping("/")
     public String index(@ModelAttribute Login lo,Model mo) {
@@ -60,6 +69,54 @@ public class HomeController {
 
         return "/index";
     }
+    @GetMapping("/homeUser")
+    public String homeUser(@ModelAttribute Login lo,Model model){
+        if (status=="User") {
+            List<NewsFeed> newsFeedList = services.getAllNewsFeed();
+            model.addAttribute("newsfeeds", newsFeedList);
+            System.out.println("getmapping homeuser" + status);
+            return "/homeUser";
+        }
+
+        return "/index";
+    }
+
+    @PostMapping ("/")
+    public String login2(@ModelAttribute Login lo,Model model, Model mo){
+        mo.addAttribute("logins", lo);
+        System.out.println("postmapping index" + status);
+        services.getLogin();
+        for (Login login : services.getLogin()) {
+            if (login.getUsername().equals(lo.getUsername()) && login.getPassword().equals(lo.getPassword()) && login.getStatus().equals("user")) {
+                status = "User";
+                System.out.println("postmapping index" + status);
+
+                return "redirect:/homeUser";
+            }
+            if(login.getUsername().equals(lo.getUsername())&&login.getPassword().equals(lo.getPassword())&&login.getStatus().equals("Admin")){
+                status="Admin";
+                System.out.println("postmapping index" + status);
+                return "redirect:/home";
+            }
+        }
+        return "/index";
+    }
+
+
+
+
+
+
+
+    /**************************
+     **************************
+     ****---- Newsfeed ----****
+     **************************
+     **************************
+     ___________________________________________________________________________*/
+
+
+
 
     @GetMapping("/createNewsfeed")
     public String createNewsFeed(@ModelAttribute Login lo,Model model){
@@ -75,17 +132,7 @@ public class HomeController {
     return "/index";
     }
 
-    @GetMapping("/homeUser")
-    public String homeUser(@ModelAttribute Login lo,Model model){
-        if (status=="User") {
-            List<NewsFeed> newsFeedList = services.getAllNewsFeed();
-            model.addAttribute("newsfeeds", newsFeedList);
-            System.out.println("getmapping homeuser" + status);
-            return "/homeUser";
-        }
 
-        return "/index";
-    }
 
     @PostMapping("/createNewsfeed")
     public String createNewsFeed(@ModelAttribute NewsFeed newsFeed,Login lo,Model model,Model mo) {
@@ -111,6 +158,26 @@ public class HomeController {
         }
         return "index";
     }
+
+
+
+
+
+
+
+
+
+
+
+
+    /**************************
+     **************************
+     ****---- Customer ----****
+     **************************
+     **************************
+     ___________________________________________________________________________*/
+
+
 
     /*
     @GetMapping("/viewCustomer")
@@ -143,15 +210,61 @@ public class HomeController {
         return "/index";
     }
 
-    @GetMapping("/viewLogin")
-    public String viewLogin(Model model) {
+    @PostMapping("/createCustomer")
+    public String create(@ModelAttribute Customer customer) {
         if(status=="Admin") {
-            List<Login> loginList = services.getAllLogins();
-            model.addAttribute("logins", loginList);
-            return "login/viewLogin";
+            services.addCustomer(customer);
+            return "redirect:/viewCustomer";
         }
         return "/index";
     }
+
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") int id) {
+
+        if (status == "Admin") {
+            boolean deleted = services.deleteCustomer(id);
+            if (deleted) {
+                return "redirect:/viewCustomer";
+            } else {
+                return "redirect:/viewCustomer";
+            }
+        }
+        return "/index";
+    }
+    @GetMapping("/updateCustomer/{id}")
+    public String update(@PathVariable("id") int id, Model model){
+        if(status=="Admin") {
+            model.addAttribute("customer", services.findCustomerById(id));
+            return "customer/updateCustomer";
+        }
+        return "/index";
+
+    }
+    @PostMapping("/updateCustomer")
+    public String update(@ModelAttribute Customer customer){
+        if(status=="Admin") {
+            services.updateCustomer(customer.getKunde_id(), customer);
+
+            return "redirect:/viewCustomer";
+        }
+        return "/index";
+    }
+
+
+
+
+
+
+    /**************************
+     **************************
+     ****---- Employee ----****
+     **************************
+     **************************
+     ___________________________________________________________________________*/
+
+
+
 /*
     @GetMapping("/viewEmployee")
     public String viewEmployee() {
@@ -187,53 +300,6 @@ public class HomeController {
        return "/index";
     }
 
-
-    @PostMapping("/createCustomer")
-    public String create(@ModelAttribute Customer customer) {
-        if(status=="Admin") {
-            services.addCustomer(customer);
-            return "redirect:/viewCustomer";
-        }
-        return "/index";
-    }
-
-    @GetMapping("/delete/{id}")
-    public String delete(@PathVariable("id") int id) {
-
-        if (status == "Admin") {
-            boolean deleted = services.deleteCustomer(id);
-            if (deleted) {
-                return "redirect:/viewCustomer";
-            } else {
-                return "redirect:/viewCustomer";
-            }
-        }
-        return "/index";
-    }
-
-    @PostMapping ("/")
-    public String login2(@ModelAttribute Login lo,Model model, Model mo){
-            mo.addAttribute("logins", lo);
-            System.out.println("postmapping index" + status);
-            services.getLogin();
-            for (Login login : services.getLogin()) {
-                if (login.getUsername().equals(lo.getUsername()) && login.getPassword().equals(lo.getPassword()) && login.getStatus().equals("user")) {
-                    status = "User";
-                    System.out.println("postmapping index" + status);
-
-                    return "redirect:/homeUser";
-                }
-                if(login.getUsername().equals(lo.getUsername())&&login.getPassword().equals(lo.getPassword())&&login.getStatus().equals("Admin")){
-                    status="Admin";
-                    System.out.println("postmapping index" + status);
-                    return "redirect:/home";
-                }
-            }
-            return "/index";
-        }
-
-
-
     @GetMapping("/deleteEmployee/{id}")
     public String deleteEmployee(@PathVariable("id") int id) {
         if (status == "Admin") {
@@ -246,6 +312,46 @@ public class HomeController {
         }
         return "/index";
     }
+    @GetMapping("/updateEmployee/{id}")
+    public String updateEmployee(@PathVariable("id") int id, Model model){
+        if(status=="Admin") {
+            model.addAttribute("employee", services.findEmployeeById(id));
+            return "employee/updateEmployee";
+        }
+        return "/index";
+    }
+    @PostMapping("/updateEmployee")
+    public String updateEmployee(@ModelAttribute Employee e){
+        if(status=="Admin"){
+            services.updateEmployee(e.getMedarbejder_id(), e);
+
+            return "redirect:/viewEmployee";
+        }
+        return "/index";
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /**************************
+     **************************
+     ****---- Schedule ----****
+     **************************
+     **************************
+     ___________________________________________________________________________*/
+
+
+
+
 
     @GetMapping("/viewSchedule")
     public String viewTodaysSchedule(Model model){
@@ -332,42 +438,32 @@ public class HomeController {
     }
 
 
-    @GetMapping("/updateCustomer/{id}")
-    public String update(@PathVariable("id") int id, Model model){
+
+
+
+
+
+
+
+
+
+    /**************************
+     **************************
+     ****----   Login  ----****
+     **************************
+     **************************
+     ___________________________________________________________________________*/
+
+
+
+    @GetMapping("/viewLogin")
+    public String viewLogin(Model model) {
         if(status=="Admin") {
-            model.addAttribute("customer", services.findCustomerById(id));
-            return "customer/updateCustomer";
+            List<Login> loginList = services.getAllLogins();
+            model.addAttribute("logins", loginList);
+            return "login/viewLogin";
         }
         return "/index";
-
     }
-    @PostMapping("/updateCustomer")
-    public String update(@ModelAttribute Customer customer){
-        if(status=="Admin") {
-            services.updateCustomer(customer.getKunde_id(), customer);
-
-            return "redirect:/viewCustomer";
-        }
-        return "/index";
-    }
-
-    @GetMapping("/updateEmployee/{id}")
-    public String updateEmployee(@PathVariable("id") int id, Model model){
-        if(status=="Admin") {
-            model.addAttribute("employee", services.findEmployeeById(id));
-            return "employee/updateEmployee";
-        }
-        return "/index";
-    }
-    @PostMapping("/updateEmployee")
-    public String updateEmployee(@ModelAttribute Employee e){
-        if(status=="Admin"){
-        services.updateEmployee(e.getMedarbejder_id(), e);
-
-        return "redirect:/employee/viewEmployee";
-        }
-       return "/index";
-    }
-
 
 }
