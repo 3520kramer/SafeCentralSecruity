@@ -263,6 +263,12 @@ public class HomeController {
         return "schedule/viewScheduleDate";
     }
 
+    @PostMapping("/viewScheduleDateFromTo")
+    public String viewScheduleDateFromTo(){
+
+        return "";
+    }
+
     @GetMapping("/viewScheduleAll")
     public String viewScheduleAll(Model model){
         List<Schedule> scheduleList = services.getAllSchedules();
