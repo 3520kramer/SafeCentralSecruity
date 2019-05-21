@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public class NewsFeedRepo {
+public class NewsFeedRepo implements RepoInterface {
 
     @Autowired
     JdbcTemplate template;

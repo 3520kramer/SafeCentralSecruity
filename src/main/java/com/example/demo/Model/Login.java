@@ -23,6 +23,7 @@ import javax.persistence.Id;
         public Login(){
 
     }
+
     public String getUsername() {
         return username;
     }

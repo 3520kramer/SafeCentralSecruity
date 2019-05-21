@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public class ScheduleRepo {
+public class ScheduleRepo implements RepoInterface{
 
     @Autowired
     JdbcTemplate template;
@@ -84,6 +84,12 @@ public class ScheduleRepo {
         String sql = "UPDATE vagtplan SET starttid = ?, sluttid = ?, timetal = ?, dato = ?, medarbejder_id_fk = ?, kunder_id_fk = ? WHERE vagtplan_id = ?";
         template.update(sql, schedule.getStarttid(), schedule.getSluttid(), schedule.getTimetal(), schedule.getDato(),
                 schedule.getMedarbejder_id(), schedule.getKunde_id(), schedule.getVagtplan_id());
+        return null;
+    }
+
+    //Skal laves
+    @Override
+    public Boolean delete(int id) {
         return null;
     }
 }

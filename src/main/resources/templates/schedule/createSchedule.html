@@ -3,8 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css">
 </head>
 <body>
+
+<div class="header">
+    <div class="menu">
+        <button class="menuButton">Menu</button>
+        <div class="menuLinks">
+            <a href="/home">Hjem</a>
+            <a href="/viewCustomer">Kunder</a>
+            <a href="/viewEmployee">Medarbejdere</a>
+            <a href="/createNewsfeed">Opret nyhedsopslag</a>
+            <a href="/viewSchedule">Vagtplan</a>
+        </div>
+    </div>
+    <div class="logo">
+        <img src="logo.png">
+    </div>
+
+</div>
     <form action="/createSchedule" method="post" id="scheduleForm">
         <input type="text" name="fornavn">
         <input type="text" name="efternavn">

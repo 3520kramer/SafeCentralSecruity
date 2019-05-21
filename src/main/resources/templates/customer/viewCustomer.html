@@ -2,10 +2,27 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>viewCustomer</title>
+    <link rel="stylesheet" type="text/css" href="css.css">
 </head>
 <body>
 
+<div class="header">
+    <div class="menu">
+        <button class="menuButton">Menu</button>
+        <div class="menuLinks">
+            <a href="/home">Hjem</a>
+            <a href="/viewCustomer">Kunder</a>
+            <a href="/viewEmployee">Medarbejdere</a>
+            <a href="/createNewsfeed">Opret nyhedsopslag</a>
+            <a href="/viewSchedule">Vagtplan</a>
+        </div>
+    </div>
+    <div class="logo">
+        <img src="logo.png">
+    </div>
+
+</div>
     <table>
         <thead>
         <tr>
@@ -42,7 +59,7 @@
         <input style="padding: 7px 10px" type="text" name="telefon" placeholder="Telefon nummer"/>
         <input style="padding: 7px 10px" type="text" name="email" placeholder="Email"/>
         <input style="padding: 7px 10px" type="text" name="CVR" placeholder="CVR"/>
-        <input style="padding: 7px 10px" type="text" name="addresse" placeholder="Addresse"/>
+        <input style="padding: 7px 10px" type="text" name="adresse" placeholder="Addresse"/>
         <input style="padding: 7px 10px" type="text" name="postnummer" placeholder="Postnummer"/>
         <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Tilføj kunde"/>
     </form>
