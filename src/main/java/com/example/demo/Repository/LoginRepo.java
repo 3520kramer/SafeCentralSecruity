@@ -27,6 +27,15 @@ public class LoginRepo {
 
     }
 
+    public List<Login> getAll() {
+        String sql = "SELECT * FROM brugere WHERE bruger_id > 1";
+        RowMapper<Login> rowMapper = new BeanPropertyRowMapper<>(Login.class);
+
+        return template.query(sql, rowMapper);
+
+    }
+
+
 
 
 

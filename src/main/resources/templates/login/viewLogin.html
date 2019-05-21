@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>viewLogin</title>
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head>
+<body>
+<div class="header">
+    <div class="menu">
+        <button class="menuButton">Menu</button>
+        <div class="menuLinks">
+            <a href="/home">Hjem</a>
+            <a href="/viewCustomer">Kunder</a>
+            <a href="/viewEmployee">Medarbejdere</a>
+            <a href="/viewLogin">Logins</a>
+            <a href="/createNewsfeed">Opret nyhedsopslag</a>
+            <a href="/viewSchedule">Vagtplan</a>
+        </div>
+    </div>
+    <div class="logo">
+        <img src="logo.png">
+    </div>
+
+</div>
+<form action="/logout" method="get">
+    <button type="submit">Log out</button>
+</form>
+<table>
+    <thead>
+    <tr>
+        <th>Brugernavn</th>
+        <th>Kodeord</th>
+        <th>Status</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="login: ${logins}">
+
+        <td th:text="${login.username}"/>
+        <td th:text="${login.password}"/>
+        <td th:text="${login.status}"/>
+
+
+    </tr>
+
+   <!-- <td><a th:href="@{'/delete/'+${customer.kunde_id}}">
+        <button>Delete</button>
+    </a>
+
+        <a th:href="@{'/updateCustomer/'+${customer.kunde_id}}">
+            <button>Update</button>
+
+        </a> -->
+
+    </td>
+    </tbody>
+</table>
+
+<!--
+<form action="/createCustomer" method="post">
+    <input style="padding: 7px 10px" type="text" name="firma_navn" placeholder="Firma navn"/>
+    <input style="padding: 7px 10px" type="text" name="kontaktperson" placeholder="Kontaktperson"/>
+    <input style="padding: 7px 10px" type="text" name="telefon" placeholder="Telefon nummer"/>
+    <input style="padding: 7px 10px" type="text" name="email" placeholder="Email"/>
+    <input style="padding: 7px 10px" type="text" name="CVR" placeholder="CVR"/>
+    <input style="padding: 7px 10px" type="text" name="adresse" placeholder="Addresse"/>
+    <input style="padding: 7px 10px" type="text" name="postnummer" placeholder="Postnummer"/>
+    <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Tilføj kunde"/>
+</form>
+-->
+
+</body>
+</html>

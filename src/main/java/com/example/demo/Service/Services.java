@@ -91,6 +91,9 @@ public class Services {
     public List<Login> getLogin(){
         return loginRepo.getLogin();
     }
+    public List<Login> getAllLogins(){
+        return loginRepo.getAll();
+    }
     public Customer updateCustomer(int id, Customer c){
         return customerRepo.updateCustomer(id, c);
     }

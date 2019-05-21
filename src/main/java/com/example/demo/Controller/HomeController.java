@@ -147,6 +147,15 @@ public class HomeController {
         return "/index";
     }
 
+    @GetMapping("/viewLogin")
+    public String viewLogin(Model model) {
+        if(status=="Admin") {
+            List<Login> loginList = services.getAllLogins();
+            model.addAttribute("logins", loginList);
+            return "login/viewLogin";
+        }
+        return "/index";
+    }
 /*
     @GetMapping("/viewEmployee")
     public String viewEmployee() {
