@@ -356,36 +356,76 @@ public class HomeController {
 
     @GetMapping("/viewSchedule")
     public String viewTodaysSchedule(Model model){
-        List<Schedule> scheduleList = services.getTodaysSchedule();
-        model.addAttribute("schedules", scheduleList);
-        return "schedule/viewSchedule";
+        if(status =="Admin"){
+            List<Schedule> scheduleList = services.getTodaysSchedule();
+            model.addAttribute("schedules", scheduleList);
+            return "schedule/viewSchedule";
+
+        }else if(status == "User"){
+            List<Schedule> scheduleList = services.getTodaysSchedule();
+            model.addAttribute("schedules", scheduleList);
+            return "schedule/viewScheduleUser";
+
+        }else{
+            return "redirect:/index";
+        }
     }
 
     @PostMapping("/viewScheduleDate")
     public String viewScheduleDate(@ModelAttribute ScheduleDate scheduleDate, Model model){
-        List<Schedule> scheduleList = services.getOneSchedule(scheduleDate.getDate());
-        model.addAttribute("schedules", scheduleList);
-        return "schedule/viewSchedule";
+        if(status =="Admin"){
+            List<Schedule> scheduleList = services.getOneSchedule(scheduleDate.getDate());
+            model.addAttribute("schedules", scheduleList);
+            return "schedule/viewSchedule";
+
+        }else if(status == "User"){
+            List<Schedule> scheduleList = services.getOneSchedule(scheduleDate.getDate());
+            model.addAttribute("schedules", scheduleList);
+            return "schedule/viewScheduleUser";
+
+        }else{
+            return "redirect:/index";
+        }
     }
 
     @PostMapping("/viewScheduleDateFromTo")
     public String viewScheduleDateFromTo(@ModelAttribute ScheduleDate scheduleDate, Model model){
-        List<Schedule> scheduleList = services.getScheduleDateFromTo(scheduleDate.getDate(), scheduleDate.getDateTo());
-        model.addAttribute("schedules", scheduleList);
-        return "schedule/viewSchedule";
+        if(status =="Admin"){
+            List<Schedule> scheduleList = services.getScheduleDateFromTo(scheduleDate.getDate(), scheduleDate.getDateTo());
+            model.addAttribute("schedules", scheduleList);
+            return "schedule/viewSchedule";
+
+        }else if(status == "User"){
+            List<Schedule> scheduleList = services.getScheduleDateFromTo(scheduleDate.getDate(), scheduleDate.getDateTo());
+            model.addAttribute("schedules", scheduleList);
+            return "schedule/viewScheduleUser";
+
+        }else{
+            return "/index";
+        }
     }
 
     @GetMapping("/viewScheduleAll")
     public String viewScheduleAll(Model model){
-        List<Schedule> scheduleList = services.getAllSchedules();
-        model.addAttribute("schedules", scheduleList);
-        return "schedule/viewSchedule";
+        if(status =="Admin"){
+            List<Schedule> scheduleList = services.getAllSchedules();
+            model.addAttribute("schedules", scheduleList);
+            return "schedule/viewSchedule";
+
+        }else if(status == "User"){
+            List<Schedule> scheduleList = services.getAllSchedules();
+            model.addAttribute("schedules", scheduleList);
+            return "schedule/viewScheduleUser";
+
+        }else{
+            return "/index";
+        }
     }
 
     @GetMapping("/createSchedule")
     public String createSchedule(@ModelAttribute Schedule schedule, Model model){
         if(status=="Admin") {
-            List<Employee> employeeList = services.getAllEmployees();
+            List<Employee> employeeList = services.getAllEmployeesNames();
             model.addAttribute("employees", employeeList);
 
             List<Customer> customerList = services.getAll();
@@ -404,6 +444,10 @@ public class HomeController {
             Customer c = services.findCustomerByName(schedule.getFirma_navn());
             schedule.setKunde_id(c.getKunde_id());
 
+            String[] splitName = schedule.getNavn().split("\\s+");
+            schedule.setFornavn(splitName[0]);
+            schedule.setEfternavn(splitName[1]);
+
             Employee e = services.findEmployeeByName(schedule.getFornavn(), schedule.getEfternavn());
             schedule.setMedarbejder_id(e.getMedarbejder_id());
 
@@ -417,6 +461,12 @@ public class HomeController {
     public String updateSchedule(@PathVariable("schedule_id") int schedule_id, Model model){
         Schedule s = services.findScheduleById(schedule_id);
         model.addAttribute("schedule", s);
+
+        List<Employee> employeeList = services.getAllEmployeesNames();
+        model.addAttribute("employees", employeeList);
+
+        List<Customer> customerList = services.getAll();
+        model.addAttribute("customers", customerList);
 
         return "/schedule/updateSchedule";
     }

@@ -31,27 +31,39 @@
     <button type="submit">Log out</button>
 </form>
     <form action="/viewScheduleDate" method="post">
-        Se vagtplan for: <input type="date" name="date" placeholder="Dato">
-
+        <p>Se vagtplan for:
+        <input type="date" name="date" placeholder="Dato">
         <input type="submit" value="Se vagter for dato">
+        </p>
     </form>
+
+    <form action="/viewScheduleDateFromTo" method="post">
+        <p>Se vagtplan fra:
+        <input type="date" name="date" placeholder="Dato">
+        til
+        <input type="date" name="dateTo" placeholder="Dato">
+        <input type="submit" value="Se vagter for dato">
+        </p>
+    </form>
+
+    <a href="/viewSchedule">
+        <button type="button">Se dagens vagter</button>
+    </a>
     <a href="/viewScheduleAll">
         <button type="button">Se alle vagter</button>
     </a>
-
-    <select>
-        <option th:each="schedule: ${schedules}" + th:text="${schedule.fornavn}"></option>
-    </select>
-
+    <a href="/createSchedule">
+        <button type="button">Opret vagt</button>
+    </a>
     <table>
         <thead>
         <tr>
             <th>
-                <p>Fornavn</p>
+                <p>Navn</p>
             </th>
-            <th>
+            <!--<th>
                 <p>Efternavn</p>
-            </th>
+            </th>-->
             <th>
                 <p>Starttid</p>
             </th>
@@ -83,11 +95,11 @@
         <tbody>
         <tr th:each="schedule: ${schedules}">
             <td>
-                <p th:text="${schedule.fornavn}"></p>
+                <p th:text="${schedule.navn}"></p>
             </td>
-            <td>
+            <!--<td>
                 <p th:text="${schedule.efternavn}"></p>
-            </td>
+            </td>-->
             <td>
                 <p th:text="${schedule.starttid}"></p>
             </td>

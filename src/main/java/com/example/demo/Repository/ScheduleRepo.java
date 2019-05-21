@@ -19,7 +19,7 @@ public class ScheduleRepo implements RepoInterface{
     JdbcTemplate template;
 
     public List<Schedule> getAllSchedules(){
-        String sql = "SELECT vagtplan_id, fornavn, efternavn, starttid, sluttid, timetal, dato, firma_navn, k.adresse, bydel, k.postnummer,\n" +
+        String sql = "SELECT vagtplan_id, CONCAT(fornavn, ' ', efternavn) AS navn, starttid, sluttid, timetal, dato, firma_navn, k.adresse, bydel, k.postnummer,\n" +
                 "medarbejder_id, kunde_id FROM vagtplan v\n" +
                 "JOIN medarbejdere m ON v.medarbejder_id_fk = m.medarbejder_id\n" +
                 "JOIN kunder k ON v.kunder_id_fk = k.kunde_id\n" +
@@ -66,9 +66,9 @@ public class ScheduleRepo implements RepoInterface{
                 "JOIN medarbejdere m ON v.medarbejder_id_fk = m.medarbejder_id\n" +
                 "JOIN kunder k ON v.kunder_id_fk = k.kunde_id\n" +
                 "JOIN byer b ON k.postnummer = b.postnummer\n" +
-                "WHERE dato <= ? AND >= ?\n" +
+                "WHERE dato >= ? AND dato <= ?\n" +
                 "GROUP BY vagtplan_id\n" +
-                "ORDER BY starttid;";
+                "ORDER BY dato;";
         RowMapper<Schedule> rowMapper = new BeanPropertyRowMapper<>(Schedule.class);
         return template.query(sql, rowMapper, date, dateTo);
     }

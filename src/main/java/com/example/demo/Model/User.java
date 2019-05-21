@@ -9,6 +9,7 @@ public abstract class User {
     private int medarbejder_id;
     private String fornavn;
     private String efternavn;
+    private String navn;
     private String ansettelsesdato;
     private String telefon;
     private String email;
@@ -39,6 +40,14 @@ public abstract class User {
 
     public void setEfternavn(String efternavn) {
         this.efternavn = efternavn;
+    }
+
+    public String getNavn() {
+        return navn;
+    }
+
+    public void setNavn(String navn) {
+        this.navn = navn;
     }
 
     public String getAnsettelsesdato() {

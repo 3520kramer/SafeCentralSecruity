@@ -13,6 +13,7 @@ public class Schedule {
     private int vagtplan_id;
     private String fornavn;
     private String efternavn;
+    private String navn;
     private String starttid;
     private String sluttid;
     private double timetal;
@@ -49,6 +50,14 @@ public class Schedule {
 
     public void setEfternavn(String efternavn) {
         this.efternavn = efternavn;
+    }
+
+    public String getNavn() {
+        return navn;
+    }
+
+    public void setNavn(String navn) {
+        this.navn = navn;
     }
 
     public String getStarttid() {

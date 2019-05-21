@@ -6,44 +6,46 @@
     <link rel="stylesheet" type="text/css" href="css.css">
     <style>
 
+
     </style>
 </head>
 <body>
-<div class="header">
-    <div class="menu">
-        <button class="menuButton">Menu</button>
-        <div class="menuLinks">
-            <a href="/home">Hjem</a>
-            <a href="/viewCustomer">Kunder</a>
-            <a href="/viewEmployee">Medarbejdere</a>
-            <a href="/viewLogin">Logins</a>
-            <a href="/createNewsfeed">Opret nyhedsopslag</a>
-            <a href="/viewSchedule">Vagtplan</a>
+    <div class="header">
+        <div class="menu">
+            <button class="menuButton">Menu</button>
+            <div class="menuLinks">
+                <a href="/home">Hjem</a>
+                <a href="/viewSchedule">Vagtplan</a>
+            </div>
+        </div>
+        <div class="logo">
+            <img src="logo.png">
         </div>
     </div>
-    <div class="logo">
-        <img src="logo.png">
-    </div>
-
-</div>
-<form action="/logout" method="get">
-    <button type="submit">Log out</button>
-</form>
-    <form action="/viewScheduleDate" method="post">
-        Se vagtplan for: <input type="date" name="date">
-        <input type="submit" value="Se vagter for dato">
+    <form action="/logout" method="get">
+        <button type="submit">Log out</button>
     </form>
+    <form action="/viewScheduleDate" method="post">
+        <p>Se vagtplan for:
+        <input type="date" name="date" placeholder="Dato">
+        <input type="submit" value="Se vagter for dato">
+        </p>
+    </form>
+
+    <form action="/viewScheduleDateFromTo" method="post">
+        <p>Se vagtplan fra:
+        <input type="date" name="date" placeholder="Dato">
+        til
+        <input type="date" name="dateTo" placeholder="Dato">
+        <input type="submit" value="Se vagter for dato">
+        </p>
+    </form>
+
     <a href="/viewSchedule">
         <button type="button">Se dagens vagter</button>
     </a>
     <a href="/viewScheduleAll">
         <button type="button">Se alle vagter</button>
-    </a>
-    <a href="/">
-        <button type="button"></button>
-    </a>
-    <a href="/createSchedule">
-        <button type="button">Opret vagt</button>
     </a>
     <table>
         <thead>
@@ -115,14 +117,6 @@
 
             <td>
                 <p th:text="${schedule.postnummer}"></p>
-            </td>
-            <td>
-                <a th:href="@{'/update_schedule/'+${schedule.vagtplan_id}}">
-                    <button type="button">Update</button>
-                </a>
-                <a th:href="@{'/delete_schedule/'+${schedule.vagtplan_id}}">
-                    <button type="button">Delete</button>
-                </a>
             </td>
         </tr>
 

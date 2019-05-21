@@ -33,6 +33,25 @@
         <input type="time" name="sluttid" min="00:00" max="23:59" step="1800" th:value="${schedule.sluttid}">
         <input type="date" name="dato" th:value="${schedule.dato}">
         <input type="text" name="firma_navn" th:value="${schedule.firma_navn}">
+
+        <br>
+
+        <input type="hidden" name="vagtplan_id" th:value="${schedule.vagtplan_id}">
+        <select list="navn" name="navn">
+            <datalist id="navn" th:each="employee : ${employees}">
+                <option th:value="${employee.navn}" th:text="${employee.navn}"></option>
+            </datalist>
+        </select>
+
+        <input type="time" name="starttid" min="00:00" max="23:59" step="1800" th:value="${schedule.starttid}">
+        <input type="time" name="sluttid" min="00:00" max="23:59" step="1800" th:value="${schedule.sluttid}">
+        <input type="date" name="dato" th:value="${schedule.dato}">
+
+        <select list="firmanavne" name="firma_navn">
+            <datalist id="firmanavne" th:each="customer : ${customers}">
+                <option th:value="${customer.firma_navn}" th:text="${customer.firma_navn}"></option>
+            </datalist>
+        </select>
         <input type="submit" value="Opdater vagt">
     </form>
 </body>

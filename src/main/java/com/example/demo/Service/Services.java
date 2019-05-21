@@ -144,6 +144,9 @@ public class Services {
         return employeeRepo.delete(id);
     }
 
+    public List<Employee> getAllEmployeesNames(){
+        return employeeRepo.getAllEmployeesName();
+    }
 
 
 
