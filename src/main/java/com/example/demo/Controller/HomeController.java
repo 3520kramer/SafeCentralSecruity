@@ -26,6 +26,14 @@ public class HomeController {
         return "/index";
     }
 
+    @GetMapping ("/logout")
+    public String logout(){
+
+        System.out.println("Works!");
+        status = null;
+        return "/index";
+    }
+
     @GetMapping("/home")
     public String home(@ModelAttribute Login lo,Model model, Model mo) {
         List<NewsFeed> newsFeedList = services.getAllNewsFeed();
@@ -162,7 +170,7 @@ public class HomeController {
     @PostMapping("/createEmployee")
     public String createEmployee(@ModelAttribute Employee e) {
         services.addEmployee(e);
-        return "redirect:/employee/viewEmployee";
+        return "redirect:/viewEmployee";
     }
 
 
@@ -224,9 +232,9 @@ public class HomeController {
     public String deleteEmployee(@PathVariable("id") int id) {
         boolean deleted = services.deleteEmployee(id);
         if (deleted) {
-            return "redirect:/employee/viewEmployee";
+            return "redirect:/viewEmployee";
         } else {
-            return "redirect:/employee/viewEmployee";
+            return "redirect:/viewEmployee";
         }
     }
 
@@ -300,7 +308,7 @@ public class HomeController {
     public String updateEmployee(@ModelAttribute Employee e){
         services.updateEmployee(e.getMedarbejder_id(), e);
 
-        return "redirect:/employee/viewEmployee";
+        return "redirect:/viewEmployee";
     }
 
 
