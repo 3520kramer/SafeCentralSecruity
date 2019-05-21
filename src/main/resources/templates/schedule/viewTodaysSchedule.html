@@ -29,12 +29,18 @@
 <form action="/logout" method="get">
     <button type="submit">Log out</button>
 </form>
-<form action="/viewScheduleDate" method="post">
+    <form action="/viewScheduleDate" method="post">
         Se vagtplan for: <input type="date" name="date">
         <input type="submit" value="Se vagter for dato">
     </form>
+    <a href="/viewSchedule">
+        <button type="button">Se dagens vagter</button>
+    </a>
     <a href="/viewScheduleAll">
         <button type="button">Se alle vagter</button>
+    </a>
+    <a href="/">
+        <button type="button"></button>
     </a>
     <a href="/createSchedule">
         <button type="button">Opret vagt</button>

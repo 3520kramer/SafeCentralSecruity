@@ -135,12 +135,13 @@ public class HomeController {
 
 
     @PostMapping("/createNewsfeed")
-    public String createNewsFeed(@ModelAttribute NewsFeed newsFeed,Login lo,Model model,Model mo) {
+    public String createNewsFeed(@ModelAttribute NewsFeed newsFeed, Login lo, Model model) {
        model.addAttribute("logins", lo);
-       mo.addAttribute("newsfeed",newsFeed);
+       model.addAttribute("newsfeed",newsFeed);
         if (status=="Admin") {
+            services.createNewsFeed(newsFeed);
             System.out.println("postmapping createnewsfeed" + status);
-            return "/home";
+            return "redirect:/home";
         }
         System.out.println("postmapping createnewsfeed" + status);
         return "/index";
@@ -368,6 +369,12 @@ public class HomeController {
         return "schedule/viewScheduleDate";
     }
 
+    @PostMapping("/viewScheduleDateFromTo")
+    public String viewScheduleDateFromTo(){
+
+        return "";
+    }
+
     @GetMapping("/viewScheduleAll")
     public String viewScheduleAll(Model model){
         List<Schedule> scheduleList = services.getAllSchedules();
@@ -401,7 +408,7 @@ public class HomeController {
             schedule.setMedarbejder_id(e.getMedarbejder_id());
 
             services.createSchedule(schedule);
-            return "redirect:/viewSchedule";
+            return "redirect:/viewScheduleAll";
         }
         return "/index";
     }
@@ -418,7 +425,7 @@ public class HomeController {
     public String deleteSchedule(@PathVariable("schedule_id") int schedule_id){
         boolean deleted = services.deleteSchedule(schedule_id);
 
-        return "/schedule/updateSchedule";
+        return "redirect:/viewSchedule";
     }
 
 

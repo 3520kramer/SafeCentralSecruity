@@ -25,7 +25,7 @@ public class ScheduleRepo implements RepoInterface{
                 "JOIN kunder k ON v.kunder_id_fk = k.kunde_id\n" +
                 "JOIN byer b ON k.postnummer = b.postnummer\n" +
                 "GROUP BY vagtplan_id\n" +
-                "ORDER BY dato DESC;";
+                "ORDER BY dato;";
         RowMapper<Schedule> rowMapper = new BeanPropertyRowMapper<>(Schedule.class);
         return template.query(sql, rowMapper);
     }
