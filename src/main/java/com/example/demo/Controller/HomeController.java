@@ -15,7 +15,7 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    private String status="none";
+    private String status=null;
 
     @Autowired
     Services services;
