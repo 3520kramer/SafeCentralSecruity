@@ -6,7 +6,6 @@
     <title>Title</title>
 </head>
 <body>
-<body>
 <div class="header">
     <div class="menu">
         <button class="menuButton">Menu</button>
@@ -20,6 +19,9 @@
     </div>
 
 </div>
+<form action="/logout" method="get">
+    <button type="submit">Log out</button>
+</form>
 
 <div class="newsfeed">
     <table align="center" th:each="newsfeed: ${newsfeeds}">

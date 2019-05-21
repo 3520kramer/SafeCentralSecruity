@@ -25,6 +25,9 @@
     </div>
 
 </div>
+<form action="/logout" method="get">
+    <button type="submit">Log out</button>
+</form>
 <form action="/viewScheduleDate" method="post">
         Se vagtplan for: <input type="date" name="date">
         <input type="submit" value="Se vagter for dato">
@@ -107,6 +110,11 @@
 
             <td>
                 <p th:text="${schedule.postnummer}"></p>
+            </td>
+            <td>
+                <a th:href="@{'/update_schedule/'+${schedule.vagtplan_id}}">
+                    <button type="button">Update</button>
+                </a>
             </td>
         </tr>
 

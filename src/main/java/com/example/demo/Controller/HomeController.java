@@ -40,6 +40,14 @@ public class HomeController {
         return "/index";
     }
 
+    @GetMapping ("/logout")
+    public String logout(){
+
+        System.out.println("Logged out");
+        status = null;
+        return "redirect:/";
+    }
+
     @GetMapping("/home")
     public String home(@ModelAttribute Login login,Model model) {
         System.out.println("getmapping home"+status);
@@ -267,6 +275,30 @@ public class HomeController {
         return "/index";
     }
 
+    @GetMapping("/update_schedule/{schedule_id}")
+    public String updateSchedule(@PathVariable("schedule_id") int schedule_id, Model model){
+        Schedule s = services.findScheduleById(schedule_id);
+        model.addAttribute("schedule", s);
+
+        return "/schedule/updateSchedule";
+    }
+
+    @PostMapping("/update_schedule")
+    public String updateSchedule(@ModelAttribute Schedule schedule){
+        Customer c = services.findCustomerByName(schedule.getFirma_navn());
+        schedule.setKunde_id(c.getKunde_id());
+
+        Employee e = services.findEmployeeByName(schedule.getFornavn(), schedule.getEfternavn());
+        schedule.setMedarbejder_id(e.getMedarbejder_id());
+
+        schedule.setTimetal(services.getHoursWorked(schedule.getStarttid(), schedule.getSluttid()));
+
+        services.updateSchedule(schedule);
+
+        return "redirect:/viewSchedule";
+    }
+
+
     @GetMapping("/updateCustomer/{id}")
     public String update(@PathVariable("id") int id, Model model){
         if(status=="Admin") {
@@ -303,8 +335,6 @@ public class HomeController {
         }
        return "/index";
     }
-
-
 
 
 }

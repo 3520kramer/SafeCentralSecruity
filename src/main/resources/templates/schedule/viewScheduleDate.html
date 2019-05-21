@@ -25,6 +25,9 @@
     </div>
 
 </div>
+<form action="/logout" method="get">
+    <button type="submit">Log out</button>
+</form>
 <form action="/viewSchedule" method="post">
     Enter a date (1980-01-01):
     <input type="date" name="dato" max="1979-12-31">
@@ -58,11 +61,9 @@
         <th>
             <p>Adresse</p>
         </th>
-
         <th>
             <p>By</p>
         </th>
-
         <th>
             <p>Postnummer</p>
         </th>
@@ -94,13 +95,16 @@
         <td>
             <p th:text="${schedule.adresse}"></p>
         </td>
-
         <td>
             <p th:text="${schedule.bydel}"></p>
         </td>
-
         <td>
             <p th:text="${schedule.postnummer}"></p>
+        </td>
+        <td>
+            <a th:href="@{'/update_schedule/'+${schedule.vagtplan_id}}">
+                <button type="button">Update</button>
+            </a>
         </td>
     </tr>
 
