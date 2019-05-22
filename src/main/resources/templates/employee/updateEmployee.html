@@ -7,6 +7,7 @@
 </head>
 <body>
 
+
 <div class="header">
     <div class="menu">
         <button class="menuButton">Menu</button>
@@ -19,14 +20,18 @@
             <a href="/viewSchedule">Vagtplan</a>
         </div>
     </div>
+
+    <form action="/logout" method="get">
+        <button type="submit" class="logout">Log out</button>
+    </form>
+
     <div class="logo">
-        <img src="../logo.png">
+        <img src="logo.png">
     </div>
 
 </div>
-<form action="/logout" method="get">
-    <button type="submit">Log out</button>
-</form>
+
+</div>
     <form action="/updateEmployee" method="post">
 
         <input style=" height: 1px; length: 1px; position: absolute; bottom: 0; visibility: hidden" type="text" name="medarbejder_id" th:value="${employee.medarbejder_id}"/>

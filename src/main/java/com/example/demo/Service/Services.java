@@ -33,6 +33,19 @@ public class Services {
         return customerRepo.addCustomer(c);
     }
 
+    public Login addLogin (Login l){
+        return loginRepo.addLogin(l);
+    }
+    public Boolean deleteLogin(int id){
+        return loginRepo.delete(id);
+    }
+    public Login updateLogin(int id, Login l){
+        return loginRepo.updateLogin(id, l);
+    }
+    public Login findLoginById(int id){
+        return loginRepo.findLoginById(id);
+    }
+
     public Boolean deleteNewsFeed(int id){
         return newsFeedRepo.delete(id);
     }

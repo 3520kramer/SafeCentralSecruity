@@ -18,14 +18,18 @@
             <a href="/viewSchedule">Vagtplan</a>
         </div>
     </div>
+
+    <form action="/logout" method="get">
+        <button type="submit" class="logout">Log out</button>
+    </form>
+
     <div class="logo">
-        <img src="logo.png" alt="Logo">
+        <img src="logo.png">
     </div>
 
 </div>
-<form action="/logout" method="get">
-    <button type="submit">Log out</button>
-</form>
+
+</div>
 <table>
     <thead>
     <tr>
@@ -44,33 +48,31 @@
         <td th:text="${login.status}"/>
 
 
-    </tr>
 
-   <td><a th:href="@{'/delete/'+${login.bruger_id}}">
+
+  <td>
+      <a th:href="@{'/deleteLogin/'+${login.bruger_id}}">
         <button>Delete</button>
     </a>
 
-        <a th:href="@{'/updateCustomer/'+${login.bruger_id}}">
+        <a th:href="@{'/updateLogin/'+${login.bruger_id}}">
             <button>Update</button>
 
         </a>
-
+  </td> </tr>
     </td>
     </tbody>
 </table>
 
-<!--
-<form action="/createCustomer" method="post">
-    <input style="padding: 7px 10px" type="text" name="firma_navn" placeholder="Firma navn"/>
-    <input style="padding: 7px 10px" type="text" name="kontaktperson" placeholder="Kontaktperson"/>
-    <input style="padding: 7px 10px" type="text" name="telefon" placeholder="Telefon nummer"/>
-    <input style="padding: 7px 10px" type="text" name="email" placeholder="Email"/>
-    <input style="padding: 7px 10px" type="text" name="CVR" placeholder="CVR"/>
-    <input style="padding: 7px 10px" type="text" name="adresse" placeholder="Addresse"/>
-    <input style="padding: 7px 10px" type="text" name="postnummer" placeholder="Postnummer"/>
-    <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Tilføj kunde"/>
+
+
+<form action="/createLogin" method="post">
+    <input style="padding: 7px 10px" type="text" name="username" placeholder="Username"/>
+    <input style="padding: 7px 10px" type="text" name="password" placeholder="Password"/>
+    <input style="padding: 7px 10px" type="text" name="status" placeholder="Status"/>
+    <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Tilføj login"/>
 </form>
--->
+
 
 </body>
 </html>

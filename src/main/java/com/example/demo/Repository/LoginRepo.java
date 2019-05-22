@@ -35,6 +35,39 @@ public class LoginRepo {
 
     }
 
+    public Login addLogin(Login l) {
+        String sql = "INSERT INTO brugere VALUES (DEFAULT, ?, ?, ?)";
+        template.update(sql, l.getUsername(), l.getUsername(), l.getStatus());
+        return null;
+    }
+
+    public Boolean delete(int id) {
+
+        String sql = "DELETE FROM brugere WHERE bruger_id = ?";
+
+        return template.update(sql, id) > 0;
+    }
+    public Login updateLogin(int id, Login l){
+        String sql = "UPDATE brugere SET username = ?, password = ?, status = ? WHERE bruger_id = ?";
+        template.update(sql, l.getUsername(), l.getPassword(), l.getStatus(), l.getBruger_id());
+        return null;
+
+    }
+    public Login findLoginById(int id){
+        String sql = "SELECT * FROM brugere WHERE bruger_id = ?";
+        RowMapper<Login> rowMapper = new BeanPropertyRowMapper<>(Login.class);
+        Login l = template.queryForObject(sql, rowMapper, id);
+        return l;
+    }
+
+    /*
+    public Customer findCustomerByName(String firmaNavn){
+        String sql = "SELECT kunde_id FROM kunder WHERE firma_navn = ?";
+        RowMapper<Customer> rowMapper = new BeanPropertyRowMapper<>(Customer.class);
+        Customer c = template.queryForObject(sql, rowMapper, firmaNavn);
+        return c;
+    }
+    */
 
 
 

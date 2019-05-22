@@ -19,14 +19,18 @@
             <a href="/viewSchedule">Vagtplan</a>
         </div>
     </div>
+
+    <form action="/logout" method="get">
+        <button type="submit" class="logout">Log out</button>
+    </form>
+
     <div class="logo">
         <img src="logo.png">
     </div>
 
 </div>
-<form action="/logout" method="get">
-    <button type="submit">Log out</button>
-</form>
+
+</div>
     <form action="/createSchedule" method="post" id="scheduleForm">
         <select list="navn" name="navn">
             <datalist id="navn" th:each="employee : ${employees}">

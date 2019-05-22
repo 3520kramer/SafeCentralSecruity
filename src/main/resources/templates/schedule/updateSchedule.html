@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+
 <div class="header">
     <div class="menu">
         <button class="menuButton">Menu</button>
@@ -17,14 +18,18 @@
             <a href="/viewSchedule">Vagtplan</a>
         </div>
     </div>
+
+    <form action="/logout" method="get">
+        <button type="submit" class="logout">Log out</button>
+    </form>
+
     <div class="logo">
         <img src="logo.png">
     </div>
 
 </div>
-<form action="/logout" method="get">
-    <button type="submit">Log out</button>
-</form>
+
+</div>
     <form action="/update_schedule/" method="post">
         <input type="hidden" name="vagtplan_id" th:value="${schedule.vagtplan_id}">
         <input type="text" name="fornavn" th:value="${schedule.fornavn}">

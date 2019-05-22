@@ -523,4 +523,59 @@ public class HomeController {
         return "/index";
     }
 
+    @PostMapping("/viewLogin")
+    public String viewLogins(Model model) {
+        if(status=="Admin") {
+            List<Login> loginList = services.getAllLogins();
+            model.addAttribute("logins", loginList);
+            return "login/viewLogin";
+        }
+        return "/index";
+
+    }
+
+    @PostMapping("/createLogin")
+    public String create(@ModelAttribute Login login) {
+        if(status=="Admin") {
+            services.addLogin(login);
+            return "redirect:/viewLogin";
+        }
+        return "/index";
+    }
+
+    @GetMapping("/deleteLogin/{id}")
+    public String deleteLogin(@PathVariable("id") int id) {
+
+        if (status == "Admin") {
+            boolean deleted = services.deleteLogin(id);
+            if (deleted) {
+                return "redirect:/viewLogin";
+            } else {
+                return "redirect:/viewLogin";
+            }
+        }
+        return "/index";
+    }
+
+
+
+    @GetMapping("/updateLogin/{id}")
+    public String updateLogin(@PathVariable("id") int id, Model model){
+        if(status=="Admin") {
+            model.addAttribute("login", services.findLoginById(id));
+            return "login/updateLogin";
+        }
+        return "/index";
+
+    }
+    @PostMapping("/updateLogin")
+    public String updateLogin(@ModelAttribute Login l){
+        if(status=="Admin") {
+            services.updateLogin(l.getBruger_id(), l);
+
+            return "redirect:/login/viewLogin";
+        }
+        return "/index";
+    }
+
 }

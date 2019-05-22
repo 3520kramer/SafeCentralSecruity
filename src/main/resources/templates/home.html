@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css.css">
 </head>
 <body>
+
 <div class="header">
     <div class="menu">
         <button class="menuButton">Menu</button>
@@ -18,14 +19,17 @@
             <a href="/viewSchedule">Vagtplan</a>
         </div>
     </div>
+
+    <form action="/logout" method="get">
+        <button type="submit" class="logout">Log out</button>
+    </form>
+
     <div class="logo">
         <img src="logo.png">
     </div>
 
 </div>
-<form action="/logout" method="get">
-    <button type="submit">Log out</button>
-</form>
+
 
     <div class="newsfeed">
         <a href="/createNewsfeed">
