@@ -1,11 +1,11 @@
 package com.example.demo.Model;
 
-public class ScheduleDate {
+public class DateFromTo {
 
     private String date;
     private String dateTo;
 
-    public ScheduleDate() {
+    public DateFromTo() {
     }
 
     public String getDate() {

@@ -24,12 +24,36 @@
         </div>
     </div>
 
+    <form action="/viewWagesDateFromTo" method="post">
+        <p> Se timetal fra:
+            <input type="date" name="date">
+            til:
+            <input type="date" name="dateTo">
+            <input type="submit" value="Se timetal for dato">
+        </p>
+    </form>
+    <a href="/viewWages">
+        <button>Se for aktuel måned</button>
+    </a>
+
     <table>
         <thead>
-
+            <tr>
+                <th>Navn</th>
+                <th>CPR</th>
+                <th>Løn</th>
+                <th>Timetal</th>
+                <th>Total løn</th>
+            </tr>
         </thead>
         <tbody>
-
+            <tr th:each="wage : ${wages}">
+                <td th:text="${wage.navn}"></td>
+                <td th:text="${wage.cpr}"></td>
+                <td th:text="${wage.lon}"></td>
+                <td th:text="${wage.timetal}"></td>
+                <td th:text="${wage.totallon}"></td>
+            </tr>
         </tbody>
     </table>
 
