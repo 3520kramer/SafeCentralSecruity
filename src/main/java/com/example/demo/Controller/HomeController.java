@@ -296,7 +296,7 @@ public class HomeController {
     public String createEmployee(@ModelAttribute Employee e) {
        if(status=="Admin") {
            services.addEmployee(e);
-           return "redirect:/employee/viewEmployee";
+           return "redirect:/viewEmployee";
        }
        return "/index";
     }
@@ -306,9 +306,9 @@ public class HomeController {
         if (status == "Admin") {
             boolean deleted = services.deleteEmployee(id);
             if (deleted) {
-                return "redirect:/employee/viewEmployee";
+                return "redirect:/viewEmployee";
             } else {
-                return "redirect:/employee/viewEmployee";
+                return "redirect:/viewEmployee";
             }
         }
         return "/index";
