@@ -372,14 +372,14 @@ public class HomeController {
     }
 
     @PostMapping("/viewScheduleDate")
-    public String viewScheduleDate(@ModelAttribute ScheduleDate scheduleDate, Model model){
+    public String viewScheduleDate(@ModelAttribute DateFromTo dateFromTo, Model model){
         if(status =="Admin"){
-            List<Schedule> scheduleList = services.getOneSchedule(scheduleDate.getDate());
+            List<Schedule> scheduleList = services.getOneSchedule(dateFromTo.getDate());
             model.addAttribute("schedules", scheduleList);
             return "schedule/viewSchedule";
 
         }else if(status == "User"){
-            List<Schedule> scheduleList = services.getOneSchedule(scheduleDate.getDate());
+            List<Schedule> scheduleList = services.getOneSchedule(dateFromTo.getDate());
             model.addAttribute("schedules", scheduleList);
             return "schedule/viewScheduleUser";
 
@@ -389,14 +389,14 @@ public class HomeController {
     }
 
     @PostMapping("/viewScheduleDateFromTo")
-    public String viewScheduleDateFromTo(@ModelAttribute ScheduleDate scheduleDate, Model model){
+    public String viewScheduleDateFromTo(@ModelAttribute DateFromTo dateFromTo, Model model){
         if(status =="Admin"){
-            List<Schedule> scheduleList = services.getScheduleDateFromTo(scheduleDate.getDate(), scheduleDate.getDateTo());
+            List<Schedule> scheduleList = services.getScheduleDateFromTo(dateFromTo.getDate(), dateFromTo.getDateTo());
             model.addAttribute("schedules", scheduleList);
             return "schedule/viewSchedule";
 
         }else if(status == "User"){
-            List<Schedule> scheduleList = services.getScheduleDateFromTo(scheduleDate.getDate(), scheduleDate.getDateTo());
+            List<Schedule> scheduleList = services.getScheduleDateFromTo(dateFromTo.getDate(), dateFromTo.getDateTo());
             model.addAttribute("schedules", scheduleList);
             return "schedule/viewScheduleUser";
 
@@ -459,39 +459,52 @@ public class HomeController {
 
     @GetMapping("/update_schedule/{schedule_id}")
     public String updateSchedule(@PathVariable("schedule_id") int schedule_id, Model model){
-        Schedule s = services.findScheduleById(schedule_id);
-        model.addAttribute("schedule", s);
+        if(status=="Admin") {
+            Schedule s = services.findScheduleById(schedule_id);
+            model.addAttribute("schedule", s);
 
-        List<Employee> employeeList = services.getAllEmployeesNames();
-        model.addAttribute("employees", employeeList);
+            List<Employee> employeeList = services.getAllEmployeesNames();
+            model.addAttribute("employees", employeeList);
 
-        List<Customer> customerList = services.getAll();
-        model.addAttribute("customers", customerList);
+            List<Customer> customerList = services.getAll();
+            model.addAttribute("customers", customerList);
 
-        return "/schedule/updateSchedule";
+            return "/schedule/updateSchedule";
+        }
+        return "index";
     }
 
     @GetMapping("/delete_schedule/{schedule_id}")
     public String deleteSchedule(@PathVariable("schedule_id") int schedule_id){
-        boolean deleted = services.deleteSchedule(schedule_id);
+        if(status=="Admin") {
+            boolean deleted = services.deleteSchedule(schedule_id);
 
-        return "redirect:/viewSchedule";
+            return "redirect:/viewSchedule";
+        }
+        return "index";
     }
 
 
     @PostMapping("/update_schedule")
     public String updateSchedule(@ModelAttribute Schedule schedule){
-        Customer c = services.findCustomerByName(schedule.getFirma_navn());
-        schedule.setKunde_id(c.getKunde_id());
+        if(status=="Admin") {
+            String[] splitName = schedule.getNavn().split("\\s+");
+            schedule.setFornavn(splitName[0]);
+            schedule.setEfternavn(splitName[1]);
 
-        Employee e = services.findEmployeeByName(schedule.getFornavn(), schedule.getEfternavn());
-        schedule.setMedarbejder_id(e.getMedarbejder_id());
+            Customer c = services.findCustomerByName(schedule.getFirma_navn());
+            schedule.setKunde_id(c.getKunde_id());
 
-        schedule.setTimetal(services.getHoursWorked(schedule.getStarttid(), schedule.getSluttid()));
+            Employee e = services.findEmployeeByName(schedule.getFornavn(), schedule.getEfternavn());
+            schedule.setMedarbejder_id(e.getMedarbejder_id());
 
-        services.updateSchedule(schedule);
+            schedule.setTimetal(services.getHoursWorked(schedule.getStarttid(), schedule.getSluttid()));
 
-        return "redirect:/viewSchedule";
+            services.updateSchedule(schedule);
+
+            return "redirect:/viewSchedule";
+        }
+        return "/index";
     }
 
 
@@ -578,4 +591,31 @@ public class HomeController {
         return "/index";
     }
 
+
+    /**************************
+     **************************
+     ****----   Wages  ----****
+     **************************
+     **************************
+     ___________________________________________________________________________*/
+
+    @GetMapping("/viewWages")
+    public String viewWages(Model model){
+        if(status=="Admin") {
+            List<Wage> wageList = services.getWagesThisMonth();
+            model.addAttribute("wages", wageList);
+            return "wage/wage";
+        }
+        return "/index";
+    }
+
+    @PostMapping("/viewWagesDateFromTo")
+    public String viewWagesDateFromTo(@ModelAttribute DateFromTo dateFromTo, Model model){
+        if(status=="Admin") {
+            List<Wage> wageList = services.getWagesDateFromTo(dateFromTo.getDate(), dateFromTo.getDateTo());
+            model.addAttribute("wages", wageList);
+            return "wage/wage";
+        }
+        return "index";
+    }
 }

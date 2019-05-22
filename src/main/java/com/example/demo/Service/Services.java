@@ -20,6 +20,8 @@ public class Services {
     ScheduleRepo scheduleRepo;
     @Autowired
     LoginRepo loginRepo;
+    @Autowired
+    WageRepo wageRepo;
 
     public List<Customer> getAll(){
         return customerRepo.getAll();
@@ -161,6 +163,13 @@ public class Services {
         return employeeRepo.getAllEmployeesName();
     }
 
+    public List<Wage> getWagesThisMonth(){
+        return wageRepo.getWagesThisMonth();
+    }
+
+    public List<Wage> getWagesDateFromTo(String dateFrom, String dateTo){
+        return wageRepo.getWagesDateFromTo(dateFrom, dateTo);
+    }
 
 
 

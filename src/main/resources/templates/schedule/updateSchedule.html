@@ -31,7 +31,7 @@
 
 </div>
     <form action="/update_schedule/" method="post">
-        <input type="hidden" name="vagtplan_id" th:value="${schedule.vagtplan_id}">
+        <!--<input type="hidden" name="vagtplan_id" th:value="${schedule.vagtplan_id}">
         <input type="text" name="fornavn" th:value="${schedule.fornavn}">
         <input type="text" name="efternavn" th:value="${schedule.efternavn}">
         <input type="time" name="starttid" min="00:00" max="23:59" step="1800" th:value="${schedule.starttid}">
@@ -40,11 +40,12 @@
         <input type="text" name="firma_navn" th:value="${schedule.firma_navn}">
 
         <br>
-
+        -->
         <input type="hidden" name="vagtplan_id" th:value="${schedule.vagtplan_id}">
         <select list="navn" name="navn">
             <datalist id="navn" th:each="employee : ${employees}">
-                <option th:value="${employee.navn}" th:text="${employee.navn}"></option>
+                <option th:if="${employee.medarbejder_id == schedule.medarbejder_id}" th:value="${employee.navn}" th:text="${employee.navn}" selected></option>
+                <option th:if="${employee.medarbejder_id != schedule.medarbejder_id}" th:value="${employee.navn}" th:text="${employee.navn}"></option>
             </datalist>
         </select>
 
@@ -54,7 +55,8 @@
 
         <select list="firmanavne" name="firma_navn">
             <datalist id="firmanavne" th:each="customer : ${customers}">
-                <option th:value="${customer.firma_navn}" th:text="${customer.firma_navn}"></option>
+                <option th:if="${customer.kunde_id == schedule.kunde_id}" th:value="${customer.firma_navn}" th:text="${customer.firma_navn}" selected></option>
+                <option th:if="${customer.kunde_id != schedule.kunde_id}" th:value="${customer.firma_navn}" th:text="${customer.firma_navn}" ></option>
             </datalist>
         </select>
         <input type="submit" value="Opdater vagt">

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head>
+<body>
+    <div class="header">
+        <div class="menu">
+            <button class="menuButton">Menu</button>
+            <div class="menuLinks">
+                <a href="/home">Hjem</a>
+                <a href="/viewCustomer">Kunder</a>
+                <a href="/viewEmployee">Medarbejdere</a>
+                <a href="/viewLogin">Logins</a>
+                <a href="/createNewsfeed">Opret nyhedsopslag</a>
+                <a href="/viewSchedule">Vagtplan</a>
+                <a href="/viewWages">Lønninger</a>
+            </div>
+        </div>
+        <div class="logo">
+            <img src="logo.png">
+        </div>
+    </div>
+
+    <form action="/viewWagesDateFromTo" method="post">
+        <p> Se timetal fra:
+            <input type="date" name="date">
+            til:
+            <input type="date" name="dateTo">
+            <input type="submit" value="Se timetal for dato">
+        </p>
+    </form>
+    <a href="/viewWages">
+        <button>Se for aktuel måned</button>
+    </a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Navn</th>
+                <th>CPR</th>
+                <th>Løn</th>
+                <th>Timetal</th>
+                <th>Total løn</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="wage : ${wages}">
+                <td th:text="${wage.navn}"></td>
+                <td th:text="${wage.cpr}"></td>
+                <td th:text="${wage.lon}"></td>
+                <td th:text="${wage.timetal}"></td>
+                <td th:text="${wage.totallon}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
