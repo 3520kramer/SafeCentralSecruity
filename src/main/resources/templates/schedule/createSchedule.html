@@ -6,27 +6,25 @@
     <link rel="stylesheet" type="text/css" href="css.css">
 </head>
 <body>
-
-<div class="header">
-    <div class="menu">
-        <button class="menuButton">Menu</button>
-        <div class="menuLinks">
-            <a href="/home">Hjem</a>
-            <a href="/viewCustomer">Kunder</a>
-            <a href="/viewEmployee">Medarbejdere</a>
-            <a href="/viewLogin">Logins</a>
-            <a href="/createNewsfeed">Opret nyhedsopslag</a>
-            <a href="/viewSchedule">Vagtplan</a>
+    <div class="header">
+        <div class="menu">
+            <button class="menuButton">Menu</button>
+            <div class="menuLinks">
+                <a href="/home">Hjem</a>
+                <a href="/viewCustomer">Kunder</a>
+                <a href="/viewEmployee">Medarbejdere</a>
+                <a href="/viewLogin">Logins</a>
+                <a href="/createNewsfeed">Opret nyhedsopslag</a>
+                <a href="/viewSchedule">Vagtplan</a>
+            </div>
+        </div>
+        <div class="logo">
+            <img src="logo.png">
         </div>
     </div>
-    <div class="logo">
-        <img src="logo.png">
-    </div>
-
-</div>
-<form action="/logout" method="get">
-    <button type="submit">Log out</button>
-</form>
+    <form action="/logout" method="get">
+        <button type="submit">Log out</button>
+    </form>
     <form action="/createSchedule" method="post" id="scheduleForm">
         <select list="navn" name="navn">
             <datalist id="navn" th:each="employee : ${employees}">
