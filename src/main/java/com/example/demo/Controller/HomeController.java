@@ -481,6 +481,10 @@ public class HomeController {
 
     @PostMapping("/update_schedule")
     public String updateSchedule(@ModelAttribute Schedule schedule){
+        String[] splitName = schedule.getNavn().split("\\s+");
+        schedule.setFornavn(splitName[0]);
+        schedule.setEfternavn(splitName[1]);
+
         Customer c = services.findCustomerByName(schedule.getFirma_navn());
         schedule.setKunde_id(c.getKunde_id());
 
@@ -522,5 +526,20 @@ public class HomeController {
         }
         return "/index";
     }
+
+
+    /**************************
+     **************************
+     ****----   Wages  ----****
+     **************************
+     **************************
+     ___________________________________________________________________________*/
+
+    @GetMapping("/viewWages")
+    public String viewWages(){
+
+        return "wage/viewWages";
+    }
+
 
 }

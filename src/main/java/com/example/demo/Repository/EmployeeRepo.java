@@ -56,7 +56,7 @@ public class EmployeeRepo implements RepoInterface{
     }
 
     public List<Employee> getAllEmployeesName(){
-        String sql = "SELECT CONCAT(fornavn, ' ', efternavn) as navn\n FROM medarbejdere";
+        String sql = "SELECT medarbejder_id, CONCAT(fornavn, ' ', efternavn) as navn\n FROM medarbejdere";
         RowMapper<Employee> rowMapper = new BeanPropertyRowMapper<>(Employee.class);
         return template.query(sql, rowMapper);
     }
