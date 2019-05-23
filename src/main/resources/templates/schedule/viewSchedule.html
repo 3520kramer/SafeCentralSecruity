@@ -20,7 +20,7 @@
             <a href="/viewEmployee">Medarbejdere</a>
             <a href="/viewLogin">Logins</a>
             <a href="/createNewsfeed">Opret nyhedsopslag</a>
-            <a href="/viewSchedule">Vagtplan</a>
+            <a href="/viewScheduleAll">Vagtplan</a>
             <a href="/viewWages">Lønninger</a>
         </div>
     </div>
@@ -37,31 +37,10 @@
 
 </div>
 
-    <form action="/viewScheduleDate" method="post">
-        <p>Se vagtplan for:
-        <input type="date" name="date">
-        <input type="submit" value="Se vagter for dato">
-        </p>
-    </form>
+<div class="container">
 
-    <form action="/viewScheduleDateFromTo" method="post">
-        <p>Se vagtplan fra:
-        <input type="date" name="date">
-        til:
-        <input type="date" name="dateTo">
-        <input type="submit" value="Se vagter for dato">
-        </p>
-    </form>
+    <div class="results">
 
-    <a href="/viewSchedule">
-        <button type="button">Se dagens vagter</button>
-    </a>
-    <a href="/viewScheduleAll">
-        <button type="button">Se alle vagter</button>
-    </a>
-    <a href="/createSchedule">
-        <button type="button">Opret vagt</button>
-    </a>
     <table>
         <thead>
         <tr>
@@ -97,6 +76,7 @@
             <th>
                 <p>Postnummer</p>
             </th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -134,17 +114,69 @@
                 <p th:text="${schedule.postnummer}"></p>
             </td>
             <td>
-                <a th:href="@{'/update_schedule/'+${schedule.vagtplan_id}}">
-                    <button type="button">Update</button>
-                </a>
+
                 <a th:href="@{'/delete_schedule/'+${schedule.vagtplan_id}}">
-                    <button type="button">Delete</button>
+                    <button type="button" class="deletebtn">Slet</button>
+                </a>
+                <a th:href="@{'/update_schedule/'+${schedule.vagtplan_id}}">
+                    <button type="button" class="updatebtn">Opdatere</button>
                 </a>
             </td>
         </tr>
 
         </tbody>
     </table>
+
+
+
+    </div>
+</div>
+<div class="sideMenu">
+
+
+    <input type="checkbox" id="Boggle">
+    <label for="Boggle">Dagens</label>
+    <div class="scheduledate">
+        <p>class schedule</p>
+        <form action="/viewScheduleDate" method="post">
+            <p>Se vagtplan for: </p>
+            <input type="date" name="date">
+            <input type="submit" value="Se vagter for dato">
+
+        </form>
+    </div>
+
+
+    <input type="checkbox" id="toggle1">
+    <label for="toggle1">Fra til</label>
+        <div class="scheduledatefromto">
+            <form action="/viewScheduleDateFromTo" method="post">
+                <p>Se vagtplan fra:</p>
+                <input type="date" name="date">
+                til:
+                <input type="date" name="dateTo">
+                <input type="submit" value="Se vagter for dato">
+
+            </form>
+        </div>
+
+
+
+
+
+<a href="/viewSchedule">
+        <button type="button" class="todaysbtn">Se dagens vagter</button>
+    </a>
+    <a href="/viewScheduleAll">
+        <button type="button" class="allsbtn">Se alle vagter</button>
+    </a>
+    <a href="/createSchedule">
+        <button type="button" class="createbtn">Opret vagt</button>
+    </a>
+</div>
+</div>
+
+
 
 </body>
 </html>

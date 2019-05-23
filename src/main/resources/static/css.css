@@ -229,3 +229,99 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
     background-color: white;
 }
+
+/*
+***
+Vagtplan
+***
+ */
+
+.scheduledate{
+    border:solid 1px black;
+    position: absolute;
+    margin-left: 50px;
+    bottom: -400px;
+    width: 200px;
+    height: 200px;
+    float: left;
+    visibility: hidden;
+}
+.scheduledatefromto{
+    border:solid 1px black;
+    position: absolute;
+    margin-left: 250px;
+    bottom: -400px;
+    width: 200px;
+    height: 200px;
+    float: left;
+    visibility: hidden;
+}
+
+.sideMenu{
+    position: fixed;
+    margin-left: 10%;
+    top: 20%;
+    height:300px;
+    width: 105px;
+}
+
+.todaysbtn{
+    float: left;
+    padding: 1px;
+    width: 100px;
+    height: 50px;
+    margin:5px;
+}
+
+.allsbtn{
+    float: left;
+    padding: 1px;
+
+    width: 100px;
+    height: 50px;
+    margin:5px;
+}
+
+.createbtn {
+    float: left;
+    padding: 1px;
+    background-color: lightgreen;
+    width: 100px;
+    height: 50px;
+    margin:5px;
+}
+
+
+
+input[type=checkbox] {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+
+}
+
+label {
+    display: block;
+    height:50px;
+    width:100px;
+    margin:5px;
+    text-align:center;
+    line-height:50px;
+    background: #08C;
+
+
+}
+
+input[type=checkbox]:checked + label + .scheduledatefromto{
+    visibility: visible;
+}
+input[type=checkbox]:checked + label + .scheduledate{
+    visibility: visible;
+}
+
+
+
+
+
+
+

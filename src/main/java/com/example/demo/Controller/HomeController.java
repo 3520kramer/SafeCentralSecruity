@@ -479,7 +479,7 @@ public class HomeController {
         if(status=="Admin") {
             boolean deleted = services.deleteSchedule(schedule_id);
 
-            return "redirect:/viewSchedule";
+            return "redirect:/viewScheduleAll";
         }
         return "index";
     }
@@ -502,7 +502,7 @@ public class HomeController {
 
             services.updateSchedule(schedule);
 
-            return "redirect:/viewSchedule";
+            return "redirect:/viewScheduleAll";
         }
         return "/index";
     }
