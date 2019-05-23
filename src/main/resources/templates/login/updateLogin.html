@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css.css">
 </head>
 <body>
 <div class="header">
@@ -24,12 +25,22 @@
     </form>
 
     <div class="logo">
-        <img src="logo.png">
+        <img src="../logo.png">
     </div>
 
 </div>
 
 </div>
+
+<form action="/updateLogin" method="post">
+
+    <input style=" height: 1px; length: 1px; position: absolute; bottom: 0; visibility: hidden" type="text" name="bruger_id" th:value="${login.bruger_id}"/>
+    <input style="padding: 7px 10px" type="text" name="fornavn" placeholder="Fornavn" th:value="${login.username}"/>
+    <input style="padding: 7px 10px" type="text" name="efternavn" placeholder="Efternavn" th:value="${login.password}"/>
+    <input style="padding: 7px 10px" type="text" name="ansettelsesdato" placeholder="Ansættelsesdato" th:value="${login.status}"/>
+
+    <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Opdater login"/>
+</form>
 
 
 </body>
