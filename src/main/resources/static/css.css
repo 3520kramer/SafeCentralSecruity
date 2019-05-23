@@ -114,17 +114,65 @@ a{
 
     background-color: chartreuse;
     border: none;
-    color:white;
+    color:black;
+    cursor: pointer;
+    height:40px;
+    width:80px;
 }
 
 .deletebtn{
     background-color: #ff2b35;
     border: none;
     color: white;
+    cursor: pointer;
+    height:40px;
+    width:80px;
+}
+
+
+.updatebtn:hover{
+    background-color: #9cde5a;
+}
+
+.deletebtnhome{
+    background-color: #ff2b35;
+    border: none;
+    color: white;
+    height: 50px;
+    width: 100px;
+    float: right;
+    cursor: pointer;
+}
+
+.deletebtn:hover{
+    background-color: #f37b80;
+}
+.deletebtnhome:hover{
+    background-color: #f37b80;
 }
 
 body{background-color:black;}
 
+.tilbage{
+    text-align: center;
+    margin-left: 40%;
+    position: absolute;
+    bottom: 10%;
+    width: 200px;
+    height: 50px;
+    background-color: #dddddd;
+    cursor: pointer;
+}
+
+
+.Centered{
+    margin-left:-30%;
+    bottom: 5%;
+    position: absolute;
+    padding: 7px 10px;
+    background-color:lightgreen;
+
+}
 /*
 ***
 Newsfeed
@@ -146,17 +194,10 @@ Newsfeed
     width: 65%;
 }
 
-.tilbage{
-    text-align: center;
-    margin-left: 40%;
-    position: absolute;
-    bottom: 10%;
-    width: 200px;
-    height: 50px;
-    background-color: #dddddd;
-    cursor: pointer;
+.NewsfeedTextbox{
+    width: 800px;
+    height: 500px;
 }
-
 
 /*
 ***
