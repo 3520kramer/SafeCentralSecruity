@@ -32,18 +32,9 @@
 
 </div>
 
-<form action="/viewWagesDateFromTo" method="post">
-        <p> Se timetal fra:
-            <input type="date" name="date">
-            til:
-            <input type="date" name="dateTo">
-            <input type="submit" value="Se timetal for dato">
-        </p>
-    </form>
-    <a href="/viewWages">
-        <button>Se for aktuel måned</button>
-    </a>
+<div class="container">
 
+    <div class="results">
     <table>
         <thead>
             <tr>
@@ -64,6 +55,22 @@
             </tr>
         </tbody>
     </table>
+    </div>
+        <div class="add">
+<form action="/viewWagesDateFromTo" method="post">
+    <p> Se timetal fra: </p>
+        <input type="date" name="date">
+        til:
+        <input type="date" name="dateTo">
+        <input type="submit" value="Se datoerne" class="standardButton2">
+
+</form>
+            <a href="/viewWages">
+                <button class="standardButton1">Se for aktuel måned</button>
+            </a>
+        </div>
+    </div>
+
 
 </body>
 </html>

@@ -32,7 +32,10 @@
 </div>
 
 </div>
+<div class="container">
 
+    <div class="results">
+        <div class="add">
     <form action="/createSchedule" method="post" id="scheduleForm">
         <select list="navn" name="navn">
             <datalist id="navn" th:each="employee : ${employees}">
@@ -49,5 +52,8 @@
         </select>
         <input type="submit" value="Opret vagt">
     </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
