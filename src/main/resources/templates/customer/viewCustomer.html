@@ -62,13 +62,13 @@
             <td th:text="${customer.postnummer}"/>
 
             <td><a th:href="@{'/delete/'+${customer.kunde_id}}">
-                <button>Delete</button>
+                <button class="deletebtn">Slet</button>
             </a>
 
                 <a th:href="@{'/updateCustomer/'+${customer.kunde_id}}">
 
 
-                    <button>Update</button>
+                    <button class="updatebtn">Opdatere</button>
 
                 </a>
 

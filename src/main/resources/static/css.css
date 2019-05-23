@@ -73,7 +73,12 @@ Alle html filer
     margin-left: 2.2%;
     margin-top: 2.2%;
     margin-bottom: 2.2%;
+    width: 160px;
+    cursor: pointer;
 
+}
+.logout:hover{
+    background-color: #f37b80;
 }
 
 .container{
@@ -83,9 +88,7 @@ Alle html filer
     min-height: 800px;
     position:relative;
     background-color:aliceblue;
-    margin-left:20%;
-    margin-right:20%;
-
+    margin:0 auto;
 }
 .results{
     padding: 2%;
@@ -101,7 +104,22 @@ a{
     text-decoration: none;
 }
 
+
+.updatebtn{
+
+    background-color: chartreuse;
+    border: none;
+    color:white;
+}
+
+.deletebtn{
+    background-color: #ff2b35;
+    border: none;
+    color: white;
+}
+
 body{background-color:black;}
+
 /*
 ***
 Newsfeed
@@ -150,3 +168,6 @@ tr:nth-child(even) {
     background-color: lightgray;
 }
 
+tr:nth-child(odd) {
+    background-color: white;
+}
