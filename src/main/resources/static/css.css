@@ -82,7 +82,7 @@ Alle html filer
 }
 
 .container{
-    width: 60%;
+    width: 80%;
     min-width: 500px;
     height: 85%;
     min-height: 800px;
@@ -95,7 +95,8 @@ Alle html filer
     text-align: center;
 }
 .add{
-    margin:10%;
+    margin-bottom:5%;
+    margin-left:5%;
     position: absolute;
     bottom: 0;
 }
@@ -173,10 +174,11 @@ table{
 }
 tr, th, td{
     border: 1px solid black;
-    padding-left: 1%;
+    padding: 4px;
 }
 th{
     background-color:beige;
+    min-width: 85px;
 }
 
 tr:nth-child(even) {

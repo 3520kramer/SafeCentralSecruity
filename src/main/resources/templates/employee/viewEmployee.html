@@ -33,7 +33,9 @@
 </div>
 
 </div>
+<div class="container">
 
+    <div class="results">
         <table>
             <thead>
                 <tr>
@@ -47,6 +49,7 @@
                     <th>Timeløn</th>
                     <th>Adresse</th>
                     <th>Postnummer</th>
+                    <th></th>
                 </tr>
             </thead>
 
@@ -65,17 +68,18 @@
 
                 <td>
                     <a th:href="@{'/deleteEmployee/'+${employee.medarbejder_id}}">
-                    <button>Delete</button>
+                    <button class="deletebtn">Slet</button>
                     </a>
                     <a th:href="@{'/updateEmployee/'+${employee.medarbejder_id}}">
-                        <button>Update</button>
+                        <button class="updatebtn">Opdatere</button>
                     </a>
                 </td>
 
             </tr>
             </tbody>
         </table>
-
+    </div>
+        <div class="add">
         <form action="/createEmployee" method="post">
             <input style="padding: 7px 10px" type="text" name="fornavn" placeholder="Fornavn"/>
             <input style="padding: 7px 10px" type="text" name="efternavn" placeholder="Efternavn"/>
@@ -88,6 +92,7 @@
             <input style="padding: 7px 10px" type="text" name="postnummer" placeholder="Postnummer"/>
             <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Tilføj medarbejder"/>
         </form>
-
+        </div>
+</div>
 </body>
 </html>

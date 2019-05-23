@@ -34,10 +34,11 @@
 </div>
 
 
+<div class="container">
+
+    <div class="results">
     <div class="newsfeed">
-        <a href="/createNewsfeed">
-            <button type="button">Opret opslag</button>
-        </a>
+
         <table align="center" th:each="newsfeed: ${newsfeeds}">
             <thead>
                 <tr>
@@ -59,7 +60,12 @@
                 </tr>
             </tbody>
         </table>
+        <a href="/createNewsfeed">
+            <button type="button" style="padding: 7px 10px; background-color:lightgreen;">Opret opslag</button>
+        </a>
     </div>
+    </div>
+</div>
 
 </body>
 </html>

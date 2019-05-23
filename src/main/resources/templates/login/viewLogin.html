@@ -31,7 +31,9 @@
 </div>
 
 </div>
+<div class="container">
 
+    <div class="results">
 <table>
     <thead>
     <tr>
@@ -54,11 +56,11 @@
 
   <td>
       <a th:href="@{'/deleteLogin/'+${login.bruger_id}}">
-        <button>Delete</button>
+        <button class="deletebtn">Slet</button>
     </a>
 
         <a th:href="@{'/updateLogin/'+${login.bruger_id}}">
-            <button>Update</button>
+            <button class="updatebtn">Opdatere</button>
 
         </a>
   </td> </tr>
@@ -67,13 +69,21 @@
 </table>
 
 
-
+</div>
+    <div class="add">
 <form action="/createLogin" method="post">
     <input style="padding: 7px 10px" type="text" name="username" placeholder="Username"/>
     <input style="padding: 7px 10px" type="text" name="password" placeholder="Password"/>
     <input style="padding: 7px 10px" type="text" name="status" placeholder="Status"/>
     <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Tilføj login"/>
 </form>
+    </div>
+</div>
+
+
+
+
+
 
 
 </body>
