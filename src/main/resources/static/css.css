@@ -100,6 +100,10 @@ Alle html filer
     bottom: 0;
 }
 
+.update{
+    margin-top: 10%;
+}
+
 a{
     text-decoration: none;
 }
@@ -139,6 +143,17 @@ Newsfeed
 }
 .newsfeed #tomcelle{
     width: 65%;
+}
+
+.tilbage{
+    text-align: center;
+    margin-left: 40%;
+    position: absolute;
+    bottom: 10%;
+    width: 200px;
+    height: 50px;
+    background-color: #dddddd;
+    cursor: pointer;
 }
 
 

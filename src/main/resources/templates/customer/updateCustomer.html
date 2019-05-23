@@ -23,7 +23,7 @@
     </div>
 
     <form action="/logout" method="get">
-        <button type="submit" class="logout">Log out</button>
+        <button type="submit" class="logout">Log ud</button>
     </form>
 
     <div class="logo">
@@ -35,6 +35,11 @@
 </div>
 
 
+<div class="container">
+
+    <div class="results">
+
+        <div class="update">
 <form action="/updateCustomer" method="post">
 
     <input style=" height: 1px; length: 1px; position: absolute; bottom: 0; visibility: hidden" type="text" name="kunde_id" th:value="${customer.kunde_id}"/>
@@ -51,7 +56,11 @@
 
     <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Opdatere kunde"/>
 </form>
+        </div>
+    </div>
 
-
+    <form action="/viewCustomer">
+    <button type="submit" class="tilbage">Tilbage</button> </form>
+</div>
 </body>
 </html>
