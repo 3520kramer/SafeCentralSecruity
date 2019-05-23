@@ -17,6 +17,7 @@
             <a href="/viewLogin">Logins</a>
             <a href="/createNewsfeed">Opret nyhedsopslag</a>
             <a href="/viewSchedule">Vagtplan</a>
+            <a href="/viewWages">Lønninger</a>
         </div>
     </div>
 
@@ -31,6 +32,7 @@
 </div>
 
 </div>
+
     <form action="/createSchedule" method="post" id="scheduleForm">
         <select list="navn" name="navn">
             <datalist id="navn" th:each="employee : ${employees}">

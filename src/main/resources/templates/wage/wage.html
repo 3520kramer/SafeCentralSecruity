@@ -6,25 +6,33 @@
     <link rel="stylesheet" type="text/css" href="css.css">
 </head>
 <body>
-    <div class="header">
-        <div class="menu">
-            <button class="menuButton">Menu</button>
-            <div class="menuLinks">
-                <a href="/home">Hjem</a>
-                <a href="/viewCustomer">Kunder</a>
-                <a href="/viewEmployee">Medarbejdere</a>
-                <a href="/viewLogin">Logins</a>
-                <a href="/createNewsfeed">Opret nyhedsopslag</a>
-                <a href="/viewSchedule">Vagtplan</a>
-                <a href="/viewWages">Lønninger</a>
-            </div>
-        </div>
-        <div class="logo">
-            <img src="logo.png">
+<div class="header">
+    <div class="menu">
+        <button class="menuButton">Menu</button>
+        <div class="menuLinks">
+            <a href="/home">Hjem</a>
+            <a href="/viewCustomer">Kunder</a>
+            <a href="/viewEmployee">Medarbejdere</a>
+            <a href="/viewLogin">Logins</a>
+            <a href="/createNewsfeed">Opret nyhedsopslag</a>
+            <a href="/viewSchedule">Vagtplan</a>
+            <a href="/viewWages">Lønninger</a>
         </div>
     </div>
 
-    <form action="/viewWagesDateFromTo" method="post">
+    <form action="/logout" method="get">
+        <button type="submit" class="logout">Log out</button>
+    </form>
+
+    <div class="logo">
+        <img src="logo.png">
+    </div>
+
+</div>
+
+</div>
+
+<form action="/viewWagesDateFromTo" method="post">
         <p> Se timetal fra:
             <input type="date" name="date">
             til:
