@@ -62,6 +62,46 @@ Alle html filer
     background-color: #72b1db;
 }
 
+.logout{
+    padding: 16px;
+    background-color: #ff2b35;
+    border:none;
+    color: white;
+    font-size: 16px;
+    float: left;
+    overflow: hidden;
+    margin-left: 2.2%;
+    margin-top: 2.2%;
+    margin-bottom: 2.2%;
+
+}
+
+.container{
+    width: 60%;
+    min-width: 500px;
+    height: 85%;
+    min-height: 800px;
+    position:relative;
+    background-color:aliceblue;
+    margin-left:20%;
+    margin-right:20%;
+
+}
+.results{
+    padding: 2%;
+    text-align: center;
+}
+.add{
+    margin:10%;
+    position: absolute;
+    bottom: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{background-color:black;}
 /*
 ***
 Newsfeed
@@ -89,12 +129,14 @@ Newsfeed
 Database tabeller
 ***
  */
+
 table{
     width: 75%;
     max-width: 75%;
     border-collapse: collapse;
     margin-bottom: 5%;
     text-align: left;
+    margin: 0 auto;
 }
 tr, th, td{
     border: 1px solid black;
@@ -108,16 +150,3 @@ tr:nth-child(even) {
     background-color: lightgray;
 }
 
-.logout{
-    padding: 16px;
-    background-color: #ff2b35;
-    border:none;
-    color: white;
-    font-size: 16px;
-    float: left;
-    overflow: hidden;
-    margin-left: 2.2%;
-    margin-top: 2.2%;
-    margin-bottom: 2.2%;
-
-}
