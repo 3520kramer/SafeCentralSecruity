@@ -30,7 +30,7 @@
     </form>
 
     <div class="logo">
-        <img src="logo.png">
+        <a href="/home"><img src="logo.png"></a>
     </div>
 
 </div>
@@ -131,13 +131,13 @@
 
     </div>
 </div>
+</div>
 <div class="sideMenu">
 
 
     <input type="checkbox" id="Boggle">
     <label for="Boggle">Dagens</label>
     <div class="scheduledate">
-        <p>class schedule</p>
         <form action="/viewScheduleDate" method="post">
             <p>Se vagtplan for: </p>
             <input type="date" name="date">
@@ -149,22 +149,22 @@
 
     <input type="checkbox" id="toggle1">
     <label for="toggle1">Fra til</label>
-        <div class="scheduledatefromto">
-            <form action="/viewScheduleDateFromTo" method="post">
-                <p>Se vagtplan fra:</p>
-                <input type="date" name="date">
-                til:
-                <input type="date" name="dateTo">
-                <input type="submit" value="Se vagter for dato">
+    <div class="scheduledatefromto">
+        <form action="/viewScheduleDateFromTo" method="post">
+            <p>Se vagtplan fra:</p>
+            <input type="date" name="date">
+            til:
+            <input type="date" name="dateTo">
+            <input type="submit" value="Se vagter for dato">
 
-            </form>
-        </div>
-
-
+        </form>
+    </div>
 
 
 
-<a href="/viewSchedule">
+
+
+    <a href="/viewSchedule">
         <button type="button" class="todaysbtn">Se dagens vagter</button>
     </a>
     <a href="/viewScheduleAll">
@@ -173,7 +173,6 @@
     <a href="/createSchedule">
         <button type="button" class="createbtn">Opret vagt</button>
     </a>
-</div>
 </div>
 
 

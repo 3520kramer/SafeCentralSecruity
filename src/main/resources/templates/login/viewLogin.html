@@ -25,7 +25,7 @@
     </form>
 
     <div class="logo">
-        <img src="logo.png">
+        <a href="/home"><img src="logo.png"></a>
     </div>
 
 </div>
@@ -70,16 +70,22 @@
 
 
 </div>
-    <div class="add">
-<form action="/createLogin" method="post">
-    <input style="padding: 7px 10px" type="text" name="username" placeholder="Username"/>
-    <input style="padding: 7px 10px" type="text" name="password" placeholder="Password"/>
-    <input style="padding: 7px 10px" type="text" name="status" placeholder="Status"/>
-    <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Tilføj login"/>
-</form>
+
+
+
+</div>
+<div class="sideMenu">
+    <input type="checkbox" id="Boggle">
+    <label for="Boggle">Tilføj login</label>
+    <div class="placeholder">
+        <form action="/createLogin" method="post">
+            <input style="padding: 7px 10px" type="text" name="username" placeholder="Username"/>
+            <input style="padding: 7px 10px" type="text" name="password" placeholder="Password"/>
+            <input style="padding: 7px 10px" type="text" name="status" placeholder="Status"/>
+            <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Tilføj login"/>
+        </form>
     </div>
 </div>
-
 
 
 

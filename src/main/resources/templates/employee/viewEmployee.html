@@ -27,7 +27,7 @@
     </form>
 
     <div class="logo">
-        <img src="logo.png">
+        <a href="/home"><img src="logo.png"></a>
     </div>
 
 </div>
@@ -79,20 +79,26 @@
             </tbody>
         </table>
     </div>
-        <div class="add">
-        <form action="/createEmployee" method="post">
-            <input style="padding: 7px 10px" type="text" name="fornavn" placeholder="Fornavn"/>
-            <input style="padding: 7px 10px" type="text" name="efternavn" placeholder="Efternavn"/>
-            <input style="padding: 7px 10px" type="text" name="ansettelsesdato" placeholder="Ansættelsesdato"/>
-            <input style="padding: 7px 10px" type="text" name="telefon" placeholder="Telefon"/>
-            <input style="padding: 7px 10px" type="text" name="email" placeholder="Email"/>
-            <input style="padding: 7px 10px" type="text" name="cpr" placeholder="CPR"/>
-            <input style="padding: 7px 10px" type="text" name="lon" placeholder="Løn"/>
-            <input style="padding: 7px 10px" type="text" name="adresse" placeholder="Adresse"/>
-            <input style="padding: 7px 10px" type="text" name="postnummer" placeholder="Postnummer"/>
-            <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Tilføj medarbejder"/>
-        </form>
-        </div>
+
+</div>
+
+<div class="sideMenu">
+<input type="checkbox" id="Boggle">
+<label for="Boggle">Tilføj medarbejder</label>
+<div class="placeholder">
+    <form action="/createEmployee" method="post">
+        <input style="padding: 7px 10px" type="text" name="fornavn" placeholder="Fornavn"/>
+        <input style="padding: 7px 10px" type="text" name="efternavn" placeholder="Efternavn"/>
+        <input style="padding: 7px 10px" type="text" name="ansettelsesdato" placeholder="Ansættelsesdato"/>
+        <input style="padding: 7px 10px" type="text" name="telefon" placeholder="Telefon"/>
+        <input style="padding: 7px 10px" type="text" name="email" placeholder="Email"/>
+        <input style="padding: 7px 10px" type="text" name="cpr" placeholder="CPR"/>
+        <input style="padding: 7px 10px" type="text" name="lon" placeholder="Løn"/>
+        <input style="padding: 7px 10px" type="text" name="adresse" placeholder="Adresse"/>
+        <input style="padding: 7px 10px" type="text" name="postnummer" placeholder="Postnummer"/>
+        <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Tilføj medarbejder"/>
+    </form>
+</div>
 </div>
 </body>
 </html>

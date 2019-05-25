@@ -27,7 +27,7 @@
     </form>
 
     <div class="logo">
-        <img src="../logo.png">
+        <a href="/home"><img src="../logo.png"></a>
     </div>
 
 </div>
@@ -44,17 +44,17 @@
 
     <input style=" height: 1px; length: 1px; position: absolute; bottom: 0; visibility: hidden" type="text" name="kunde_id" th:value="${customer.kunde_id}"/>
 
-    <input style="padding: 7px 10px" type="text" name="firma_navn" th:value="${customer.firma_navn}"/>
+    <input class="inputsfields" type="text" name="firma_navn" th:value="${customer.firma_navn}"/>
 
-    <input style="padding: 7px 10px" type="text" name="kontaktperson" th:value="${customer.kontaktperson}"/>
-    <input style="padding: 7px 10px" type="text" name="telefon"  th:value="${customer.telefon}"/>
-    <input style="padding: 7px 10px" type="text" name="email"  th:value="${customer.email}"/>
-    <input style="padding: 7px 10px" type="text" name="CVR" th:value="${customer.CVR}"/>
-    <input style="padding: 7px 10px" type="text" name="adresse" th:value="${customer.adresse}"/>
-    <input style="padding: 7px 10px" type="text" name="postnummer"  th:value="${customer.postnummer}"/>
+    <input class="inputsfields" type="text" name="kontaktperson" th:value="${customer.kontaktperson}"/>
+    <input class="inputsfields" type="text" name="telefon"  th:value="${customer.telefon}"/>
+    <input class="inputsfields" type="text" name="email"  th:value="${customer.email}"/>
+    <input class="inputsfields" type="text" name="CVR" th:value="${customer.CVR}"/>
+    <input class="inputsfields" type="text" name="adresse" th:value="${customer.adresse}"/>
+    <input class="inputsfields" type="text" name="postnummer"  th:value="${customer.postnummer}"/>
 
 
-    <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Opdatere kunde"/>
+    <input style="background-color:lightgreen; height: 41px; width: 194px;" type="submit" value="Opdatere kunde"/>
 </form>
         </div>
     </div>

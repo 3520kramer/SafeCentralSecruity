@@ -25,7 +25,7 @@
     </form>
 
     <div class="logo">
-        <img src="../logo.png">
+        <a href="/home"><img src="../logo.png"></a>
     </div>
 
 </div>
@@ -39,11 +39,12 @@
 <form action="/updateLogin" method="post">
 
     <input style=" height: 1px; length: 1px; position: absolute; bottom: 0; visibility: hidden" type="text" name="bruger_id" th:value="${login.bruger_id}"/>
-    <input style="padding: 7px 10px" type="text" name="fornavn" placeholder="Fornavn" th:value="${login.username}"/>
-    <input style="padding: 7px 10px" type="text" name="efternavn" placeholder="Efternavn" th:value="${login.password}"/>
-    <input style="padding: 7px 10px" type="text" name="ansettelsesdato" placeholder="Ansættelsesdato" th:value="${login.status}"/>
 
-    <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Opdater login"/>
+    <input class="inputsfields" name="fornavn" placeholder="Fornavn" th:value="${login.username}"/>
+    <input class="inputsfields" type="text" name="efternavn" placeholder="Efternavn" th:value="${login.password}"/>
+    <input class="inputsfields" type="text" name="ansettelsesdato" placeholder="Ansættelsesdato" th:value="${login.status}"/>
+
+    <input style="background-color:lightgreen; height: 41px; width: 194px;" type="submit" value="Opdater login"/>
 </form>
         </div>
     </div>

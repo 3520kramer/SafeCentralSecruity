@@ -25,7 +25,7 @@
     </form>
 
     <div class="logo">
-        <img src="logo.png">
+        <a href="/home"><img src="logo.png"></a>
     </div>
 
 </div>
@@ -56,20 +56,29 @@
         </tbody>
     </table>
     </div>
-        <div class="add">
-<form action="/viewWagesDateFromTo" method="post">
-    <p> Se timetal fra: </p>
-        <input type="date" name="date">
-        til:
-        <input type="date" name="dateTo">
-        <input type="submit" value="Se datoerne" class="standardButton2">
+</div>
 
-</form>
-            <a href="/viewWages">
-                <button class="standardButton1">Se for aktuel måned</button>
-            </a>
-        </div>
+
+<div class="sideMenu">
+    <input type="checkbox" id="Boggle">
+    <label for="Boggle">Se mellem</label>
+    <div class="placeholder">
+
+        <form action="/viewWagesDateFromTo" method="post">
+            <p> Se timetal fra: </p>
+            <input type="date" name="date">
+            til:
+            <input type="date" name="dateTo">
+            <input type="submit" value="Se datoerne" class="standardButton2">
+
+        </form>
     </div>
+
+    <a href="/viewWages">
+        <button style="margin-top:5px;" class="standardButton1">Se for aktuel måned</button>
+    </a>
+
+</div>
 
 
 </body>

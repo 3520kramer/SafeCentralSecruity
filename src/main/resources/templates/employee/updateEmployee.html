@@ -27,7 +27,7 @@
     </form>
 
     <div class="logo">
-        <img src="../logo.png">
+        <a href="/home"><img src="../logo.png"></a>
     </div>
 
 </div>
@@ -42,17 +42,17 @@
     <form action="/updateEmployee" method="post">
 
         <input style=" height: 1px; length: 1px; position: absolute; bottom: 0; visibility: hidden" type="text" name="medarbejder_id" th:value="${employee.medarbejder_id}"/>
-        <input style="padding: 7px 10px" type="text" name="fornavn" placeholder="Fornavn" th:value="${employee.fornavn}"/>
-        <input style="padding: 7px 10px" type="text" name="efternavn" placeholder="Efternavn" th:value="${employee.efternavn}"/>
-        <input style="padding: 7px 10px" type="text" name="ansettelsesdato" placeholder="Ansættelsesdato" th:value="${employee.ansettelsesdato}"/>
-        <input style="padding: 7px 10px" type="text" name="telefon" placeholder="Telefon" th:value="${employee.telefon}"/>
-        <input style="padding: 7px 10px" type="text" name="email" placeholder="Email" th:value="${employee.email}"/>
-        <input style="padding: 7px 10px" type="text" name="cpr" placeholder="CPR" th:value="${employee.cpr}"/>
-        <input style="padding: 7px 10px" type="text" name="lon" placeholder="Timeløn" th:value="${employee.lon}"/>
-        <input style="padding: 7px 10px" type="text" name="adresse" placeholder="Adresse" th:value="${employee.adresse}"/>
-        <input style="padding: 7px 10px" type="text" name="postnummer" placeholder="Postnummer" th:value="${employee.postnummer}"/>
+        <input class="inputsfields" type="text" name="fornavn" placeholder="Fornavn" th:value="${employee.fornavn}"/>
+        <input class="inputsfields" type="text" name="efternavn" placeholder="Efternavn" th:value="${employee.efternavn}"/>
+        <input class="inputsfields" type="text" name="ansettelsesdato" placeholder="Ansættelsesdato" th:value="${employee.ansettelsesdato}"/>
+        <input class="inputsfields" type="text" name="telefon" placeholder="Telefon" th:value="${employee.telefon}"/>
+        <input class="inputsfields" type="text" name="email" placeholder="Email" th:value="${employee.email}"/>
+        <input class="inputsfields" type="text" name="cpr" placeholder="CPR" th:value="${employee.cpr}"/>
+        <input class="inputsfields" type="text" name="lon" placeholder="Timeløn" th:value="${employee.lon}"/>
+        <input class="inputsfields" type="text" name="adresse" placeholder="Adresse" th:value="${employee.adresse}"/>
+        <input class="inputsfields" type="text" name="postnummer" placeholder="Postnummer" th:value="${employee.postnummer}"/>
 
-        <input style="padding: 7px 10px; background-color:lightgreen;" type="submit" value="Opdater medarbejder"/>
+        <input style="background-color:lightgreen; height: 41px; width: 194px;" type="submit" value="Opdater medarbejder"/>
     </form>
         </div>
     </div>
