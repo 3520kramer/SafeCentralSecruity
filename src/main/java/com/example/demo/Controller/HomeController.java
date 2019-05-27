@@ -220,6 +220,7 @@ public class HomeController {
         return "/index";
     }
 
+
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id) {
 
