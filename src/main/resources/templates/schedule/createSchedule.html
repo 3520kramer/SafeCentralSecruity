@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:width="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -35,25 +35,27 @@
 <div class="container">
 
     <div class="results">
-        <div class="add">
+        <div class="update">
     <form action="/createSchedule" method="post" id="scheduleForm">
-        <select list="navn" name="navn">
+        <select list="navn" name="navn" style="width: 195px; height: 39px;">
             <datalist id="navn" th:each="employee : ${employees}">
                 <option th:value="${employee.navn}" th:text="${employee.navn}"></option>
             </datalist>
         </select>
-        <input type="time" name="starttid" min="00:00" max="23:59" step="1800">
-        <input type="time" name="sluttid" min="00:00" max="23:59" step="1800">
-        <input type="date" name="dato">
-        <select list="firmanavne" name="firma_navn">
+        <input class="inputsfields" type="time" name="starttid" min="00:00" max="23:59" step="1800">
+        <input class="inputsfields" type="time" name="sluttid" min="00:00" max="23:59" step="1800">
+        <input class="inputsfields" type="date" name="dato">
+        <select list="firmanavne" name="firma_navn" style="width: 195px; height: 39px;">
             <datalist id="firmanavne" th:each="customer : ${customers}">
                 <option th:value="${customer.firma_navn}" th:text="${customer.firma_navn}"></option>
             </datalist>
         </select>
-        <input type="submit" value="Opret vagt">
+        <input type="submit" value="Opret vagt" style="background-color:lightgreen; height: 39px; width: 195px;">
     </form>
         </div>
     </div>
+    <form action="/viewScheduleAll">
+        <button type="submit" class="tilbage">Tilbage</button> </form>
 </div>
 </body>
 </html>

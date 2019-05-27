@@ -40,16 +40,16 @@
 
     <input style=" height: 1px; length: 1px; position: absolute; bottom: 0; visibility: hidden" type="text" name="bruger_id" th:value="${login.bruger_id}"/>
 
-    <input class="inputsfields" name="fornavn" placeholder="Fornavn" th:value="${login.username}"/>
-    <input class="inputsfields" type="text" name="efternavn" placeholder="Efternavn" th:value="${login.password}"/>
-    <input class="inputsfields" type="text" name="ansettelsesdato" placeholder="Ansættelsesdato" th:value="${login.status}"/>
+    <input class="inputsfields" type="text" name="username" placeholder="Username" th:value="${login.username}"/>
+    <input class="inputsfields" type="text" name="password" placeholder="Password" th:value="${login.password}"/>
+    <input class="inputsfields" type="text" name="status" placeholder="Bruger status" th:value="${login.status}"/>
 
     <input style="background-color:lightgreen; height: 41px; width: 194px;" type="submit" value="Opdater login"/>
 </form>
         </div>
     </div>
     <form action="/viewLogin">
-        <button type="submit" class="tilbage">Tilbage</button> </form>
+        <button type="submit" class="tilbage">Tilbage</button></form>
 </div>
 
 </body>

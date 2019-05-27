@@ -39,7 +39,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
+                   
                     <th>Fornavn</th>
                     <th>Efternavn</th>
                     <th>Ansættelsesdato</th>
@@ -55,7 +55,7 @@
 
             <tbody>
             <tr th:each="employee: ${employees}">
-                <td th:text="${employee.medarbejder_id}"/>
+
                 <td th:text="${employee.fornavn}"/>
                 <td th:text="${employee.efternavn}"/>
                 <td th:text="${employee.ansettelsesdato}"/>

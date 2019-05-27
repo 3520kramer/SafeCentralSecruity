@@ -41,7 +41,9 @@ import javax.persistence.Id;
     }
 
     public String getStatus() {
-        return status;
+
+            return status;
+
     }
 
     public void setStatus(String status) {

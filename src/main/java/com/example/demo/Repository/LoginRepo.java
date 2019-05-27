@@ -36,8 +36,15 @@ public class LoginRepo {
     }
 
     public Login addLogin(Login l) {
-        String sql = "INSERT INTO brugere VALUES (DEFAULT, ?, ?, ?)";
-        template.update(sql, l.getUsername(), l.getUsername(), l.getStatus());
+        String sql1 = "INSERT INTO brugere VALUES (DEFAULT, ?, ?, ?)";
+        System.out.println(l.getStatus());
+        if (l.getStatus().equals(null)) {
+            String sql = "INSERT INTO brugere VALUES (DEFAULT, ?, ?, DEFAULT)";
+            template.update(sql, l.getUsername(), l.getUsername(), l.getStatus());
+        } else {
+            template.update(sql1, l.getUsername(), l.getUsername(), l.getStatus());
+            return null;
+        }
         return null;
     }
 

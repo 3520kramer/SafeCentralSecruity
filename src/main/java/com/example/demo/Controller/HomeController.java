@@ -551,7 +551,9 @@ public class HomeController {
     public String create(@ModelAttribute Login login) {
         if(status=="Admin") {
             services.addLogin(login);
+            System.out.println("Login runs");
             return "redirect:/viewLogin";
+
         }
         return "/index";
     }
@@ -586,7 +588,7 @@ public class HomeController {
         if(status=="Admin") {
             services.updateLogin(l.getBruger_id(), l);
 
-            return "redirect:/login/viewLogin";
+            return "redirect:/viewLogin";
         }
         return "/index";
     }
