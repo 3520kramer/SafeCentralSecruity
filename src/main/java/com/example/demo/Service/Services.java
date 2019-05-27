@@ -92,7 +92,7 @@ public class Services {
         double startTidTime = Double.parseDouble(startTidTimeString);
         double slutTidTime = Double.parseDouble(slutTidTimeString);
 
-        if(slutTidTime < startTidTime){
+        if(slutTidTime <= startTidTime){
             slutTidTime += 24;
         }
 
