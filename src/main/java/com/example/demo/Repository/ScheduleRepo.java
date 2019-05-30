@@ -19,7 +19,8 @@ public class ScheduleRepo implements RepoInterface{
     JdbcTemplate template;
 
     public List<Schedule> getAllSchedules(){
-        String sql = "SELECT vagtplan_id, CONCAT(fornavn, ' ', efternavn) AS navn, starttid, sluttid, timetal, dato, firma_navn, k.adresse, bydel, k.postnummer,\n" +
+        String sql = "SELECT vagtplan_id, CONCAT(fornavn, ' ', efternavn) AS navn, starttid, sluttid, " +
+                "timetal, dato, firma_navn, k.adresse, bydel, k.postnummer,\n" +
                 "medarbejder_id, kunde_id FROM vagtplan v\n" +
                 "JOIN medarbejdere m ON v.medarbejder_id_fk = m.medarbejder_id\n" +
                 "JOIN kunder k ON v.kunder_id_fk = k.kunde_id\n" +
@@ -75,7 +76,8 @@ public class ScheduleRepo implements RepoInterface{
 
     public Schedule createSchedule(Schedule s){
         String sql = "INSERT INTO vagtplan VALUES(null, ?, ?, ?, ?, ?, ?)";
-        template.update(sql, s.getStarttid(), s.getSluttid(), s.getTimetal(), s.getDato(), s.getMedarbejder_id(), s.getKunde_id());
+        template.update(sql, s.getStarttid(), s.getSluttid(), s.getTimetal(), s.getDato(),
+                s.getMedarbejder_id(), s.getKunde_id());
         return null;
     }
 
