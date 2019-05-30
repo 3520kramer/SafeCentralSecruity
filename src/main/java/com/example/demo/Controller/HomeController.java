@@ -1,7 +1,15 @@
+//Gør Controller package en del af com.example.demo package
+
 package com.example.demo.Controller;
 
+// Importere alle model klasserne og service klassen
 import com.example.demo.Model.*;
 import com.example.demo.Service.Services;
+
+/* Importere springframework til at få vores autowire, controller
+post/getmapping, pathvariable og modelattribute til at fungere
+ */
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,13 +18,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+// importere java list som bruges senere til når vi bruger listerne
 import java.util.List;
 
+//Deklare at dette er vores controller
 @Controller
 public class HomeController {
 
-    private String status="Admin";
+    // String som bruges til login
+    private String status = null;
 
+    //Autowires services klassen så der er forbindelse mellem homecontroller og services klasserne
     @Autowired
     Services services;
 
@@ -28,16 +40,21 @@ public class HomeController {
      **************************
      ___________________________________________________________________________*/
 
-
+/*
+Index siden, som bruger Login klassen som parameter
+til at gå alle vores logins igennem med et enhanced for-loop, hvor den sammenligner
+de indtastede værdier med vores allerede eksiterende værdier. Derefter ændre
+den status til den tilsvarende bruger. Hvis den ikke finder en bruger med
+matchende værdier med databasen, så smider den dig tilbage til index siden.
+ */
     @GetMapping("/")
-    public String index(@ModelAttribute Login lo,Model mo) {
-        mo.addAttribute("logins", lo);
+    public String index(Login lo, Model mo) {
         for (Login login : services.getLogin()) {
-            if (login.getUsername().equals(lo.getUsername()) && login.getPassword().equals(lo.getPassword()) && login.getStatus().equals("Admin")) {
+            if (login.getUsername().equals(lo.getUsername()) && login.getPassword().equals(lo.getPassword()) && login.getStatus().equalsIgnoreCase("Admin")) {
                 status="Admin";
                 System.out.println("getmapping index" + status);
                 return "/home";
-            } if (login.getUsername().equals(lo.getUsername())&& login.getPassword().equals(lo.getPassword()) && login.getStatus().equals("user")) {
+            } if (login.getUsername().equals(lo.getUsername())&& login.getPassword().equals(lo.getPassword()) && login.getStatus().equalsIgnoreCase("user")) {
                 this.status="User";
                 System.out.println("getmapping index" + status);
                 return "/homeUser";
@@ -49,6 +66,8 @@ public class HomeController {
         return "/index";
     }
 
+    //Log ud til at ændre vores status tilbage til null og redirect til index siden
+
     @GetMapping ("/logout")
     public String logout(){
 
@@ -57,10 +76,17 @@ public class HomeController {
         return "redirect:/";
     }
 
+    /*
+    Getmapping for home, hvor vi opretter en list til at hente alt fra newsfeed
+    via. spring framework model.addAttribute
+
+    Samme er ens for storset alle andre getmapping bare med forskellige tables og html sider der bliver hentet
+    */
+
     @GetMapping("/home")
-    public String home(@ModelAttribute Login login,Model model) {
+    public String home(Model model) {
         System.out.println("getmapping home"+status);
-        if (status=="Admin"){
+        if (status.equalsIgnoreCase("Admin")){
         List<NewsFeed> newsFeedList = services.getAllNewsFeed();
         model.addAttribute("newsfeeds", newsFeedList);
         System.out.println("getmapping home" + status);
@@ -69,9 +95,11 @@ public class HomeController {
 
         return "/index";
     }
+
+
     @GetMapping("/homeUser")
-    public String homeUser(@ModelAttribute Login lo,Model model){
-        if (status=="User") {
+    public String homeUser(Model model){
+        if (status.equalsIgnoreCase("user")) {
             List<NewsFeed> newsFeedList = services.getAllNewsFeed();
             model.addAttribute("newsfeeds", newsFeedList);
             System.out.println("getmapping homeuser" + status);
@@ -81,19 +109,23 @@ public class HomeController {
         return "/index";
     }
 
+    /*
+    Vi bruger en postmapping hvor vi bruger Login som parameter til at bruge et enhanced for-loop
+    som går igennem vores Logins fra databasen og sammenligner med de indtastede værdier i gennem vores "lo" objekt.
+    */
+
+
     @PostMapping ("/")
-    public String login2(@ModelAttribute Login lo,Model model, Model mo){
-        mo.addAttribute("logins", lo);
-        System.out.println("postmapping index" + status);
-        services.getLogin();
+    public String login2(Login lo){
+
         for (Login login : services.getLogin()) {
-            if (login.getUsername().equals(lo.getUsername()) && login.getPassword().equals(lo.getPassword()) && login.getStatus().equals("user")) {
+            if (login.getUsername().equals(lo.getUsername()) && login.getPassword().equals(lo.getPassword()) && login.getStatus().equalsIgnoreCase("user")) {
                 status = "User";
                 System.out.println("postmapping index" + status);
 
                 return "redirect:/homeUser";
             }
-            if(login.getUsername().equals(lo.getUsername())&&login.getPassword().equals(lo.getPassword())&&login.getStatus().equals("Admin")){
+            if(login.getUsername().equals(lo.getUsername())&&login.getPassword().equals(lo.getPassword())&&login.getStatus().equalsIgnoreCase("Admin")){
                 status="Admin";
                 System.out.println("postmapping index" + status);
                 return "redirect:/home";
@@ -106,8 +138,6 @@ public class HomeController {
 
 
 
-
-
     /**************************
      **************************
      ****---- Newsfeed ----****
@@ -115,14 +145,17 @@ public class HomeController {
      **************************
      ___________________________________________________________________________*/
 
+/*
 
+
+
+ */
 
 
     @GetMapping("/createNewsfeed")
-    public String createNewsFeed(@ModelAttribute Login lo,Model model){
-      model.addAttribute("logins",lo);
+    public String createNewsFeed(){
       System.out.println(status);
-      if(status=="Admin") {
+      if(status.equalsIgnoreCase("Admin")) {
           System.out.println("Getmapping - createnewsfeed" + status);
           return "newsfeed/createNewsfeed";
       } else if (status=="User"){

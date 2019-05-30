@@ -25,42 +25,23 @@
     </form>
 
     <div class="logo">
-        <a href="/home"><img src="logo.png"></a>
+        <a href="/homeUser"><img src="logo.png"></a>
     </div>
 
 </div>
 
 </div>
-    <form action="/viewScheduleDate" method="post">
-        <p>Se vagtplan for:
-        <input type="date" name="date" placeholder="Dato">
-        <input type="submit" value="Se vagter for dato">
-        </p>
-    </form>
 
-    <form action="/viewScheduleDateFromTo" method="post">
-        <p>Se vagtplan fra:
-        <input type="date" name="date" placeholder="Dato">
-        til
-        <input type="date" name="dateTo" placeholder="Dato">
-        <input type="submit" value="Se vagter for dato">
-        </p>
-    </form>
+<div class="container">
 
-    <a href="/viewSchedule">
-        <button type="button">Se dagens vagter</button>
-    </a>
-    <a href="/viewScheduleAll">
-        <button type="button">Se alle vagter</button>
-    </a>
+    <div class="results">
+
+
     <table>
         <thead>
         <tr>
             <th>
-                <p>Fornavn</p>
-            </th>
-            <th>
-                <p>Efternavn</p>
+                <p>Navn</p>
             </th>
             <th>
                 <p>Starttid</p>
@@ -93,10 +74,7 @@
         <tbody>
         <tr th:each="schedule: ${schedules}">
             <td>
-                <p th:text="${schedule.fornavn}"></p>
-            </td>
-            <td>
-                <p th:text="${schedule.efternavn}"></p>
+                <p th:text="${schedule.navn}"></p>
             </td>
             <td>
                 <p th:text="${schedule.starttid}"></p>
@@ -128,6 +106,39 @@
 
         </tbody>
     </table>
+    </div>
+</div>
+        <div class="sideMenu">
+            <input type="checkbox" id="Boggle">
+            <label for="Boggle">Dagens</label>
+            <div class="scheduledate">
+                <form action="/viewScheduleDate" method="post">
+                    <p>Se vagtplan for:
+                        <input type="date" name="date" placeholder="Dato">
+                        <input type="submit" value="Se vagter for dato">
+                    </p>
+                </form>
+            </div>
 
+            <input type="checkbox" id="toggle1">
+            <label for="toggle1">Fra til</label>
+            <div class="scheduledatefromto">
+                <form action="/viewScheduleDateFromTo" method="post">
+                    <p>Se vagtplan fra:
+                        <input type="date" name="date" placeholder="Dato">
+                        til
+                        <input type="date" name="dateTo" placeholder="Dato">
+                        <input type="submit" value="Se vagter for dato">
+                    </p>
+                </form>
+            </div>
+
+            <a href="/viewSchedule">
+                <button type="button" class="todaysbtn">Se dagens vagter</button>
+            </a>
+            <a href="/viewScheduleAll">
+                <button type="button" class="allsbtn">Se alle vagter</button>
+            </a>
+        </div>
 </body>
 </html>

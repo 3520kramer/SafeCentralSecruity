@@ -21,15 +21,19 @@
     </form>
 
     <div class="logo">
-        <a href="/home"><img src="logo.png"></a>
+        <a href="/homeUser"><img src="logo.png"></a>
     </div>
 
 </div>
 
 </div>
 
-<div class="newsfeed">
-    <table align="center" th:each="newsfeed: ${newsfeeds}">
+<div class="container">
+
+    <div class="results">
+    <div class="newsfeed">
+
+        <table align="center" th:each="newsfeed: ${newsfeeds}">
         <thead>
         <tr>
             <th>
@@ -44,6 +48,8 @@
         </tr>
         </tbody>
     </table>
+</div>
+    </div>
 </div>
 </body>
 </html>
