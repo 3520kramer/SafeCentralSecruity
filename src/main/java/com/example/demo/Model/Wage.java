@@ -3,6 +3,14 @@ package com.example.demo.Model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/*
+Importere entity og id sådan så vi kan forbinde til vores database
+Entity bruges i stedet for @Table prøver på at forbinde til mens
+id er vores id i de forskellige tabeller
+
+Klasse indeholder desuden en masse fields samt getter og setter
+ */
+
 @Entity
 public class Wage {
 
