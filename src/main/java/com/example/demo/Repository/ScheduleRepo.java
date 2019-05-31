@@ -120,19 +120,27 @@ public class ScheduleRepo implements RepoInterface{
     vores timetal og laver så til sidst en return på timetal.
      */
 
+    /*
+    For at få starttimen og sluttimen gemt i hver sin double har vi startet med at lave 2 strings, en for starttidspunktet og en for sluttidspunktet.
+    Vi bruger så substring, til at kun at få de 2 første tegn fra både starttidspunktet og sluttidspunktet, herefter parser vi det til doubles.
+    Nu har vi starttimen og sluttimen gemt i hver sin double.
+
+    For at få startminut og slutminut gemt i hver sin double, gentager vi samme proces, dog starter vores substring fra 3. tegn
+    og slutter på 5. tegn (eksclusiv 5. tegn), for så at gøre dette til timer, dividerer vi selvfølgelig med 60.
+
+    For at sikre os, at der ikke kommer minus antal timer, laver vi et if-statement som sætter timetal til sluttiden i minutter.
+    Hvis starttime og sluttime er det samme, men slutminut er højere end startminut. Hvis dette ikke er sandt, fortsætter vi til et if-else-statement,
+    som lægger 24 timer til, hvis sluttidspunktet er mindre end starttidspunkt, eller er det samme som starttidspunktet.
+    Derefteror trækker vi starttimen fra sluttimen, og herefter lægger vi summen af slutminut og startminut til, for at få timetallet.
+    */
+
     public double getHoursWorked(String startTidString, String slutTidString) {
-        double timetal;
+        double timetal = 0;
         String startTidTimeString = startTidString.substring(0,2);
         String slutTidTimeString = slutTidString.substring(0,2);
 
         double startTidTime = Double.parseDouble(startTidTimeString);
         double slutTidTime = Double.parseDouble(slutTidTimeString);
-
-        if(slutTidTime <= startTidTime){
-            slutTidTime += 24;
-        }
-
-        timetal = slutTidTime - startTidTime;
 
         String startTidMinutString = startTidString.substring(3,5);
         String slutTidMinutString = slutTidString.substring(3,5);
@@ -143,8 +151,14 @@ public class ScheduleRepo implements RepoInterface{
         startTidMinut /= 60;
         slutTidMinut /= 60;
 
-        timetal += slutTidMinut - startTidMinut;
+        if(slutTidTime == startTidTime && slutTidMinut > startTidMinut){
+            timetal = slutTidMinut;
+
+        }else if(slutTidTime <= startTidTime){
+            slutTidTime += 24;
+
+            timetal = slutTidTime - startTidTime + (slutTidMinut - startTidMinut);
+        }
         return timetal;
     }
-
 }
