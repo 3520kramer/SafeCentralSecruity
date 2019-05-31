@@ -182,44 +182,8 @@ public class Services {
      ___________________________________________________________________________*/
 
 
-    /*
-    Til at udregne vores timetal fra et starttidspunkt og et sluttidspunkt har vi startet med at lave 2 strings,
-    et for starttidspunktet og et for sluttidspunktet, vi bruger så substring, til at kun at få de 2 første tegn
-    fra både starttidspunktet og sluttidspunktet, herefter parser vi det til doubles, nu har vi det antal timer nogen har arbejdet
-
-    For så at sikre os, at der ikke kommer minus antal timer (i tilfælde af en vagt overskrider midnat) har vi så lavet en if statement,
-    som tillægger 24 timer til, hvis sluttidspunktet er mindre end starttidspunkt, eller er det samme som starttidspunktet.
-
-    For så at udregne minut antallet, laver vi så 2 nye strings, hvor vi gentager samme proces, dog med at vi starter fra 3. tegn
-    og slutter på 5. tegn (eksclusiv 5. tegn), for så at gøre dette til timetal, dividere vi selvfølgelig med 60, for senere at lægge det til
-    vores timetal og laver så til sidst en return på timetal.
-     */
-
     public double getHoursWorked(String startTidString, String slutTidString) {
-        double timetal;
-        String startTidTimeString = startTidString.substring(0,2);
-        String slutTidTimeString = slutTidString.substring(0,2);
-
-        double startTidTime = Double.parseDouble(startTidTimeString);
-        double slutTidTime = Double.parseDouble(slutTidTimeString);
-
-        if(slutTidTime <= startTidTime){
-            slutTidTime += 24;
-        }
-
-        timetal = slutTidTime - startTidTime;
-
-        String startTidMinutString = startTidString.substring(3,5);
-        String slutTidMinutString = slutTidString.substring(3,5);
-
-        double startTidMinut = Double.parseDouble(startTidMinutString);
-        double slutTidMinut = Double.parseDouble(slutTidMinutString);
-
-        startTidMinut /= 60;
-        slutTidMinut /= 60;
-
-        timetal += slutTidMinut - startTidMinut;
-        return timetal;
+            return scheduleRepo.getHoursWorked(startTidString, slutTidString);
     }
     public List<Wage> getWagesThisMonth(){
         return wageRepo.getWagesThisMonth();
