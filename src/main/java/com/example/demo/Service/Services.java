@@ -120,6 +120,7 @@ public class Services {
     public List<Schedule> getAllSchedules(){
         return scheduleRepo.getAllSchedules();
     }
+
     public Schedule updateSchedule(Schedule schedule){
         return scheduleRepo.updateSchedule(schedule);
     }

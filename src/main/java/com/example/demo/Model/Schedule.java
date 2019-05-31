@@ -2,10 +2,6 @@ package com.example.demo.Model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 @Entity
 public class Schedule {

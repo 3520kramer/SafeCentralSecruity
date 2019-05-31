@@ -5,6 +5,7 @@
     <title>viewCustomer</title>
     <link rel="stylesheet" type="text/css" href="css.css">
 </head>
+
 <body>
 
 
@@ -61,20 +62,14 @@
             <td th:text="${customer.adresse}"/>
             <td th:text="${customer.postnummer}"/>
 
-            <td><a th:href="@{'/delete/'+${customer.kunde_id}}">
+            <td>
+                <a th:href="@{'/delete/'+${customer.kunde_id}}">
                 <button class="deletebtn">Slet</button>
-            </a>
-
-                <a th:href="@{'/updateCustomer/'+${customer.kunde_id}}">
-
-
-                    <button class="updatebtn">Opdatere</button>
-
                 </a>
-
+                <a th:href="@{'/updateCustomer/'+${customer.kunde_id}}">
+                    <button class="updatebtn">Opdatere</button>
+                </a>
             </td>
-
-
         </tr>
         </tbody>
     </table>
