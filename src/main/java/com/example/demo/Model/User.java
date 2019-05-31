@@ -1,5 +1,9 @@
 package com.example.demo.Model;
 
+/*
+Abstrakt klasse, som ikke burde have entity og id i sig, da vi aldrig egentlig bruger klassen til andet end nedarvning
+ */
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 

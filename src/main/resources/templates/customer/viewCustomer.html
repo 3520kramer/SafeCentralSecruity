@@ -2,9 +2,12 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>viewCustomer</title>
+    <title>SCS</title>
     <link rel="stylesheet" type="text/css" href="css.css">
+    <link rel="icon" href="icon.png" type="image/x-icon" />
+
 </head>
+
 <body>
 
 
@@ -60,20 +63,14 @@
             <td th:text="${customer.adresse}"/>
             <td th:text="${customer.postnummer}"/>
 
-            <td><a th:href="@{'/delete/'+${customer.kunde_id}}">
+            <td>
+                <a th:href="@{'/delete/'+${customer.kunde_id}}">
                 <button class="deletebtn">Slet</button>
-            </a>
-
-                <a th:href="@{'/updateCustomer/'+${customer.kunde_id}}">
-
-
-                    <button class="updatebtn">Opdatere</button>
-
                 </a>
-
+                <a th:href="@{'/updateCustomer/'+${customer.kunde_id}}">
+                    <button class="updatebtn">Opdatere</button>
+                </a>
             </td>
-
-
         </tr>
         </tbody>
     </table>

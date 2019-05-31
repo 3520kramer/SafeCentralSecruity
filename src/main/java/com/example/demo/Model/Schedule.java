@@ -1,11 +1,15 @@
 package com.example.demo.Model;
 
+/*
+Importere entity og id sådan så vi kan forbinde til vores database
+Entity bruges i stedet for @Table prøver på at forbinde til mens
+id er vores id i de forskellige tabeller
+
+Klasse indeholder desuden en masse fields samt getter og setter
+ */
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 @Entity
 public class Schedule {
