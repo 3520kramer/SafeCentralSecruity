@@ -1,3 +1,9 @@
+<!--
+Starter med at sætte html lang til engelsk (Selvom dette ikke har nogen betydning for os), derefter henter vi noget xhtml,
+for at få vores thymeleaf til at fungere.
+Vi sætter vores titel til SCS, linker til vores CSS fil og linker til vores lille icon på siden.
+-->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,6 +14,15 @@
 
 </head>
 <body>
+<!--
+Vi opretter først en div sektion, som vi bruger til at lave vores blå header med css klassen "header"
+Derefter laver vi en ny div sektion til at lave vores drop down menu css klassen "menu"
+Herefter laver vi en knap, som ikke kun er til for at vi kan pege på den, sådan så vores
+3. div sektion kommer frem og viser alle vores a href, som linker til de forskellige sider, som man kan tilgå
+
+inde i div sektionen med "header" klassen, har vi også lavet en div sektion med vores logo,
+samt en form action, som bruger en knap til at logge ud.
+-->
 
 <div class="header">
     <div class="menu">
@@ -33,6 +48,19 @@
 </div>
 
 </div>
+<!--
+Div container, med div results i, som har div update, hvor starter med at tage vagtplan id med fra forhenværende side.
+
+Derefter laver vi en select list, hvori vi opretter en datalist for at hente alle employees med en enhanced for-loop.
+Hvori vi laver en if statement med thymeleaf, som mens vi kører for-loopet igennem vælger den medarbejder, hvis id matcher
+det id som vi har fået med fra forhenværende side
+
+Herefter har vi 3 inputs, som tager deres værdier med fra forhenværende side, og kan ændres
+
+Til sidst har vi samme kode som ovenstående, bare med kunder i stedet for medarbejder.
+
+Udover dette, er der også en tilbage knap, som går tilbage til forhenværende side, hvis brugeren ønsker dette
+-->
 
 <div class="container">
 
@@ -40,16 +68,7 @@
 
         <div class="update">
     <form action="/update_schedule/" method="post">
-        <!--<input type="hidden" name="vagtplan_id" th:value="${schedule.vagtplan_id}">
-        <input type="text" name="fornavn" th:value="${schedule.fornavn}">
-        <input type="text" name="efternavn" th:value="${schedule.efternavn}">
-        <input type="time" name="starttid" min="00:00" max="23:59" step="1800" th:value="${schedule.starttid}">
-        <input type="time" name="sluttid" min="00:00" max="23:59" step="1800" th:value="${schedule.sluttid}">
-        <input type="date" name="dato" th:value="${schedule.dato}">
-        <input type="text" name="firma_navn" th:value="${schedule.firma_navn}">
 
-        <br>
-        -->
         <input type="hidden" name="vagtplan_id" th:value="${schedule.vagtplan_id}">
         <select list="navn" name="navn" style="width: 195px; height: 39px;">
             <datalist id="navn" th:each="employee : ${employees}">

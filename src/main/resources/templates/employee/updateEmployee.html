@@ -1,3 +1,9 @@
+<!--
+Starter med at sætte html lang til engelsk (Selvom dette ikke har nogen betydning for os), derefter henter vi noget xhtml,
+for at få vores thymeleaf til at fungere.
+Vi sætter vores titel til SCS, linker til vores CSS fil og linker til vores lille icon på siden.
+-->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,7 +14,15 @@
 
 </head>
 <body>
+<!--
+Vi opretter først en div sektion, som vi bruger til at lave vores blå header med css klassen "header"
+Derefter laver vi en ny div sektion til at lave vores drop down menu css klassen "menu"
+Herefter laver vi en knap, som ikke kun er til for at vi kan pege på den, sådan så vores
+3. div sektion kommer frem og viser alle vores a href, som linker til de forskellige sider, som man kan tilgå
 
+inde i div sektionen med "header" klassen, har vi også lavet en div sektion med vores logo,
+samt en form action, som bruger en knap til at logge ud.
+-->
 
 <div class="header">
     <div class="menu">
@@ -35,6 +49,16 @@
 
 </div>
 
+<!--
+Overordnet er næsten alle vores html sider bygget op med 3 forskellige div sektioner, med det øverste lag med css klassen "container"
+Herefter en div med css klassen "results" og alt afhængig af html siden, en div med css klassen "update"
+Inde i div med container css klassen, er der også en form og button til at gå tilbage til viewCustomer såfremt det er en update side
+
+Inde i div med update css klassen, er der en form med en masse input klasser, som henter de forskellige informationer til at opdatere
+Vores medarbejder id input, har noget style inline, hvor vi gør den skjult, 1x1 pixels og rykker den helt ned til venstre
+
+-->
+
 <div class="container">
 
     <div class="results">
@@ -42,7 +66,7 @@
         <div class="update">
     <form action="/updateEmployee" method="post">
 
-        <input style=" height: 1px; length: 1px; position: absolute; bottom: 0; visibility: hidden" type="text" name="medarbejder_id" th:value="${employee.medarbejder_id}"/>
+        <input style=" height: 1px; length: 1px; position: absolute; bottom: 0; left:0; visibility: hidden" type="text" name="medarbejder_id" th:value="${employee.medarbejder_id}"/>
         <input class="inputsfields" type="text" name="fornavn" placeholder="Fornavn" th:value="${employee.fornavn}"/>
         <input class="inputsfields" type="text" name="efternavn" placeholder="Efternavn" th:value="${employee.efternavn}"/>
         <input class="inputsfields" type="text" name="ansettelsesdato" placeholder="Ansættelsesdato" th:value="${employee.ansettelsesdato}"/>

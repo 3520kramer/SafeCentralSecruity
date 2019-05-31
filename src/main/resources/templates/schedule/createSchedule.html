@@ -1,3 +1,9 @@
+<!--
+Starter med at sætte html lang til engelsk (Selvom dette ikke har nogen betydning for os), derefter henter vi noget xhtml,
+for at få vores thymeleaf til at fungere.
+Vi sætter vores titel til SCS, linker til vores CSS fil og linker til vores lille icon på siden.
+-->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:width="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,6 +14,16 @@
 
 </head>
 <body>
+
+<!--
+Vi opretter først en div sektion, som vi bruger til at lave vores blå header med css klassen "header"
+Derefter laver vi en ny div sektion til at lave vores drop down menu css klassen "menu"
+Herefter laver vi en knap, som ikke kun er til for at vi kan pege på den, sådan så vores
+3. div sektion kommer frem og viser alle vores a href, som linker til de forskellige sider, som man kan tilgå
+
+inde i div sektionen med "header" klassen, har vi også lavet en div sektion med vores logo,
+samt en form action, som bruger en knap til at logge ud.
+-->
 
 <div class="header">
     <div class="menu">
@@ -33,6 +49,19 @@
 </div>
 
 </div>
+
+<!--
+Div container, med div results i, hvori vi opretter en select list, for at man kan vælge, bestemte elementer
+Heri opretter vi en datalist, hvor vi kører en enhanced for-loop for alle employees, hvor vi ligger hver enkelt
+employee som et valg
+
+Så opretter vi 3 input felter, hvor vi kun godtager tid og en bestemt dato.
+
+Herefter gentager vi ovenstående funktion med select list, datalist osv. bare med kunder
+
+Til sidst har vi lavet en knap til at gå tilbage, så fremt det var en fejl du endte på denne her side
+-->
+
 <div class="container">
 
     <div class="results">

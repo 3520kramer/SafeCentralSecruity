@@ -1,3 +1,10 @@
+<!--
+Starter med at sætte html lang til engelsk (Selvom dette ikke har nogen betydning for os), derefter henter vi noget xhtml,
+for at få vores thymeleaf til at fungere.
+Vi sætter vores titel til SCS, linker til vores CSS fil og linker til vores lille icon på siden.
+-->
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +15,16 @@
 
 </head>
 <body>
+
+<!--
+Vi opretter en div som har er i midten grundet align center, hvori vi smider vores logo og laver en form
+i den form er der input for brugernavn og for password, som vi påkræver brugeren indtaster for at komme videre
+(Du kan ikke indtaste tomme felter), det går så ud og bliver sammenlignet med vores database
+
+Hvis informationerne som er indtastet passer med noget fra databasen, bliver du så ført hen til enten home eller homeUser
+
+
+-->
 
  <div align="center">
      <img src="logo.png"  width="600" height="400">
@@ -20,16 +37,6 @@
         <input type="password" name="password" placeholder="Password" required="required"><br><br>
          <input type="submit" value="Login">
     </form></div>
-
-<!--
-For testing purposes, remove later
--->
-<form action="/viewCustomer" method="post">
-    <button>Customer</button>
-</form>
- <form action="/home" method="post">
-     <button>Home</button>
- </form>
 
 
 

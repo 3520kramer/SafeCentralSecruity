@@ -1,3 +1,10 @@
+<!--
+Starter med at sætte html lang til engelsk (Selvom dette ikke har nogen betydning for os), derefter henter vi noget xhtml,
+for at få vores thymeleaf til at fungere.
+Vi sætter vores titel til SCS, linker til vores CSS fil og linker til vores lille icon på siden.
+-->
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -8,6 +15,16 @@
 
 </head>
 <body>
+
+<!--
+Vi opretter først en div sektion, som vi bruger til at lave vores blå header med css klassen "header"
+Derefter laver vi en ny div sektion til at lave vores drop down menu css klassen "menu"
+Herefter laver vi en knap, som ikke kun er til for at vi kan pege på den, sådan så vores
+3. div sektion kommer frem og viser alle vores a href, som linker til de forskellige sider, som man kan tilgå
+
+inde i div sektionen med "header" klassen, har vi også lavet en div sektion med vores logo,
+samt en form action, som bruger en knap til at logge ud.
+-->
 
 <div class="header">
     <div class="menu">
@@ -33,6 +50,16 @@
 </div>
 
 </div>
+
+<!--
+home og homeUser html filerne er de 2 eneste som afskiller sig fra normen med deres opbygning, da de har en div newsfeed,
+i den er der et normalt table, hvor vi henter alt fra newsfeed, men også indhenter tid og dato på de forskellige nyhedsopslag
+
+I denne her html fil, er der dog mulighed for at slette opslag og en knap til at oprette opslag,
+slet opslag, går ind og matcher id´et i den tilsvarende række, mens opret opslag linker til en ny html fil
+
+Vi bruger colspan til at opdele cellen
+-->
 
 
 <div class="container">

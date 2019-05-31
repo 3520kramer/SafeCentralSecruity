@@ -1,3 +1,9 @@
+<!--
+Starter med at sætte html lang til engelsk (Selvom dette ikke har nogen betydning for os), derefter henter vi noget xhtml,
+for at få vores thymeleaf til at fungere.
+Vi sætter vores titel til SCS, linker til vores CSS fil og linker til vores lille icon på siden.
+-->
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -9,6 +15,16 @@
 </head>
 <body>
 
+<!--
+Vi opretter først en div sektion, som vi bruger til at lave vores blå header med css klassen "header"
+Derefter laver vi en ny div sektion til at lave vores drop down menu css klassen "menu"
+Herefter laver vi en knap, som ikke kun er til for at vi kan pege på den, sådan så vores
+3. div sektion kommer frem og viser alle vores a href, som linker til de forskellige sider, som man kan tilgå
+
+inde i div sektionen med "header" klassen, har vi også lavet en div sektion med vores logo,
+samt en form action, som bruger en knap til at logge ud.
+-->
+
 <div class="header">
     <div class="menu">
         <button class="menuButton">Menu</button>
@@ -17,7 +33,6 @@
             <a href="/viewCustomer">Kunder</a>
             <a href="/viewEmployee">Medarbejdere</a>
             <a href="/viewLogin">Logins</a>
-            <a href="/createNewsfeed">Opret nyhedsopslag</a>
             <a href="/viewScheduleAll">Vagtplan</a>
             <a href="/viewWages">Lønninger</a>
         </div>
@@ -35,6 +50,19 @@
 
 </div>
 
+<!--
+Overordnet er næsten alle vores html sider bygget op med 3 forskellige div sektioner, med det øverste lag med css klassen "container"
+Herefter en div med css klassen "results" og til sidst en div med css klassen "update", hvis man er inde på en update side
+
+Hvis der ikke er en div med update css klassen, er der bare en table, som bliver fremvist, med subfunktionerne opdatere og slet
+Tilmed så er der også en sidemenu, til hvert enkelsides funktioner, som er placeret uden for div med container css klassen
+
+I denne her html fil, er der lavet en opret vagt, som linker til createSchedule, hvor vi kan indtaste det nødvendige data
+
+Udover dette, har denne her html fil også mulighed for at enten at se alle vagter, se vagter for dagen, se vagter for en bestemt dato
+og til sidst se vagter mellem 2 forskellige dato´er
+-->
+
 <div class="container">
 
     <div class="results">
@@ -42,75 +70,29 @@
     <table>
         <thead>
         <tr>
-            <th>
-                <p>Navn</p>
-            </th>
-            <!--<th>
-                <p>Efternavn</p>
-            </th>-->
-            <th>
-                <p>Starttid</p>
-            </th>
-            <th>
-                <p>Sluttid</p>
-            </th>
-            <th>
-                <p>Timetal</p>
-            </th>
-            <th>
-                <p>Dato</p>
-            </th>
-            <th>
-                <p>Firma</p>
-            </th>
-            <th>
-                <p>Adresse</p>
-            </th>
-
-            <th>
-                <p>By</p>
-            </th>
-
-            <th>
-                <p>Postnummer</p>
-            </th>
+            <th>Navn</th>
+            <th>Starttid</th>
+            <th>Sluttid</th>
+            <th>Timetal</th>
+            <th>Dato</th>
+            <th>Firma</th>
+            <th>Adresse</th>
+            <th>By</th>
+            <th>Postnummer</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="schedule: ${schedules}">
-            <td>
-                <p th:text="${schedule.navn}"></p>
-            </td>
-            <!--<td>
-                <p th:text="${schedule.efternavn}"></p>
-            </td>-->
-            <td>
-                <p th:text="${schedule.starttid}"></p>
-            </td>
-            <td>
-                <p th:text="${schedule.sluttid}"></p>
-            </td>
-            <td>
-                <p th:text="${schedule.timetal}"></p>
-            </td>
-            <td>
-                <p th:text="${schedule.dato}"></p>
-            </td>
-            <td>
-                <p th:text="${schedule.firma_navn}"></p>
-            </td>
-            <td>
-                <p th:text="${schedule.adresse}"></p>
-            </td>
-
-            <td>
-                <p th:text="${schedule.bydel}"></p>
-            </td>
-
-            <td>
-                <p th:text="${schedule.postnummer}"></p>
-            </td>
+            <td th:text="${schedule.navn}" />
+            <td th:text="${schedule.starttid}" />
+            <td th:text="${schedule.sluttid}" />
+            <td th:text="${schedule.timetal}" />
+            <td th:text="${schedule.dato}" />
+            <td th:text="${schedule.firma_navn}" />
+            <td th:text="${schedule.adresse}" />
+            <td th:text="${schedule.bydel}" />
+            <td th:text="${schedule.postnummer}" />
             <td>
 
                 <a th:href="@{'/delete_schedule/'+${schedule.vagtplan_id}}">
