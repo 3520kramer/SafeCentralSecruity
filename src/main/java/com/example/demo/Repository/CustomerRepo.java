@@ -52,18 +52,21 @@ public class CustomerRepo implements RepoInterface {
         return template.update(sql, id) > 0;
     }
 
+    //Funktion til at opdatere kunder, vi bruger int id og selve Customer klassen som parameter til at upnå dette
     public Customer updateCustomer(int id, Customer c){
         String sql = "UPDATE kunder SET firma_navn = ?, kontaktperson = ?, telefon = ?, email = ?, CVR = ?, adresse = ?, postnummer = ? WHERE kunde_id = ?";
         template.update(sql, c.getFirma_navn(), c.getKontaktperson(), c.getTelefon(), c.getEmail(), c.getCVR(), c.getAdresse(), c.getPostnummer(), c.getKunde_id());
         return null;
 
     }
+    //Søge funktion til at bruge kunder via. deres id til f.eks. delete
     public Customer findCustomerById(int id){
         String sql = "SELECT * FROM kunder WHERE kunde_id = ?";
         RowMapper<Customer> rowMapper = new BeanPropertyRowMapper<>(Customer.class);
         Customer c = template.queryForObject(sql, rowMapper, id);
         return c;
     }
+    //Søge funktion baseret på navn i stedet for, brugt i schedule
     public Customer findCustomerByName(String firmaNavn){
         String sql = "SELECT kunde_id FROM kunder WHERE firma_navn = ?";
         RowMapper<Customer> rowMapper = new BeanPropertyRowMapper<>(Customer.class);
