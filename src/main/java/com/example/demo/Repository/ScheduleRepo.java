@@ -131,11 +131,11 @@ public class ScheduleRepo implements RepoInterface{
     For at sikre os, at der ikke kommer minus antal timer, laver vi et if-statement som sætter timetal til sluttiden i minutter.
     Hvis starttime og sluttime er det samme, men slutminut er højere end startminut. Hvis dette ikke er sandt, fortsætter vi til et if-else-statement,
     som lægger 24 timer til, hvis sluttidspunktet er mindre end starttidspunkt, eller er det samme som starttidspunktet.
-    Derefteror trækker vi starttimen fra sluttimen, og herefter lægger vi summen af slutminut og startminut til, for at få timetallet.
+    Derefter trækker vi starttimen fra sluttimen, og herefter lægger vi summen af slutminut og startminut til, for at få timetallet.
     */
 
     public double getHoursWorked(String startTidString, String slutTidString) {
-        double timetal = 0;
+        double timetal;
         String startTidTimeString = startTidString.substring(0,2);
         String slutTidTimeString = slutTidString.substring(0,2);
 
@@ -154,9 +154,11 @@ public class ScheduleRepo implements RepoInterface{
         if(slutTidTime == startTidTime && slutTidMinut > startTidMinut){
             timetal = slutTidMinut;
 
-        }else if(slutTidTime <= startTidTime){
+        }else if(slutTidTime <= startTidTime) {
             slutTidTime += 24;
+            timetal = slutTidTime - startTidTime + (slutTidMinut - startTidMinut);
 
+        }else {
             timetal = slutTidTime - startTidTime + (slutTidMinut - startTidMinut);
         }
         return timetal;
