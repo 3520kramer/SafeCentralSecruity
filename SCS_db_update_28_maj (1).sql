@@ -1,3 +1,6 @@
+-- De ansvarlige for at oprette scriptet er Mads og Kasper
+-- Videre opdatering og tilføjelelser er lavet af Oliver
+
 CREATE DATABASE IF NOT EXISTS SCS_db;
 USE SCS_db;
 
