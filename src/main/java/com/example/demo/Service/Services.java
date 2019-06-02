@@ -17,6 +17,8 @@ import java.util.List;
 //Starter med at deklare at det er vores service lag, og autowire alle vores repository klasser
 @Service
 public class Services {
+    // Ansvarlige: Kasper, Mads, Nadia og Oliver
+
     @Autowired
     CustomerRepo customerRepo;
     @Autowired

@@ -9,10 +9,6 @@ Klasse indeholder desuden en masse fields samt getter og setter
  */
 
 public class Owner extends User {
+    // Ansvarlige: Mads og Kasper
 
-    @Override
-    public String getAnsettelsesdato() {
-        String ansettelsesdato = "2018-01-01";
-        return ansettelsesdato;
-    }
 }

@@ -12,7 +12,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Customer {
-
+// Ansvarlige: Kasper
 
     @Id
     private int kunde_id;

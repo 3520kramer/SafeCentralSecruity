@@ -24,6 +24,8 @@ import java.util.List;
 //Deklare at dette er vores controller
 @Controller
 public class HomeController {
+// Ansvarlige: Kasper, Mads, Nadia og Oliver
+
 
     // String som bruges til login
     private String status = "Admin";
@@ -47,6 +49,8 @@ de indtastede værdier med vores allerede eksiterende værdier. Derefter ændre
 den status til den tilsvarende bruger. Hvis den ikke finder en bruger med
 matchende værdier med databasen, så smider den dig tilbage til index siden.
  */
+
+
     @GetMapping("/")
     public String index(Login lo, Model mo) {
         for (Login login : services.getLogin()) {
@@ -197,14 +201,6 @@ Getmapping hvor vi tager id, som int med over og bruger det til at køre vores d
         }
         return "index";
     }
-
-
-
-
-
-
-
-
 
 
 
@@ -404,7 +400,8 @@ Selvom metode kaldene er ens, er det gjort for at få forskellige menuer senere 
             return "redirect:/index";
         }
     }
-/*
+
+    /*
 Postmapping til at få vist vagtplan for en dato, vi bruger klassen dateFromTo, som parameter
 til at få fat i dato.
  */

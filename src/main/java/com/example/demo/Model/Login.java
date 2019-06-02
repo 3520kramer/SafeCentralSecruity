@@ -13,7 +13,7 @@ import javax.persistence.Id;
 
     @Entity
     public class Login {
-
+        // Ansvarlige: Nadia og Kasper
         @Id
         private int bruger_id;
         private String username;

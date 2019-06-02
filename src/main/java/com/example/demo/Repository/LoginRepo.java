@@ -25,6 +25,7 @@ import java.util.List;
 
 @Repository
 public class LoginRepo {
+    // Ansvarlige: Nadia, kasper
 
     //Opretter et jdbctemplate objekt og autowire det
 

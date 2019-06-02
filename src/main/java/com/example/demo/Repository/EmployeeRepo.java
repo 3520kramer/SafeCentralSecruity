@@ -25,6 +25,7 @@ import java.util.List;
 
 @Repository
 public class EmployeeRepo implements RepoInterface{
+    // Ansvarlige: Mads, Kasper
 
     //Opretter et jdbctemplate objekt og autowire det
 

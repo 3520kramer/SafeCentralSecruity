@@ -13,7 +13,7 @@ Klasse indeholder desuden en masse fields samt getter og setter
 
 @Entity
 public class Wage {
-
+    // Ansvarlige: Oliver
     @Id
     private int medarbejder_id;
     private String fornavn;

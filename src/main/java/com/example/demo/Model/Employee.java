@@ -6,5 +6,5 @@ Samt at den ikke har øget funktionalitet og User er abstrakt, burde alle getter
  */
 
 public class Employee extends User {
-
+// Ansvarlige: Mads
 }

@@ -9,6 +9,8 @@ import javax.persistence.Id;
 
 @Entity
 public abstract class User {
+    // Ansvarlige: Kasper og Mads
+
     @Id
     private int medarbejder_id;
     private String fornavn;

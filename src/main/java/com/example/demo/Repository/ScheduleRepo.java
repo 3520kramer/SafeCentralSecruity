@@ -27,6 +27,7 @@ import java.util.List;
 
 @Repository
 public class ScheduleRepo implements RepoInterface{
+    // Ansvarlige: Kasper, Oliver
 
     //Opretter et jdbctemplate objekt og autowire det
 

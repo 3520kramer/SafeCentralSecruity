@@ -29,6 +29,7 @@ import java.util.List;
 
 @Repository
 public class NewsFeedRepo implements RepoInterface {
+    // Ansvarlige: Oliver, Kasper
 
     //Opretter et jdbctemplate objekt og autowire det
 

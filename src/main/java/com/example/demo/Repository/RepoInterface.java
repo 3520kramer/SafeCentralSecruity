@@ -4,5 +4,7 @@ package com.example.demo.Repository;
 //Grundet interfaces natur, er det redundant at have den abstract, men det startede med at være en abstract superklasse
 
 public abstract interface RepoInterface {
+    // Ansvarlige: Kasper
+
     public Boolean delete(int id);
 }

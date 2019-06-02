@@ -9,6 +9,8 @@ Klasse indeholder desuden en masse fields samt getter og setter
  */
 
 public class DateFromTo {
+// Ansvarlige: Oliver
+
 
     private String date;
     private String dateTo;

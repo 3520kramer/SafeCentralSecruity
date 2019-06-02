@@ -13,6 +13,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Schedule {
+    // Ansvarlige: Oliver og Kasper
     @Id
     private int vagtplan_id;
     private String fornavn;

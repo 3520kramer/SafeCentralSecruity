@@ -23,6 +23,7 @@ import java.util.List;
 
 @Repository
 public class CustomerRepo implements RepoInterface {
+    // Ansvarlige: Kasper
 
     //Opretter et jdbctemplate objekt og autowire det
 

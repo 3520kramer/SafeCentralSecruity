@@ -26,6 +26,7 @@ import java.util.List;
 
 @Repository
 public class WageRepo {
+    // Ansvarlige: Kasper, Oliver
 
     //Opretter et jdbctemplate objekt og autowire det
     @Autowired

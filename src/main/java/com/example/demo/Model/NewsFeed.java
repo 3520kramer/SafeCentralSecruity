@@ -13,6 +13,7 @@ import javax.persistence.Id;
 
 @Entity
 public class NewsFeed {
+    // Ansvarlige: Oliver
     @Id
     private int newsfeed_id;
     private String opslag;
