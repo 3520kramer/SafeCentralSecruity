@@ -1,5 +1,16 @@
 package com.example.demo.Repository;
 
+/*
+Starter med at impotere den tilsvarende model klasse til repository
+Derefter impotere vi autowired for at få kommunikation mellem de forskellige klasser
+Herefter impotere vi både beanpropertyrowmapper og rowmapper til at håndtere vores resultsets fra vores database
+
+Til sidst importere vi jdbctemplate og repository, som skaber forbindelsen til vores database og laver klassen til
+et brugbart repository
+
+Vi indhenter også lige DateFormat, SimpleDateFormat, Date og List
+ */
+
 import com.example.demo.Model.Schedule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -12,11 +23,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+//Starter med at deklarer det som værende et repository og implementere derefter vores interface
+
 @Repository
 public class ScheduleRepo implements RepoInterface{
 
+    //Opretter et jdbctemplate objekt og autowire det
+
     @Autowired
     JdbcTemplate template;
+
+    //Funktion til at hente fra 4 tables, med inner joins. Vi bruger en concat til et enkelt navn, som vi bruger til at vise medarbejderens fulde navn i en celle
+    // til den rigtige kunde, derefter, bruger vi rowmapper til at håndtere resultset
 
     public List<Schedule> getAllSchedules(){
         String sql = "SELECT vagtplan_id, CONCAT(fornavn, ' ', efternavn) AS navn, starttid, sluttid, " +
@@ -31,10 +49,15 @@ public class ScheduleRepo implements RepoInterface{
         return template.query(sql, rowMapper);
     }
 
+    /*
+    Starter med at oprette et dateformat, som matcher vores database, derefter laver vi et date objekt, og til sidst laver vi det date objekt om til en string
+    Vi tager så den string over bruger den i vores select script, vi laver et date objekt udelukkende sådan så vi får fat i dagens dato. Man kan snyde dette, ved
+    at ændre computerens dato osv. hvis man ønsker det
+     */
     public List<Schedule> getTodaysSchedule(){
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        Date dateObj = new Date();
-        String date = dateFormat.format(dateObj);
+        Date dato = new Date();
+        String date = dateFormat.format(dato);
 
         String sql = "SELECT vagtplan_id, CONCAT(fornavn, ' ', efternavn) AS navn, fornavn, efternavn, starttid, sluttid, timetal, dato, firma_navn, k.adresse, bydel, k.postnummer,\n" +
                 "medarbejder_id, kunde_id FROM vagtplan v\n" +
@@ -48,6 +71,10 @@ public class ScheduleRepo implements RepoInterface{
         return template.query(sql, rowMapper, date);
     }
 
+    /*
+    Ligner forhenværende metode, men denne her opretter ikke et date objekt, men modtager en string i stedet, som den bruger til at bruge dens select statement, sådan man selv
+    kan indtaste hvilken dag man ønsker at se
+     */
     public List<Schedule> getOneSchedule(String date){
         String sql = "SELECT vagtplan_id, CONCAT(fornavn, ' ', efternavn) AS navn, fornavn, efternavn, starttid, sluttid, timetal, dato, firma_navn, k.adresse, bydel, k.postnummer,\n" +
                 "medarbejder_id, kunde_id FROM vagtplan v\n" +
@@ -61,6 +88,9 @@ public class ScheduleRepo implements RepoInterface{
         return template.query(sql, rowMapper, date);
     }
 
+    /*
+    Ligner forhenværende metode, men denne her metode modtager 2 strings, for at vælge en periode mellem 2 datoer
+     */
     public List<Schedule> getScheduleDateFromTo(String date, String dateTo){
         String sql = "SELECT vagtplan_id, CONCAT(fornavn, ' ', efternavn) AS navn, fornavn, efternavn, starttid, sluttid, timetal, dato, firma_navn, k.adresse, bydel, k.postnummer,\n" +
                 "medarbejder_id, kunde_id FROM vagtplan v\n" +
@@ -74,6 +104,7 @@ public class ScheduleRepo implements RepoInterface{
         return template.query(sql, rowMapper, date, dateTo);
     }
 
+    //Simpel insert mysql, hvor vi bare modtager fra brugeren hvad der skal indsættes i databasens tabel vagtplan
     public Schedule createSchedule(Schedule s){
         String sql = "INSERT INTO vagtplan VALUES(null, ?, ?, ?, ?, ?, ?)";
         template.update(sql, s.getStarttid(), s.getSluttid(), s.getTimetal(), s.getDato(),
@@ -81,6 +112,7 @@ public class ScheduleRepo implements RepoInterface{
         return null;
     }
 
+    //Metode vi bruger til at finde og videreføre de forskellige vagtplan id´er
     public Schedule findScheduleById(int schedule_id){
         String sql = "SELECT vagtplan_id, CONCAT(fornavn, ' ', efternavn) AS navn, fornavn, efternavn, starttid, sluttid, timetal, dato, firma_navn, k.adresse, bydel, k.postnummer,\n" +
         "medarbejder_id, kunde_id FROM vagtplan v\n" +
@@ -95,6 +127,7 @@ public class ScheduleRepo implements RepoInterface{
         return s;
     }
 
+    //Metode til at faktisk at opdatere vores vagtplan, som bruger førhenværende metode
     public Schedule updateSchedule(Schedule schedule){
         String sql = "UPDATE vagtplan SET starttid = ?, sluttid = ?, timetal = ?, dato = ?, medarbejder_id_fk = ?, kunder_id_fk = ? WHERE vagtplan_id = ?";
         template.update(sql, schedule.getStarttid(), schedule.getSluttid(), schedule.getTimetal(), schedule.getDato(),
@@ -102,23 +135,12 @@ public class ScheduleRepo implements RepoInterface{
         return null;
     }
 
+    //Metode til at slette vores vagtplan
     public Boolean delete(int id) {
         String sql = "DELETE from vagtplan WHERE vagtplan_id = ?";
         return template.update(sql, id) > 0;
     }
 
-    /*
-    Til at udregne vores timetal fra et starttidspunkt og et sluttidspunkt har vi startet med at lave 2 strings,
-    et for starttidspunktet og et for sluttidspunktet, vi bruger så substring, til at kun at få de 2 første tegn
-    fra både starttidspunktet og sluttidspunktet, herefter parser vi det til doubles, nu har vi det antal timer nogen har arbejdet
-
-    For så at sikre os, at der ikke kommer minus antal timer (i tilfælde af en vagt overskrider midnat) har vi så lavet en if statement,
-    som tillægger 24 timer til, hvis sluttidspunktet er mindre end starttidspunkt, eller er det samme som starttidspunktet.
-
-    For så at udregne minut antallet, laver vi så 2 nye strings, hvor vi gentager samme proces, dog med at vi starter fra 3. tegn
-    og slutter på 5. tegn (eksclusiv 5. tegn), for så at gøre dette til timetal, dividere vi selvfølgelig med 60, for senere at lægge det til
-    vores timetal og laver så til sidst en return på timetal.
-     */
 
     /*
     For at få starttimen og sluttimen gemt i hver sin double har vi startet med at lave 2 strings, en for starttidspunktet og en for sluttidspunktet.
@@ -128,8 +150,8 @@ public class ScheduleRepo implements RepoInterface{
     For at få startminut og slutminut gemt i hver sin double, gentager vi samme proces, dog starter vores substring fra 3. tegn
     og slutter på 5. tegn (eksclusiv 5. tegn), for så at gøre dette til timer, dividerer vi selvfølgelig med 60.
 
-    For at sikre os, at der ikke kommer minus antal timer, laver vi et if-statement som sætter timetal til sluttiden i minutter.
-    Hvis starttime og sluttime er det samme, men slutminut er højere end startminut. Hvis dette ikke er sandt, fortsætter vi til et if-else-statement,
+    For at sikre os, at der ikke kommer minus antal timer, laver vi et if-statement som sætter timetal til sluttiden i minutter,
+    hvis starttime og sluttime er det samme, men slutminut er højere end startminut. Hvis dette ikke er sandt, fortsætter vi til et if-else-statement,
     som lægger 24 timer til, hvis sluttidspunktet er mindre end starttidspunkt, eller er det samme som starttidspunktet.
     Derefter trækker vi starttimen fra sluttimen, og herefter lægger vi summen af slutminut og startminut til, for at få timetallet.
     */

@@ -32,6 +32,18 @@ Bruges over alt hvor .header bruges, til at få vores logo til at sidde til høj
     float: right;
     margin-right: 2.2%;
 }
+
+/*
+Sidemenuens "container" position fixed til at den hele tiden er det samme sted på siden
+ */
+.sideMenu{
+    position: fixed;
+    margin-left: 2.5%;
+    top: 20%;
+    height:300px;
+    width: 105px;
+}
+
 /*
 Dropdown menu taget fra W3school
  */
@@ -261,22 +273,35 @@ Standard knap der bliver brugt på wage, til at få den til at være ensartet me
 Newsfeed
 ***
  */
+/*
+Brugt til vores nyhedsopslag, margin-bottom til at give en illusion af at det er flere forskellige elementer
+ */
 
 .newsfeed table{
     width: 40%;
     max-width: 40%;
-    border-collapse: collapse;
-    margin-bottom: 5%;
+    margin-bottom: 2.5%;
 }
+
+/*
+Brugt til alle vores nyhedsopslag
+ */
+
 .newsfeed tr, th, td{
     border: 1px solid black;
     text-align: left;
-    padding-left: 3%;
 }
+
+/*
+Brugt til alle vores nyhedsopslag
+ */
+
 .newsfeed #tomcelle{
     width: 65%;
 }
-
+/*
+Brugt til vores opret nyhedsopslag textarea
+ */
 .NewsfeedTextbox{
     width: 800px;
     height: 500px;
@@ -288,6 +313,10 @@ Database tabeller
 ***
  */
 
+
+/*
+Basis layout til alle vores tables
+ */
 table{
     width: 75%;
     max-width: 75%;
@@ -319,36 +348,9 @@ Vagtplan
 ***
  */
 
-.scheduledate{
-    border:solid 1px black;
-    position: absolute;
-    margin-left: 0px;
-    bottom: -250px;
-    width: 160px;
-    height: 120px;
-    float: left;
-    visibility: hidden;
-    background-color: lightgray;
-}
-.scheduledatefromto{
-    border:solid 1px black;
-    position: absolute;
-    margin-left: 0px;
-    bottom: -410px;
-    width: 160px;
-    height: 160px;
-    float: left;
-    visibility: hidden;
-    background-color: lightgray;
-}
-
-.sideMenu{
-    position: fixed;
-    margin-left: 2.5%;
-    top: 20%;
-    height:300px;
-    width: 105px;
-}
+/*
+Standard layout til vores knap for at vise dagens vagt på schedule siderne
+ */
 
 .todaysbtn{
     float: left;
@@ -358,6 +360,10 @@ Vagtplan
     margin-bottom:5px;
 }
 
+
+/*
+Standard layout til vores knap for at vise dagens vagt på schedule siderne
+ */
 .allsbtn{
     float: left;
     padding: 1px;
@@ -367,6 +373,9 @@ Vagtplan
     margin-bottom:5px;
 }
 
+/*
+Standard layout til vores knap for at oprette en vagt på schedule siden
+ */
 .createbtn {
     float: left;
     padding: 1px;
@@ -376,7 +385,43 @@ Vagtplan
     margin-bottom:5px;
 }
 
+/*
+Bliver brugt til at skabe boksen, hvori vores vælg datoen funktion ligger.
+Visibility:hidden er fordi, vi som standard gerne vil have den er gemt, og først bliver synlig
+når man trykker på selve "knappen" vælg dato
+ */
 
+.scheduledate{
+    border:solid 1px black;
+    position: fixed;
+    margin-left: 0px;
+    bottom: 500px;
+    width: 160px;
+    height: 120px;
+    float: left;
+    visibility: hidden;
+    background-color: lightgray;
+}
+/*
+Bliver brugt til at skabe boksen, hvori vores vælg perioden funktion ligger.
+Visibility:hidden er fordi, vi som standard gerne vil have den er gemt, og først bliver synlig
+når man trykker på selve "knappen" vælg perioden
+ */
+.scheduledatefromto{
+    border:solid 1px black;
+    position: fixed;
+    margin-left: 0px;
+    bottom: 340px;
+    width: 160px;
+    height: 160px;
+    float: left;
+    visibility: hidden;
+    background-color: lightgray;
+}
+
+/*
+Label er for selve knappen for at skabe boksen med vælg dato og vælg perioden
+ */
 label {
     display: block;
     height:60px;
@@ -389,20 +434,27 @@ label {
     font-size: 14px;
 
 }
-
+/*
+Bruges til at "fjerne" alle vores flueben ved at skubbe den ekstremt meget ud til venstre hjørne uden for skærmen
+ */
 input[type=checkbox] {
     position: absolute;
     top: -9999px;
     left: -9999px;
 
 }
-
+/*
+Bliver brugt på alle de andre sider, som ikke er vores vagtplan, til at styre vores sidemenus objekter
+ */
 .placeholder{
     visibility: hidden;
 }.placeholder1{
      visibility: hidden;
  }
 
+ /*
+ Vi tager input, hvor det er en checkbox, og hvis den er "checked" ændre vi den til synlig. + label + .(klasse) er til at få fat i hvert element individuelt
+  */
 input[type=checkbox]:checked + label + .scheduledatefromto{
     visibility: visible;
 }
